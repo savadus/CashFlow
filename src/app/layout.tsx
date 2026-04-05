@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     title: "MVEE.IN CashFlow",
   },
   icons: {
-    icon: "/mvee light.png",
-    apple: "/mvee light.png",
+    icon: "/cash-flow-logo.png",
+    apple: "/cash-flow-logo.png",
   },
 };
 

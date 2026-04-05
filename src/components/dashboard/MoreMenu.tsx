@@ -128,7 +128,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
               <div className="bg-black text-white p-10 rounded-[40px] relative overflow-hidden shadow-2xl">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 blur-2xl" />
           <div className="flex flex-col items-center mb-8">
-             <img src="/mvee light.png" alt="Logo" className="w-24 h-24 object-contain mb-4 drop-shadow-xl" />
+             <img src="/cash-flow-logo.png" alt="MVEE" className="w-12 h-12 object-contain" />
              <h3 className="text-3xl font-black italic tracking-tighter text-white uppercase underline-offset-8 decoration-white/20">CashFlow</h3>
              <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.4em] mt-1">{t('BUSINESS_SUITE')}</p>
           </div>

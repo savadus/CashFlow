@@ -92,7 +92,7 @@ export default function Onboarding() {
                >
                   <div className="flex flex-col items-center">
                     <img 
-                      src="/mvee light.png" 
+                      src="/cash-flow-logo.png" 
                       alt="CashFlow Logo" 
                       className="w-24 h-24 object-contain mb-4 drop-shadow-2xl"
                     />

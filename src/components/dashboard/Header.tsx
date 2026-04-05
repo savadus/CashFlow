@@ -26,7 +26,7 @@ export const Header = ({
       <div className="flex items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <div className="w-11 h-11 bg-white/20 backdrop-blur-xl rounded-[18px] flex items-center justify-center border border-white/10 shadow-lg overflow-hidden">
-             <img src="/mvee light.png" alt="C" className="w-full h-full object-contain" />
+             <img src="/cash-flow-logo.png" alt="MVEE" className="w-12 h-12 object-contain" />
           </div>
           <div>
             <h1 className="text-sm font-black tracking-tight leading-none mb-1 text-white uppercase italic">
