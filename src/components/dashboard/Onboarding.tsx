@@ -20,11 +20,11 @@ export default function Onboarding() {
     name: '',
     language: 'en',
     purpose: 'personal' as const,
-    banks: {
-      bank1: 'Baroda',
-      bank2: 'SBI BANK',
-      bank3: 'SIB BANK'
-    }
+    banks: [
+      { id: 'BANK_1712345678901', name: 'SBI' },
+      { id: 'BANK_1712345678902', name: 'BARODA' },
+      { id: 'BANK_1712345678903', name: 'SIB' }
+    ]
   });
 
   const t = (key: TranslationKey): string => {

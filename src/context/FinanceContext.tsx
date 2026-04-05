@@ -28,6 +28,16 @@ const initialState: FinanceState = {
     { id: '4', name: 'Others Cash', balance: 0 },
     { id: '5', name: 'Debts', balance: 0, isTrip: true, members: [] } as TripSpace,
   ],
+  userProfile: {
+    name: 'BUSINESS HUB',
+    purpose: 'BUSINESS',
+    language: 'en',
+    banks: [
+      { id: 'BANK_1712345678901', name: 'SBI' },
+      { id: 'BANK_1712345678902', name: 'BARODA' },
+      { id: 'BANK_1712345678903', name: 'SIB' }
+    ]
+  },
   transactions: [],
   bills: [],
   privacyMode: false,
@@ -35,6 +45,9 @@ const initialState: FinanceState = {
   visualMode: 'LIGHT',
   liquidBalances: {
     'IN_HAND': 0,
+    'BANK_1712345678901': 0,
+    'BANK_1712345678902': 0,
+    'BANK_1712345678903': 0
   }
 };
 
@@ -294,8 +307,10 @@ const financeReducer = (state: FinanceState, action: Action): FinanceState => {
       return { ...state, visualMode: action.payload };
     case 'SET_THEME':
       return { ...state, theme: action.payload };
+    case 'SET_PROFILE':
+      return { ...state, userProfile: action.payload };
     case 'SET_INITIAL_DATA':
-      return action.payload;
+      return { ...initialState, ...action.payload };
     default:
       return state;
   }
