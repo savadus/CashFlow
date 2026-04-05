@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --ios-blue: #007AFF;
+  --income-green: #34C759;
+  --expense-red: #FF3B30;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.05);
+  --secondary: #F2F2F7;
+  --tertiary: #E5E5EA;
+  --text-secondary: #000000;
+  --primary-sage: #6b8341;
+  --primary-obsidian: #000000;
+  --current-primary: var(--primary-sage);
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --card-bg: #1C1C1E;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --secondary: #1C1C1E;
+  --tertiary: #2C2C2E;
+  --text-secondary: #FFFFFF;
+}
+
+[data-theme='obsidian'] {
+  --current-primary: var(--primary-obsidian);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ios-blue: var(--ios-blue);
+  --color-income: var(--income-green);
+  --color-expense: var(--expense-red);
+  --color-card: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-text-dim: var(--text-secondary);
+  --color-black: var(--current-primary);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+}
+
+.ios-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.3s ease-out;
+}
