@@ -54,7 +54,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
       exit={{ opacity: 0, x: '100%' }}
       className="fixed inset-0 z-[300] bg-background flex flex-col"
     >
-      <div className="bg-black px-6 py-12 pb-16 relative overflow-hidden">
+      <div className="bg-black px-6 py-8 pb-12 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl" />
         <div className="flex items-center justify-between text-white relative z-10">
           <div className="flex items-center gap-4">
@@ -62,7 +62,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
               onClick={onClose}
               className="p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-white/20 transition-all border border-white/10"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <div>
               <h1 className="text-xl font-black italic tracking-tighter uppercase leading-none">{t('SYSTEM_SETTINGS')}</h1>
@@ -72,8 +72,8 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 py-12 -mt-10 bg-background rounded-t-[48px] shadow-2xl relative z-10 scroll-smooth pb-32">
-         <div className="space-y-12">
+      <div className="flex-1 overflow-y-auto px-6 py-10 -mt-8 bg-background rounded-t-[40px] shadow-2xl relative z-10 scroll-smooth pb-32">
+         <div className="space-y-8">
             {/* Visual Mode */}
             <section>
                <h2 className="text-[10px] items-center flex gap-3 font-black uppercase tracking-[0.4em] text-text-dim mb-6">
@@ -89,14 +89,14 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                       key={v.id}
                       onClick={() => dispatch({ type: 'SET_VISUAL_MODE', payload: v.id as any })}
                       className={cn(
-                        "p-6 rounded-[32px] flex flex-col items-center gap-4 transition-all active:scale-[0.98] border",
+                        "p-4 rounded-[28px] flex flex-col items-center gap-3 transition-all active:scale-[0.98] border",
                         state.visualMode === v.id ? "bg-black text-white shadow-2xl border-black" : "bg-card text-text-dim border-card-border"
                       )}
                     >
-                       <div className={cn("w-10 h-10 rounded-2xl shadow-inner flex items-center justify-center", v.bg, v.text)}>
-                          <v.icon className="w-5 h-5" />
+                       <div className={cn("w-8 h-8 rounded-xl shadow-inner flex items-center justify-center", v.bg, v.text)}>
+                          <v.icon className="w-4 h-4" />
                        </div>
-                       <span className="font-black text-[10px] uppercase tracking-widest leading-none">{v.name}</span>
+                       <span className="font-black text-[9px] uppercase tracking-widest leading-none">{v.name}</span>
                        {state.visualMode === v.id && <Check className="w-4 h-4 mt-1" />}
                     </button>
                   ))}
@@ -190,25 +190,25 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                   <LogOut className="w-3 h-3" />
                   Sovereign Control
                </h2>
-               <button 
-                  onClick={() => {
-                     if (confirm(state.userProfile?.language === 'ml' ? "നമ്മുടെ ലോക്കൗട്ട് ചെയ്യട്ടെ? ഉള്ളവയെല്ലാം ഈ ഡിവൈസിൽ സേവ് ചെയ്യപ്പെട്ടിട്ടുണ്ടാകും." : "Are you sure you want to terminate this session? All local settings will be preserved.")) {
-                        localStorage.removeItem('cashflow_data');
-                        window.location.reload();
-                     }
-                  }}
-                  className="w-full bg-expense/5 text-expense p-8 rounded-[40px] border border-expense/10 flex items-center justify-between group active:scale-95 transition-all"
-               >
-                  <div className="flex items-center gap-4">
-                     <div className="w-12 h-12 bg-expense text-white rounded-2xl flex items-center justify-center shadow-lg shadow-expense/20">
-                        <LogOut className="w-6 h-6" />
-                     </div>
-                     <div className="text-left">
-                        <p className="font-black text-sm uppercase tracking-widest leading-none mb-1">Terminate Session</p>
-                        <p className="text-[9px] font-bold text-expense/40 uppercase tracking-widest">WIPE LOCAL CACHE AND RELOAD</p>
-                     </div>
-                  </div>
-               </button>
+                <button 
+                   onClick={() => {
+                      if (confirm(state.userProfile?.language === 'ml' ? "നമ്മുടെ ലോക്കൗട്ട് ചെയ്യട്ടെ? ഉള്ളവയെല്ലാം ഈ ഡിവൈസിൽ സേവ് ചെയ്യപ്പെട്ടിട്ടുണ്ടാകും." : "Are you sure you want to terminate this session? All local settings will be preserved.")) {
+                         localStorage.removeItem('cashflow_data');
+                         window.location.reload();
+                      }
+                   }}
+                   className="w-full bg-expense/5 text-expense p-6 rounded-[40px] border border-expense/10 flex items-center justify-between group active:scale-95 transition-all"
+                >
+                   <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-expense text-white rounded-xl flex items-center justify-center shadow-lg shadow-expense/20">
+                         <LogOut className="w-5 h-5" />
+                      </div>
+                      <div className="text-left">
+                         <p className="font-black text-xs uppercase tracking-widest leading-none mb-1">Terminate Session</p>
+                         <p className="text-[8px] font-bold text-expense/40 uppercase tracking-widest">WIPE LOCAL CACHE AND RELOAD</p>
+                      </div>
+                   </div>
+                </button>
             </section>
          </div>
 
