@@ -69,7 +69,7 @@ export default function Home() {
   }
 
   return (
-    <main className="h-screen overflow-hidden flex flex-col max-w-full lg:max-w-7xl mx-auto w-full bg-[#f8f9ff] relative text-black">
+    <main className="h-screen overflow-hidden flex flex-col max-w-full lg:max-w-7xl mx-auto w-full bg-[#FAF9F6] relative text-black">
       <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[30%] bg-ios-blue/10 blur-[120px] rounded-none pointer-events-none" />
       <div className="absolute bottom-[20%] left-[-20%] w-[50%] h-[40%] bg-purple-500/10 blur-[100px] rounded-none pointer-events-none" />
       

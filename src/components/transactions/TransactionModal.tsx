@@ -152,7 +152,7 @@ export const TransactionModal = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: '100%' }}
           transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-          className="fixed inset-0 z-[260] bg-[#F2F2F7] flex flex-col pt-[env(safe-area-inset-top,0px)]"
+          className="fixed inset-0 z-[260] bg-[#FAF9F6] flex flex-col pt-[env(safe-area-inset-top,0px)]"
         >
           <div className="flex items-center gap-4 px-6 py-4 bg-white">
             <button onClick={onClose} className="p-1 hover:bg-black/5 rounded-none transition-colors">

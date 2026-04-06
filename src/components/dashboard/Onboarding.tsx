@@ -116,7 +116,7 @@ export default function Onboarding() {
 
   return (
      <div 
-        className="fixed inset-0 bg-[#f8f9ff] z-[100] flex items-center justify-center p-6 sm:p-12 font-sans overflow-hidden"
+        className="fixed inset-0 bg-[#FAF9F6] z-[100] flex items-center justify-center p-6 sm:p-12 font-sans overflow-hidden"
         onKeyDown={(e) => {
            if (e.key === 'Enter') {
               if (step === 2 && profile.name) setStep(3);
