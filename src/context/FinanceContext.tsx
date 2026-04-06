@@ -2,8 +2,14 @@
 
 import React, { createContext, useContext, useReducer, useEffect, ReactNode, useMemo } from 'react';
 import { Space, Transaction, FinanceState, TransactionType, TripMember, TripSpace, Bill, UserProfile, LiquidMode } from '@/types';
+import { supabase } from '@/lib/supabase';
+import { User } from '@supabase/supabase-js';
+
+type State = FinanceState & { user: User | null };
 
 type Action =
+  | { type: 'SET_USER'; payload: User | null }
+  | { type: 'SET_INITIAL_DATA'; payload: FinanceState }
   | { type: 'ADD_TRANSACTION'; payload: Transaction }
   | { type: 'DELETE_TRANSACTION'; payload: string }
   | { type: 'UPDATE_TRANSACTION'; payload: Transaction }
@@ -17,10 +23,10 @@ type Action =
   | { type: 'DELETE_BILL'; payload: string }
   | { type: 'SET_PROFILE'; payload: UserProfile }
   | { type: 'SET_THEME'; payload: 'SAGE' | 'OBSIDIAN' }
-  | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' }
-  | { type: 'SET_INITIAL_DATA'; payload: FinanceState };
+  | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' };
 
-const initialState: FinanceState = {
+const initialState: State = {
+  user: null,
   spaces: [
     { id: '1', name: 'Business Cash', balance: 0 },
     { id: '2', name: 'Personal Cash', balance: 0 },
@@ -58,8 +64,14 @@ const adjustLiquidBalance = (balances: Record<string, number>, mode: string, amo
   return newBalances;
 };
 
-const financeReducer = (state: FinanceState, action: Action): FinanceState => {
+const financeReducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case 'SET_USER': {
+      return { ...state, user: action.payload };
+    }
+    case 'SET_INITIAL_DATA': {
+      return { ...state, ...action.payload };
+    }
     case 'ADD_TRIP_MEMBER': {
       const { spaceId, member } = action.payload;
       return {
@@ -310,18 +322,16 @@ const financeReducer = (state: FinanceState, action: Action): FinanceState => {
     case 'SET_PROFILE':
       return { ...state, userProfile: action.payload };
     case 'SET_INITIAL_DATA':
-      return { ...initialState, ...action.payload };
+      return { ...initialState, ...action.payload, user: state.user };
     default:
       return state;
   }
 };
 
 const FinanceContext = createContext<{
-  state: FinanceState;
+  state: State;
   dispatch: React.Dispatch<Action>;
 } | undefined>(undefined);
-
-import { supabase } from '@/lib/supabase';
 
 // Helper to debounce cloud sync
 const debounce = (fn: Function, ms: number) => {
@@ -335,42 +345,56 @@ const debounce = (fn: Function, ms: number) => {
 export const FinanceProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(financeReducer, initialState);
 
-  // 1. Initial Load: Local Cache -> Cloud Sync
+  // 1. Auth Listener & Initial Handshake
+  useEffect(() => {
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      dispatch({ type: 'SET_USER', payload: session?.user || null });
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      dispatch({ type: 'SET_USER', payload: session?.user || null });
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   useEffect(() => {
     const initData = async () => {
-      // Priority 1: LocalStorage for zero-latency startup (True PWA!)
+      // Priority 1: LocalStorage for zero-latency startup
       const savedData = localStorage.getItem('cashflow_data');
       if (savedData) {
         try {
-          dispatch({ type: 'SET_INITIAL_DATA', payload: JSON.parse(savedData) });
+          const parsed = JSON.parse(savedData);
+          dispatch({ type: 'SET_INITIAL_DATA', payload: parsed });
         } catch (err) {
           console.error('Failed to load local cache', err);
         }
       }
 
-      // Priority 2: Cloud Handshake (Multi-device Sync)
+      // Priority 2: Cloud Sync (If Authenticated)
+      const syncId = state.user?.id || 'ADMIN_HUB';
       try {
         const { data, error } = await supabase
           .from('user_profiles')
-          .select('id, name, language, purpose, image, banks')
-          .eq('id', 'ADMIN_HUB')
+          .select('*')
+          .eq('id', syncId)
           .single();
 
         if (data && !error) {
           console.log("CLOUDHUB SYNC: Connected", data.name);
-          // Only override if cloud is different or newer (simple approach: always pull if exists)
-          // Integration: If we have full state in one column (let's check banks JSONB)
-          // For now, we'll just synchronize the profile and expect other tables to follow.
-          // BUT to fix the "multi-device" goal, we need full state sync.
-          // I will use a separate 'state_v6' column in 'user_profiles' for the full snapshot.
+          // If authenticated, we trust cloud as master
+          if (state.user && data.banks) {
+             dispatch({ type: 'SET_INITIAL_DATA', payload: data.banks as FinanceState });
+          }
         }
       } catch (err) {
-        console.warn("CLOUDHUB SYNC: Offline Mode Active", err);
+        console.warn("CLOUDHUB SYNC: Guest Mode Active", err);
       }
     };
     
     initData();
-  }, []);
+  }, [state.user]);
 
   // 2. Local Persistence (Immediate for Offline Resilience)
   useEffect(() => {
@@ -392,13 +416,14 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [state.theme, state.visualMode]);
 
-  // 3. Cloud Persistence (Debounced to save bandwidth/API calls)
-  const syncToCloud = useMemo(() => debounce(async (currentState: FinanceState) => {
+  // 3. Cloud Persistence (Debounced)
+  const syncToCloud = useMemo(() => debounce(async (currentState: State) => {
+    const syncId = currentState.user?.id || 'ADMIN_HUB';
     try {
-      const { error } = await supabase
+      await supabase
         .from('user_profiles')
         .upsert({
-          id: 'ADMIN_HUB',
+          id: syncId,
           name: currentState.userProfile?.name || 'ADMIN',
           language: currentState.userProfile?.language || 'en',
           purpose: currentState.userProfile?.purpose || 'personal',
@@ -406,7 +431,7 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
           banks: JSON.parse(JSON.stringify(currentState))
         }, { onConflict: 'id' });
 
-      if (!error) console.log("CLOUDHUB: LOCKED (v6.2.0)");
+      console.log(`CLOUDHUB: LOCKED [${syncId}]`);
     } catch (err) {
       console.error("CLOUDHUB: Persistence Failed", err);
     }
