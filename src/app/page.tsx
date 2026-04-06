@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/dashboard/Header';
 import { BalanceOverview } from '@/components/dashboard/BalanceOverview';
 import { SpaceGrid } from '@/components/dashboard/SpaceGrid';
@@ -21,6 +22,7 @@ import { FilteredTransactionHub } from '@/components/transactions/FilteredTransa
 import { BillAuditHub } from '@/components/bills/BillAuditHub';
 import { SpaceTransactionHub } from '@/components/dashboard/SpaceTransactionHub';
 import { CollectionHub } from '@/components/dashboard/CollectionHub';
+import { SecurityHub } from '@/components/dashboard/SecurityHub';
 import Onboarding from '@/components/dashboard/Onboarding';
 
 import { useTranslation } from '@/hooks/useTranslation';
@@ -231,6 +233,11 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Sovereign Perimeter Lockdown */}
+      <AnimatePresence>
+        {state.isLocked && <SecurityHub />}
+      </AnimatePresence>
     </main>
   );
 }

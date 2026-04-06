@@ -25,7 +25,9 @@ type Action =
   | { type: 'SET_THEME'; payload: 'SAGE' | 'OBSIDIAN' }
   | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' }
   | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE' }
-  | { type: 'UPDATE_TRIP_MEMBER'; payload: { spaceId: string, memberId: string, updates: Partial<TripMember> } };
+  | { type: 'UPDATE_TRIP_MEMBER'; payload: { spaceId: string, memberId: string, updates: Partial<TripMember> } }
+  | { type: 'LOCK_APP' }
+  | { type: 'UNLOCK_APP' };
 
 const initialState: State = {
   user: null,
@@ -360,6 +362,10 @@ const financeReducer = (state: State, action: Action): State => {
       return { ...state, theme: action.payload };
     case 'SET_ACTIVE_HUB':
       return { ...state, activeHub: action.payload };
+    case 'LOCK_APP':
+      return { ...state, isLocked: true };
+    case 'UNLOCK_APP':
+      return { ...state, isLocked: false };
     default:
       return state;
   }

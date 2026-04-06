@@ -78,4 +78,5 @@ export interface FinanceState {
   theme?: 'SAGE' | 'OBSIDIAN';
   visualMode?: 'LIGHT' | 'DARK';
   activeHub?: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE';
+  isLocked: boolean;
 }
