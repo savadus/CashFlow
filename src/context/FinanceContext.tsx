@@ -24,7 +24,8 @@ type Action =
   | { type: 'SET_PROFILE'; payload: UserProfile }
   | { type: 'SET_THEME'; payload: 'SAGE' | 'OBSIDIAN' }
   | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' }
-  | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE' };
+  | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE' }
+  | { type: 'UPDATE_TRIP_MEMBER'; payload: { spaceId: string, memberId: string, updates: Partial<TripMember> } };
 
 const initialState: State = {
   user: null,
@@ -84,6 +85,34 @@ const financeReducer = (state: State, action: Action): State => {
               ...trip,
               members: [member, ...(trip.members || [])],
               balance: member.status === 'UNPAID' ? trip.balance + member.amount : trip.balance
+            } as TripSpace;
+          }
+          return s;
+        })
+      };
+    }
+    case 'UPDATE_TRIP_MEMBER': {
+      const { spaceId, memberId, updates } = action.payload;
+      return {
+        ...state,
+        spaces: state.spaces.map(s => {
+          if (s.id === spaceId) {
+            const trip = s as TripSpace;
+            const oldMember = trip.members.find(m => m.id === memberId);
+            if (!oldMember) return s;
+            
+            const updatedMembers = trip.members.map(m => 
+              m.id === memberId ? { ...m, ...updates } : m
+            );
+            
+            // Recalculate balance only for UNPAID impact
+            const amountDiff = updates.amount !== undefined ? updates.amount - oldMember.amount : 0;
+            const balanceChange = oldMember.status === 'UNPAID' ? amountDiff : 0;
+            
+            return {
+              ...trip,
+              members: updatedMembers,
+              balance: trip.balance + balanceChange
             } as TripSpace;
           }
           return s;

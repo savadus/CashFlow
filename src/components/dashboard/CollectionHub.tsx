@@ -14,6 +14,7 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
   const [isAdding, setIsAdding] = useState(false);
   const [newName, setNewName] = useState('');
   const [newAmount, setNewAmount] = useState('');
+  const [editingMemberId, setEditingMemberId] = useState<string | null>(null);
 
   const [recoveryMemberId, setRecoveryMemberId] = useState<string | null>(null);
   const [recoveryMode, setRecoveryMode] = useState<LiquidMode>('IN_HAND');
@@ -27,26 +28,38 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
     { id: 'BANK_SIB', name: 'SIB' },
   ];
 
-  const handleAddMember = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newName || !newAmount) return;
 
-    dispatch({
-      type: 'ADD_TRIP_MEMBER',
-      payload: {
-        spaceId: '6',
-        member: {
-          id: Math.random().toString(36).substr(2, 9),
-          name: newName,
-          amount: parseFloat(newAmount),
-          status: 'UNPAID'
+    if (editingMemberId) {
+      dispatch({
+        type: 'UPDATE_TRIP_MEMBER',
+        payload: {
+          spaceId: '6',
+          memberId: editingMemberId,
+          updates: { name: newName, amount: parseFloat(newAmount) }
         }
-      }
-    });
+      });
+    } else {
+      dispatch({
+        type: 'ADD_TRIP_MEMBER',
+        payload: {
+          spaceId: '6',
+          member: {
+            id: Math.random().toString(36).substr(2, 9),
+            name: newName,
+            amount: parseFloat(newAmount),
+            status: 'UNPAID'
+          }
+        }
+      });
+    }
 
     setNewName('');
     setNewAmount('');
     setIsAdding(false);
+    setEditingMemberId(null);
   };
 
   const handleRecover = (memberId: string, targetSpaceId: string) => {
@@ -204,11 +217,20 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-[10px] font-black text-black/20 tracking-widest italic">NAME LIST</h3>
           <button 
-            onClick={() => setIsAdding(!isAdding)}
+            onClick={() => {
+               if (editingMemberId) {
+                  setEditingMemberId(null);
+                  setIsAdding(false);
+                  setNewName('');
+                  setNewAmount('');
+               } else {
+                  setIsAdding(!isAdding);
+               }
+            }}
             className="text-ios-blue text-xs font-black tracking-tight flex items-center gap-2 italic active:scale-95 transition-all"
           >
-            {isAdding ? <X className="w-4 h-4" /> : <UserPlus className="w-4 h-4" />}
-            {isAdding ? 'CANCEL' : 'ADD NAME'}
+            {(isAdding || editingMemberId) ? <X className="w-4 h-4" /> : <UserPlus className="w-4 h-4" />}
+            {(isAdding || editingMemberId) ? 'CANCEL' : 'ADD NAME'}
           </button>
         </div>
 
@@ -218,11 +240,14 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              onSubmit={handleAddMember}
+              onSubmit={handleSubmit}
               className="mb-8 p-6 bg-black text-white rounded-[10px] shadow-2xl relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-[10px] -mr-10 -mt-10 blur-2xl" />
               <div className="space-y-4 relative z-10">
+                <p className="text-[10px] font-black tracking-widest italic text-white/40 uppercase leading-none mb-2">
+                   {editingMemberId ? 'EDITING RECORD' : 'NEW COLLECTION ENTRY'}
+                </p>
                 <input 
                   type="text" 
                   value={newName}
@@ -241,7 +266,7 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
                   required
                 />
                 <button type="submit" className="w-full bg-white text-black py-4 rounded-[10px] font-black italic tracking-widest shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-all">
-                  <Save className="w-4 h-4" /> SAVE ENTRY
+                  <Save className="w-4 h-4" /> {editingMemberId ? 'UPDATE RECORD' : 'SAVE ENTRY'}
                 </button>
               </div>
             </motion.form>
@@ -268,19 +293,28 @@ export const CollectionHub = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
                 >
                   {member.status === 'PAID' ? <CheckCircle2 className="w-6 h-6" /> : <Circle className="w-6 h-6" />}
                 </button>
-                <div className="flex-1 min-w-0" onClick={() => toggleStatus(member.id)}>
-                  <p className="font-black text-black italic tracking-tighter text-base leading-none mb-1">{member.name}</p>
-                  <p className="text-[9px] font-black text-black/20 italic tracking-widest">
-                    {member.status === 'PAID' ? 'RECIEVED' : 'PENDING'}
-                  </p>
-                </div>
-                <div className="text-right flex flex-col items-end gap-2">
-                  <p className={cn(
-                    "font-black text-xl tracking-tighter italic",
-                    member.status === 'PAID' ? "text-income" : "text-expense"
-                  )}>
-                    {formatCurrency(member.amount, state.privacyMode)}
-                  </p>
+                  <div className="flex-1 min-w-0" onClick={() => {
+                    if (member.status === 'UNPAID') {
+                       setEditingMemberId(member.id);
+                       setNewName(member.name);
+                       setNewAmount(member.amount.toString());
+                       setIsAdding(true);
+                    } else {
+                       toggleStatus(member.id);
+                    }
+                  }}>
+                    <p className="font-black text-black italic tracking-tighter text-base leading-none mb-1 group-hover:text-ios-blue transition-colors">{member.name}</p>
+                    <p className="text-[9px] font-black text-black/20 italic tracking-widest">
+                      {member.status === 'PAID' ? 'RECIEVED' : 'CLICK TO EDIT'}
+                    </p>
+                  </div>
+                  <div className="text-right flex flex-col items-end gap-2" onClick={() => toggleStatus(member.id)}>
+                    <p className={cn(
+                      "font-black text-xl tracking-tighter italic",
+                      member.status === 'PAID' ? "text-income" : "text-expense"
+                    )}>
+                      {formatCurrency(member.amount, state.privacyMode)}
+                    </p>
                   <button onClick={() => deleteMember(member.id)} className="p-1 text-black/10 hover:text-expense transition-colors">
                     <Trash2 className="w-4 h-4" />
                   </button>
