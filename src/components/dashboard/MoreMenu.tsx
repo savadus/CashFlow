@@ -8,6 +8,7 @@ import { useFinance } from '@/context/FinanceContext';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SettingsHub } from './SettingsHub';
 import { AboutHub } from './AboutHub';
+import { CollectionHub } from './CollectionHub';
 
 interface MoreMenuProps {
   isOpen: boolean;
@@ -15,9 +16,10 @@ interface MoreMenuProps {
   onOpenBills: () => void;
   onOpenCashbook: () => void;
   onOpenLoans: () => void;
+  onOpenCollection: () => void;
 }
 
-export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenLoans }: MoreMenuProps) => {
+export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenLoans, onOpenCollection }: MoreMenuProps) => {
   const { state, dispatch } = useFinance();
   const { t } = useTranslation();
   const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
@@ -31,7 +33,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
     { id: 'bills', label: t('BILLS'), icon: Receipt, color: 'bg-red-50 text-red-600', action: onOpenBills },
     { id: 'items', label: 'Inventory', icon: ShoppingBag, color: 'bg-purple-50 text-purple-600', action: () => {} },
     { id: 'staff', label: 'Staff Hub', icon: UserPlus, color: 'bg-yellow-50 text-yellow-600', action: () => {} },
-    { id: 'collection', label: 'Schedule', icon: Calendar, color: 'bg-orange-50 text-orange-600', action: () => {} },
+    { id: 'collection', label: 'Collection', icon: Calendar, color: 'bg-orange-50 text-orange-600', action: onOpenCollection },
     { id: 'insurance', label: 'Premium', icon: ShieldCheck, color: 'bg-pink-50 text-pink-600', action: () => {} },
   ];
 
@@ -79,10 +81,10 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
                    <button 
                      key={item.id}
                      onClick={() => {
-                       const isFunctional = item.id === 'loans' || item.id === 'cashbook' || item.id === 'bills';
-                       if (isFunctional) {
-                         item.action();
-                       } else {
+                        const isFunctional = item.id === 'loans' || item.id === 'cashbook' || item.id === 'bills' || item.id === 'collection';
+                        if (isFunctional) {
+                          item.action();
+                        } else {
                          alert(`${item.label} feature is coming soon!`);
                        }
                      }}

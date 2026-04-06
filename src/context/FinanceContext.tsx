@@ -24,7 +24,7 @@ type Action =
   | { type: 'SET_PROFILE'; payload: UserProfile }
   | { type: 'SET_THEME'; payload: 'SAGE' | 'OBSIDIAN' }
   | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' }
-  | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'NONE' };
+  | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE' };
 
 const initialState: State = {
   user: null,
@@ -33,7 +33,8 @@ const initialState: State = {
     { id: '2', name: 'Personal Cash', balance: 0 },
     { id: '3', name: 'Institution Cash', balance: 0 },
     { id: '4', name: 'Others Cash', balance: 0 },
-    { id: '5', name: 'Debts', balance: 0, isTrip: true, members: [] } as TripSpace,
+    {id: '5', name: 'Debts', balance: 0, isTrip: true, members: [] } as TripSpace,
+    { id: '6', name: 'Collection', balance: 0, isTrip: true, members: [] } as TripSpace,
   ],
   userProfile: null,
   transactions: [],

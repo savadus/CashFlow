@@ -20,6 +20,7 @@ import { TransactionEditModal } from '@/components/transactions/TransactionEditM
 import { FilteredTransactionHub } from '@/components/transactions/FilteredTransactionHub';
 import { BillAuditHub } from '@/components/bills/BillAuditHub';
 import { SpaceTransactionHub } from '@/components/dashboard/SpaceTransactionHub';
+import { CollectionHub } from '@/components/dashboard/CollectionHub';
 import Onboarding from '@/components/dashboard/Onboarding';
 
 import { useTranslation } from '@/hooks/useTranslation';
@@ -34,6 +35,7 @@ export default function Home() {
   const isAuditOpen = state.activeHub === 'BILLS';
   const isCashbookOpen = state.activeHub === 'CASHBOOK';
   const isDebtsOpen = state.activeHub === 'LOANS';
+  const isCollectionOpen = state.activeHub === 'COLLECTION';
   const [selectedBill, setSelectedBill] = useState<Bill | null>(null);
   const [filterHubType, setFilterHubType] = useState<'INCOME' | 'EXPENSE' | 'ALL' | null>(null);
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
@@ -168,6 +170,12 @@ export default function Home() {
         onOpenBills={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'BILLS' })}
         onOpenCashbook={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'CASHBOOK' })}
         onOpenLoans={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'LOANS' })}
+        onOpenCollection={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'COLLECTION' })}
+      />
+
+      <CollectionHub 
+        isOpen={isCollectionOpen}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
       />
 
       <TransactionEditModal 
