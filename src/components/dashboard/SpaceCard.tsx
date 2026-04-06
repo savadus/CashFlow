@@ -36,7 +36,7 @@ export const SpaceCard = ({ space, onClick }: { space: Space, onClick: () => voi
       )}>
         <Icon className="w-6 h-6" />
       </div>
-      <span className="text-text-dim text-[11px] font-semibold uppercase tracking-widest mb-1">{space.name}</span>
+      <span className="text-text-dim text-[11px] font-semibold  tracking-tight mb-1">{space.name}</span>
       <span className="text-xl font-medium italic tracking-tighter text-foreground">
         {state.privacyMode ? "XXXXXX" : formatCurrency(space.balance, false)}
       </span>

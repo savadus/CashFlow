@@ -48,8 +48,8 @@ export const BillAuditHub = ({
                 <ArrowLeft className="w-6 h-6 text-black/40" />
              </button>
              <div>
-                <h2 className="text-xl font-black uppercase tracking-tighter italic leading-none text-black">Bill Archives</h2>
-                <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.3em] mt-1 italic">Billing Audit Hub</p>
+                <h2 className="text-xl font-black  tracking-tighter italic leading-none text-black">Bill Archives</h2>
+                <p className="text-[10px] text-black/30 font-black  tracking-tight mt-1 italic">Billing Audit Hub</p>
              </div>
           </div>
 
@@ -57,11 +57,11 @@ export const BillAuditHub = ({
              {/* Stats Cards */}
              <div className="p-6 grid grid-cols-2 gap-4">
                 <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm">
-                   <p className="text-[9px] font-black text-black/20 uppercase tracking-widest mb-2">Total Billed</p>
+                   <p className="text-[9px] font-black text-black/20  tracking-tight mb-2">Total Billed</p>
                    <p className="text-2xl font-black tracking-tighter text-black">₹{totalBilled}</p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm">
-                   <p className="text-[9px] font-black text-black/20 uppercase tracking-widest mb-2">Total Pending</p>
+                   <p className="text-[9px] font-black text-black/20  tracking-tight mb-2">Total Pending</p>
                    <p className="text-2xl font-black tracking-tighter text-expense">₹{totalPending}</p>
                 </div>
              </div>
@@ -75,7 +75,7 @@ export const BillAuditHub = ({
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="SEARCH CUSTOMER..."
-                      className="w-full pl-12 pr-6 py-4 bg-white rounded-2xl font-bold text-xs uppercase tracking-widest outline-none border border-black/5"
+                      className="w-full pl-12 pr-6 py-4 bg-white rounded-2xl font-bold text-xs  tracking-tight outline-none border border-black/5"
                    />
                 </div>
                 <div className="flex bg-white p-1 rounded-2xl border border-black/5 shadow-sm">
@@ -83,7 +83,7 @@ export const BillAuditHub = ({
                      <button 
                        key={f}
                        onClick={() => setFilter(f)}
-                       className={cn("flex-1 py-2 rounded-xl text-[9px] font-black uppercase tracking-tighter transition-all", filter === f ? "bg-black text-white" : "text-black/30")}
+                       className={cn("flex-1 py-2 rounded-xl text-[9px] font-black  tracking-tighter transition-all", filter === f ? "bg-black text-white" : "text-black/30")}
                      >
                        {f}
                      </button>
@@ -96,7 +96,7 @@ export const BillAuditHub = ({
                 {filteredBills.length === 0 ? (
                   <div className="bg-white rounded-[40px] p-20 border-2 border-dashed border-black/5 flex flex-col items-center justify-center text-center opacity-40">
                      <History className="w-16 h-16 mb-4 stroke-[1]" />
-                     <p className="font-black text-xs uppercase tracking-[0.4em] italic">No Archived Bills Found</p>
+                     <p className="font-black text-xs  tracking-tight italic">No Archived Bills Found</p>
                   </div>
                 ) : (
                   filteredBills.map(bill => (
@@ -111,12 +111,12 @@ export const BillAuditHub = ({
                        <div className="relative z-10">
                           <div className="flex justify-between items-start mb-4">
                              <div>
-                                <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-1 italic">
+                                <p className="text-[10px] font-black text-black/20  tracking-tight mb-1 italic">
                                    {format(new Date(bill.date), 'dd MMM yyyy • HH:mm')}
                                 </p>
-                                <h3 className="text-xl font-black uppercase tracking-tighter italic text-black">{bill.customerName}</h3>
+                                <h3 className="text-xl font-black  tracking-tighter italic text-black">{bill.customerName}</h3>
                              </div>
-                             <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
+                             <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black  tracking-tight", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
                                 {bill.status}
                              </div>
                           </div>
@@ -131,7 +131,7 @@ export const BillAuditHub = ({
                                 </div>
                              </div>
                              <div className="text-right">
-                                <p className="text-[9px] font-black text-black/20 uppercase tracking-widest leading-none mb-1">Final Total</p>
+                                <p className="text-[9px] font-black text-black/20  tracking-tight leading-none mb-1">Final Total</p>
                                 <p className="text-2xl font-black tracking-tighter text-black leading-none">₹{bill.total}</p>
                              </div>
                           </div>
@@ -156,7 +156,7 @@ export const BillAuditHub = ({
           <div className="bg-white p-6 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] border-t border-black/5 shadow-[0_-15px_30px_rgba(0,0,0,0.03)] z-50">
              <button 
                onClick={onOpenGenerator}
-               className="w-full bg-black text-white h-16 rounded-[24px] font-black flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all text-sm uppercase tracking-[0.3em] italic"
+               className="w-full bg-black text-white h-16 rounded-[24px] font-black flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all text-sm  tracking-tight italic"
              >
                 <div className="p-1.5 bg-white/20 rounded-lg">
                    <Receipt className="w-5 h-5" />

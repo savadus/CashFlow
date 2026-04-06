@@ -151,8 +151,8 @@ export default function Onboarding() {
                 >
                    <div className="flex flex-col items-center">
                       <img src="/cash-flow-logo.png" className="w-16 h-16 mb-4" alt="Logo" />
-                      <h1 className="text-xl font-bold text-black uppercase tracking-tight">Institutional Access</h1>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-black/30">Secure Cloud Handshake</p>
+                      <h1 className="text-xl font-bold text-black  tracking-tight">Institutional Access</h1>
+                      <p className="text-[9px] font-bold  tracking-tight text-black/30">Secure Cloud Handshake</p>
                    </div>
 
                    <div className="space-y-4">
@@ -165,20 +165,20 @@ export default function Onboarding() {
                                 value={otp}
                                 onChange={(e) => setOtp(e.target.value)}
                                 placeholder="ENTER 6-DIGIT OTP"
-                                className="w-full bg-white border-2 border-black/5 rounded-[28px] p-6 pl-16 font-black tracking-[0.3em] uppercase text-sm outline-none focus:border-ios-blue"
+                                className="w-full bg-white border-2 border-black/5 rounded-[28px] p-6 pl-16 font-black tracking-tight  text-sm outline-none focus:border-ios-blue"
                               />
                            </div>
                            <button 
                              onClick={handleVerifyOTP}
                              disabled={loading}
-                             className="w-full bg-black text-white p-5 rounded-[20px] font-bold uppercase text-[10px] tracking-wider flex items-center justify-center gap-3 shadow-xl"
+                             className="w-full bg-black text-white p-5 rounded-[20px] font-bold  text-[10px] tracking-tight flex items-center justify-center gap-3 shadow-xl"
                            >
                               {loading ? 'VERIFYING...' : 'VERIFY & CONNECT'}
                               <ShieldCheck className="w-4 h-4" />
                            </button>
                            <button 
                              onClick={() => setIsOtpSent(false)}
-                             className="text-[9px] font-bold text-black/30 uppercase tracking-wider"
+                             className="text-[9px] font-bold text-black/30  tracking-tight"
                            >
                               Change Email
                            </button>
@@ -191,37 +191,37 @@ export default function Onboarding() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="GMAIL ADDRESS"
-                                className="w-full bg-white border-2 border-black/5 rounded-[28px] p-6 pl-16 font-black tracking-[0.1em] text-sm outline-none focus:border-ios-blue"
+                                placeholder="Gmail address"
+                                className="w-full bg-white border-2 border-black/5 rounded-[28px] p-6 pl-16 font-bold tracking-tight text-sm outline-none focus:border-ios-blue"
                               />
                            </div>
                            <button 
                              onClick={handleSendOTP}
                              disabled={loading || !email}
-                             className="w-full bg-black text-white p-5 rounded-[20px] font-bold uppercase text-[10px] tracking-wider flex items-center justify-center gap-3 disabled:opacity-20 shadow-xl"
+                             className="w-full bg-black text-white p-5 rounded-[20px] font-bold text-[10px] tracking-tight flex items-center justify-center gap-3 disabled:opacity-20 shadow-xl"
                            >
-                              {loading ? 'SENDING...' : 'SEND SECURE OTP'}
+                              {loading ? 'Sending...' : 'Send secure OTP'}
                               <ArrowRight className="w-4 h-4" />
                            </button>
                            <div className="flex items-center gap-3 justify-center pt-2">
                               <div className="h-[1px] flex-1 bg-black/5" />
-                              <span className="text-[8px] font-bold text-black/20 uppercase tracking-wider">OR CONTINUE AS</span>
+                              <span className="text-[8px] font-bold text-black/20 tracking-tight">OR CONTINUE AS</span>
                               <div className="h-[1px] flex-1 bg-black/5" />
                            </div>
                            <button 
                              onClick={() => setStep(1)}
-                             className="w-full bg-white border border-black/10 text-black/40 p-5 rounded-[20px] font-bold uppercase text-[9px] tracking-wider flex items-center justify-center gap-2 hover:bg-black/5 transition-all shadow-sm"
+                             className="w-full bg-white border border-black/10 text-black/40 p-5 rounded-[20px] font-bold text-[9px] tracking-tight flex items-center justify-center gap-2 hover:bg-black/5 transition-all shadow-sm"
                            >
-                              <User className="w-4 h-4" /> GUEST Hub (No Sync)
+                              <User className="w-4 h-4" /> Guest Hub (No Sync)
                            </button>
                         </div>
                       )}
                       
                       {error && (
-                        <p className="text-[10px] font-bold text-expense uppercase tracking-wider animate-shake">{error}</p>
+                        <p className="text-[10px] font-bold text-expense tracking-tight animate-shake">{error}</p>
                       )}
                    </div>
-                   <p className="text-[9px] font-black text-black/20 uppercase tracking-[0.3em] leading-relaxed max-w-[280px] mx-auto">
+                   <p className="text-[9px] font-bold text-black/20 tracking-tight leading-relaxed max-w-[280px] mx-auto">
                       Multi-device sync requires an institutional cloud handshake.
                    </p>
                 </motion.div>
@@ -242,8 +242,8 @@ export default function Onboarding() {
                       alt="CashFlow Logo" 
                       className="w-16 h-16 object-contain mb-4 drop-shadow-xl"
                     />
-                    <h1 className="text-2xl font-bold tracking-tight text-black mb-2 uppercase">CashFlow</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/30">Select your language</p>
+                    <h1 className="text-2xl font-bold tracking-tight text-black mb-2">CashFlow</h1>
+                    <p className="text-[9px] font-bold tracking-tight text-black/30">Select your language</p>
                   </div>
 
                   <div className="grid gap-4">
@@ -257,8 +257,8 @@ export default function Onboarding() {
                          className={`p-4 rounded-[24px] border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.language === lang.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
                        >
                           <div className="text-left">
-                             <p className="text-[11px] font-black tracking-wider leading-none mb-1">{lang.name}</p>
-                             <p className={`text-[10px] uppercase font-bold opacity-40 group-hover:opacity-60 ${profile.language === lang.id ? 'text-white/60' : ''}`}>{lang.native}</p>
+                             <p className="text-[11px] font-bold tracking-tight leading-none mb-1">{lang.name}</p>
+                             <p className={`text-[10px] font-bold opacity-40 group-hover:opacity-60 ${profile.language === lang.id ? 'text-white/60' : ''}`}>{lang.native}</p>
                           </div>
                           {profile.language === lang.id && <Check className="w-5 h-5" />}
                        </button>
@@ -277,8 +277,8 @@ export default function Onboarding() {
                  className="space-y-8 text-center"
                >
                   <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-black mb-4 uppercase">{profile.language === 'ml' ? 'ആരാണ് നിങ്ങൾ?' : profile.language === 'hi' ? 'आप कौन हैं?' : 'WHO ARE YOU?'}</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/20">{profile.language === 'ml' ? 'തുടരുന്നതിന് പേര് നൽകുക' : profile.language === 'hi' ? 'जारी रखने के लिए अपना नाम टाइप करें' : 'Type your name to continue'}</p>
+                    <h1 className="text-2xl font-bold tracking-tight text-black mb-4">{profile.language === 'ml' ? 'ആരാണ് നിങ്ങൾ?' : profile.language === 'hi' ? 'आप कौन हैं?' : 'Who are you?'}</h1>
+                    <p className="text-[9px] font-bold tracking-tight text-black/20">{profile.language === 'ml' ? 'തുടരുന്നതിന് പേര് നൽകുക' : profile.language === 'hi' ? 'जारी रखने के लिए अपना नाम टाइप करें' : 'Type your name to continue'}</p>
                   </div>
 
                   <div className="relative group">
@@ -289,7 +289,7 @@ export default function Onboarding() {
                        type="text" 
                        value={profile.name}
                        onChange={(e) => setProfile(p => ({ ...p, name: e.target.value }))}
-                       placeholder={profile.language === 'ml' ? 'പേര് നൽകുക...' : profile.language === 'hi' ? 'नाम दर्ज करें...' : 'ENTER NAME...'}
+                       placeholder={profile.language === 'ml' ? 'പേര് നൽകുക...' : profile.language === 'hi' ? 'नाम दर्ज करें...' : 'Enter name...'}
                        className="w-full bg-white border border-black/10 focus:border-black rounded-[24px] p-5 pl-14 font-bold text-base text-black tracking-normal outline-none transition-all shadow-sm placeholder:text-black/20"
                        autoFocus
                        spellCheck={false}
@@ -300,9 +300,9 @@ export default function Onboarding() {
                   <button 
                     disabled={!profile.name}
                     onClick={() => setStep(3)}
-                    className="w-full bg-black text-white p-5 rounded-[24px] font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all disabled:opacity-20"
+                    className="w-full bg-black text-white p-5 rounded-[24px] font-bold text-[10px] tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all disabled:opacity-20"
                   >
-                     <span>{profile.language === 'ml' ? 'അടുത്ത ഘട്ടം' : profile.language === 'hi' ? 'अगला कदम' : 'NEXT STEP'}</span>
+                     <span>{profile.language === 'ml' ? 'അടുത്ത ഘട്ടം' : profile.language === 'hi' ? 'अगला कदम' : 'Next step'}</span>
                      <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                </motion.div>
@@ -318,8 +318,8 @@ export default function Onboarding() {
                  className="space-y-8 text-center"
                >
                   <div>
-                    <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-black mb-4 leading-tight uppercase">{profile.language === 'ml' ? 'ഉദ്ദേശ്യം തിരഞ്ഞെടുക്കുക' : profile.language === 'hi' ? 'अपना उद्देश्य चुनें' : 'CHOOSE YOUR PURPOSE'}</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/20">{profile.language === 'ml' ? 'നിങ്ങളുടെ അനുഭവം മികച്ചതാക്കുന്നു' : profile.language === 'hi' ? 'आपके अनुभव को अनुकूलित करना' : 'Tailoring your experience'}</p>
+                    <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-black mb-4 leading-tight">{profile.language === 'ml' ? 'ഉദ്ദേശ്യം തിരഞ്ഞെടുക്കുക' : profile.language === 'hi' ? 'अपना उद्देश्य चुनें' : 'Choose your purpose'}</h1>
+                    <p className="text-[9px] font-bold tracking-tight text-black/20">{profile.language === 'ml' ? 'നിങ്ങളുടെ അനുഭവം മികച്ചതാക്കുന്നു' : profile.language === 'hi' ? 'आपके अनुभव को अनुकूलित करना' : 'Tailoring your experience'}</p>
                   </div>
 
                   <div className="grid gap-4">
@@ -333,7 +333,7 @@ export default function Onboarding() {
                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${profile.purpose === p.id ? 'bg-white/10' : 'bg-black/5 group-hover:bg-black group-hover:text-white'}`}>
                                 {p.icon}
                              </div>
-                             <p className="text-[11px] font-black tracking-wider">{p.name}</p>
+                             <p className="text-[8px] text-white/50 font-bold tracking-tight">{t('LEDGER')}</p>
                           </div>
                           {profile.purpose === p.id && <Check className="w-5 h-5 shadow-ios" />}
                        </button>
@@ -343,7 +343,7 @@ export default function Onboarding() {
                    <button 
                      disabled={!profile.name || loading}
                      onClick={handleComplete}
-                     className="w-full bg-ios-blue text-white h-14 rounded-[24px] font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
+                     className="w-full bg-ios-blue text-white h-14 rounded-[24px] font-bold text-[10px]  tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
                    >
                       <span>{loading ? (profile.language === 'ml' ? 'സമന്വയിപ്പിക്കുന്നു...' : profile.language === 'hi' ? 'सिंक हो रहा है...' : 'CONNECTING...') : (profile.language === 'ml' ? 'തുടങ്ങുക' : profile.language === 'hi' ? 'प्रवेश करें' : 'ENTER CASHFLOW')}</span>
                       {loading ? (
@@ -358,8 +358,8 @@ export default function Onboarding() {
 
           {/* Simple footer for trust */}
           <div className="absolute bottom-[-100px] left-0 right-0 text-center space-y-2 opacity-60">
-             <p className="text-[8px] font-black uppercase tracking-[0.5em] text-black/60">Secure & Confidential</p>
-             <p className="text-[8px] font-bold text-black/50 uppercase tracking-[0.2em]">Crafted for Absolute Professionalism</p>
+             <p className="text-[8px] font-black  tracking-tight text-black/60">Secure & Confidential</p>
+             <p className="text-[8px] font-bold text-black/50  tracking-tight">Crafted for Absolute Professionalism</p>
           </div>
        </div>
     </div>

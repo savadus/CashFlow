@@ -3,46 +3,46 @@ export type Language = 'en' | 'ml' | 'hi';
 export const translations = {
   en: {
     // Header
-    LEDGER: 'FINANCIAL LEDGER',
-    HI: 'HI',
-    ACCOUNT: 'ACCOUNT',
+    LEDGER: 'Financial Ledger',
+    HI: 'Hi',
+    ACCOUNT: 'Account',
     // Balance Overview
-    NET_BALANCE: 'NET BALANCE',
+    NET_BALANCE: 'Net Balance',
     // Insights
-    INCOME: 'INCOME',
-    EXPENSE: 'EXPENSE',
-    CASH_POSITION: 'CASH POSITION',
+    INCOME: 'Income',
+    EXPENSE: 'Expense',
+    CASH_POSITION: 'Cash Position',
     // Accounts
-    ACCOUNTS: 'ACCOUNTS',
-    CLEAR_FILTER: 'CLEAR FILTER',
+    ACCOUNTS: 'Accounts',
+    CLEAR_FILTER: 'Clear Filter',
     // Transaction List
-    RECENT_TRANSACTIONS: 'RECENT TRANSACTIONS',
-    NO_TRANSACTIONS: 'NO TRANSACTIONS FOUND',
+    RECENT_TRANSACTIONS: 'Recent Transactions',
+    NO_TRANSACTIONS: 'No Transactions Found',
     // Navigation
-    OUT: 'OUT',
-    IN: 'IN',
-    MORE: 'MORE',
+    OUT: 'Out',
+    IN: 'In',
+    MORE: 'More',
     // More Menu
-    BUSINESS_SUITE: 'BUSINESS SUITE',
-    SYSTEM_SETTINGS: 'SYSTEM SETTINGS',
-    LANGUAGE: 'LANGUAGE',
-    LOGOUT: 'TERMINATE SESSION',
-    ABOUT_PLATFORM: 'ABOUT PLATFORM',
-    VERSION: 'INDUSTRIAL SERIES',
+    BUSINESS_SUITE: 'Business Suite',
+    SYSTEM_SETTINGS: 'System Settings',
+    LANGUAGE: 'Language',
+    LOGOUT: 'Terminate Session',
+    ABOUT_PLATFORM: 'About Platform',
+    VERSION: 'Industrial Series',
     // Modals
-    ADD_TRANSACTION: 'ADD TRANSACTION',
-    AMOUNT: 'AMOUNT (₹)',
-    NOTE: 'ADD NOTE (OPTIONAL)',
-    SAVE: 'SAVE TRANSACTION',
-    UPDATE: 'UPDATE TRANSACTION',
-    DELETE: 'DELETE',
+    ADD_TRANSACTION: 'Add Transaction',
+    AMOUNT: 'Amount (₹)',
+    NOTE: 'Add Note (optional)',
+    SAVE: 'Save Transaction',
+    UPDATE: 'Update Transaction',
+    DELETE: 'Delete',
     // More
-    LOANS: 'LOANS',
-    BILLS: 'INVOICES',
+    LOANS: 'Loans',
+    BILLS: 'Invoices',
     // Purpose
-    PERSONAL: 'PERSONAL',
-    BUSINESS: 'BUSINESS',
-    STUDENT: 'STUDENT',
+    PERSONAL: 'Personal',
+    BUSINESS: 'Business',
+    STUDENT: 'Student',
   },
   ml: {
     // Header

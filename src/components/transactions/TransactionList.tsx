@@ -36,8 +36,8 @@ export const TransactionItem = React.memo(({
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className="font-extrabold truncate uppercase tracking-[0.15em] text-[10px] text-foreground italic mb-1">{transaction.note || transaction.type}</h4>
-        <p className="text-[10px] font-bold text-text-dim truncate uppercase tracking-tight">{space?.name} • {format(new Date(transaction.date), 'MMM d, h:mm a')}</p>
+        <h4 className="font-extrabold truncate  tracking-tight text-[10px] text-foreground italic mb-1">{transaction.note || transaction.type}</h4>
+        <p className="text-[10px] font-bold text-text-dim truncate  tracking-tight">{space?.name} • {format(new Date(transaction.date), 'MMM d, h:mm a')}</p>
       </div>
       <div className="text-right shrink-0">
         <span className={cn(
@@ -70,10 +70,10 @@ export const TransactionList = React.memo(({
 
   return (
     <div className="w-full">
-      <h3 className="px-6 py-6 text-[10px] font-extrabold text-text-dim uppercase tracking-[0.4em] italic">{displayTitle}</h3>
+      <h3 className="px-6 py-6 text-[10px] font-extrabold text-text-dim  tracking-tight italic">{displayTitle}</h3>
       <div className="divide-y divide-card-border border-t border-b border-card-border pb-32 lg:pb-8">
         {transactions.length === 0 ? (
-          <div className="py-24 text-center text-text-dim font-black uppercase tracking-widest text-[10px] italic">
+          <div className="py-24 text-center text-text-dim font-black  tracking-tight text-[10px] italic">
             ~ {t('NO_TRANSACTIONS')} ~
           </div>
         ) : (

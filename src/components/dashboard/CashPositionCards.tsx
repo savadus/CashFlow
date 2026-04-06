@@ -22,7 +22,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
     <div className="px-6 mb-12">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-1.5 h-6 bg-foreground rounded-full" />
-        <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-text-dim italic">Where is Cash?</h3>
+        <h3 className="text-[11px] font-black  tracking-tight text-text-dim italic">Where is Cash?</h3>
       </div>
       
       <div className="grid grid-cols-3 gap-3">
@@ -34,7 +34,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
           <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Wallet className="w-6 h-6 text-emerald-500" />
           </div>
-          <p className="text-[9px] font-black uppercase tracking-widest text-text-dim mb-1 italic">Hand</p>
+          <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">Hand</p>
           <p className="text-sm md:text-lg font-black tracking-tighter text-foreground">
             {formatCurrency(handBalance, state.privacyMode)}
           </p>
@@ -49,7 +49,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
           <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Building className="w-6 h-6 text-blue-500" />
           </div>
-          <p className="text-[9px] font-black uppercase tracking-widest text-text-dim mb-1 italic">In Banks</p>
+          <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">In Banks</p>
           <p className="text-sm md:text-lg font-black tracking-tighter text-foreground">
             {formatCurrency(totalBankBalance, state.privacyMode)}
           </p>
@@ -64,7 +64,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
           <div className="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <PieChart className="w-6 h-6 text-rose-500" />
           </div>
-          <p className="text-[9px] font-black uppercase tracking-widest text-text-dim mb-1 italic">Debts</p>
+          <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">Debts</p>
           <p className="text-sm md:text-lg font-black tracking-tighter text-foreground">
             {formatCurrency(debtsBalance, state.privacyMode)}
           </p>
@@ -94,8 +94,8 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
                         <Building className="w-6 h-6" />
                      </div>
                      <div>
-                        <h2 className="text-lg font-black uppercase tracking-tighter italic leading-none mb-1">Institutional Hub</h2>
-                        <p className="text-[10px] text-text-dim font-black uppercase tracking-[0.2em] italic">Sector-wise Liquidity Audit</p>
+                        <h2 className="text-lg font-black  tracking-tighter italic leading-none mb-1">Institutional Hub</h2>
+                        <p className="text-[10px] text-text-dim font-black  tracking-tight italic">Sector-wise Liquidity Audit</p>
                      </div>
                   </div>
                   <button onClick={() => setIsBanksModalOpen(false)} className="p-3 bg-secondary rounded-full hover:bg-tertiary transition-colors">
@@ -110,7 +110,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
                               <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                  <Building2 className="w-6 h-6 text-blue-500" />
                               </div>
-                              <p className="font-black text-sm uppercase tracking-widest italic text-foreground">{bank.name}</p>
+                              <p className="font-black text-sm  tracking-tight italic text-foreground">{bank.name}</p>
                            </div>
                            <p className="text-xl font-black tracking-tighter text-foreground italic">
                               {formatCurrency(state.liquidBalances[bank.id] || 0, state.privacyMode)}
@@ -121,14 +121,14 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
                </div>
                <div className="p-8 bg-black text-white flex items-center justify-between">
                   <div>
-                     <p className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 mb-1">AGGREGATE HOLDINGS</p>
+                     <p className="text-[10px] font-black  tracking-tight opacity-40 mb-1">AGGREGATE HOLDINGS</p>
                      <p className="text-3xl font-black tracking-tighter italic text-blue-400">
                         {formatCurrency(totalBankBalance, state.privacyMode)}
                      </p>
                   </div>
                   <div className="text-right">
-                     <p className="text-[9px] font-black uppercase tracking-widest opacity-20">Verified Sector Hub</p>
-                     <p className="text-[9px] font-black uppercase tracking-widest opacity-20 italic">Industrial Series 1.0</p>
+                     <p className="text-[9px] font-black  tracking-tight opacity-20">Verified Sector Hub</p>
+                     <p className="text-[9px] font-black  tracking-tight opacity-20 italic">Industrial Series 1.0</p>
                   </div>
                </div>
             </motion.div>

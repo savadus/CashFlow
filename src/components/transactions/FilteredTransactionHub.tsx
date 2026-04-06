@@ -50,8 +50,8 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
                <info.icon className={cn("w-6 h-6", info.color)} />
             </div>
             <div>
-               <h2 className="text-xl font-black text-black tracking-tight uppercase italic">{info.title}</h2>
-               <p className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">{filteredTransactions.length} Transactions Recorded</p>
+               <h2 className="text-xl font-black text-black tracking-tight  italic">{info.title}</h2>
+               <p className="text-[10px] font-black text-black/30  tracking-tight">{filteredTransactions.length} Transactions Recorded</p>
             </div>
           </div>
           <button 
@@ -66,7 +66,7 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
            {/* Summary Strip */}
            <div className="bg-white px-6 py-8 border-b border-black/5 mb-4 flex items-center justify-between">
               <div>
-                 <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.3em] mb-1 italic">Total Sum</p>
+                 <p className="text-[10px] font-black text-black/20  tracking-tight mb-1 italic">Total Sum</p>
                  <h3 className={cn("text-4xl font-black italic tracking-tighter", info.color)}>
                     {formatCurrency(filteredTransactions.reduce((acc, t) => acc + t.amount, 0), state.privacyMode)}
                  </h3>
@@ -87,7 +87,7 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
 
         {/* Global Footer Lock (Square Sharp Design) */}
         <div className="p-6 bg-white border-t border-black/5 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)]">
-           <div className="w-full py-4 text-center text-[10px] font-black text-black/20 uppercase tracking-[0.5em] italic">
+           <div className="w-full py-4 text-center text-[10px] font-black text-black/20  tracking-tight italic">
               ~ CashFlow Audit System Secured ~
            </div>
         </div>

@@ -77,8 +77,8 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
               <ChevronLeft className="w-5 h-5 text-white" />
             </button>
             <div>
-              <h1 className="text-base font-bold tracking-tight uppercase leading-none">Administrative Profile</h1>
-              <p className="text-[8px] text-white/40 font-bold uppercase tracking-[0.2em] mt-1.5">Identity & Institutional Control</p>
+              <h1 className="text-base font-bold tracking-tight  leading-none">Administrative Profile</h1>
+              <p className="text-[8px] text-white/40 font-bold  tracking-tight mt-1.5">Identity & Institutional Control</p>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                 </div>
              </div>
              <div className="w-full mt-6">
-                <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-text-dim mb-2.5 ml-2">Profile Image URL</p>
+                <p className="text-[8px] font-bold  tracking-tight text-text-dim mb-2.5 ml-2">Profile Image URL</p>
                 <input 
                   type="text"
                   value={userImage}
@@ -117,17 +117,17 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
 
           {/* Personal Info */}
           <section>
-             <h2 className="text-[8px] items-center flex gap-2.5 font-bold uppercase tracking-[0.3em] text-text-dim mb-4">
+             <h2 className="text-[8px] items-center flex gap-2.5 font-bold  tracking-tight text-text-dim mb-4">
                 <User className="w-3 h-3" />
                 Personal Identity
              </h2>
              <div>
-                <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-text-dim mb-2.5 ml-2">Administrative Name</p>
+                <p className="text-[8px] font-bold  tracking-tight text-text-dim mb-2.5 ml-2">Administrative Name</p>
                 <input 
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value.toUpperCase())}
-                  className="w-full bg-black text-white rounded-2xl p-4.5 font-bold text-xs tracking-wider outline-none shadow-xl uppercase"
+                  className="w-full bg-black text-white rounded-2xl p-4.5 font-bold text-xs tracking-tight outline-none shadow-xl "
                 />
              </div>
           </section>
@@ -135,7 +135,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
           {/* Institutional Control */}
           <section>
              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-[8px] items-center flex gap-2.5 font-bold uppercase tracking-[0.3em] text-text-dim">
+                <h2 className="text-[8px] items-center flex gap-2.5 font-bold  tracking-tight text-text-dim">
                    <Building2 className="w-3 h-3" />
                    Bank Hub configuration
                 </h2>
@@ -153,7 +153,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                     animate={{ x: 0, opacity: 1 }}
                     key={bank.id}
                   >
-                     <p className="text-[7.5px] font-bold uppercase tracking-[0.2em] text-text-dim mb-1.5 ml-2">INSTITUTION {index + 1}</p>
+                     <p className="text-[7.5px] font-bold  tracking-tight text-text-dim mb-1.5 ml-2">INSTITUTION {index + 1}</p>
                      <div className="relative flex items-center gap-2">
                         <div className="relative flex-1">
                            <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-text-dim" />
@@ -162,7 +162,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                               value={bank.name}
                               onChange={(e) => handleBankChange(bank.id, e.target.value)}
                               placeholder={`NAME FOR ${bank.id}`}
-                              className="w-full bg-secondary border border-card-border rounded-xl p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all uppercase tracking-wider text-foreground placeholder:text-black/10"
+                              className="w-full bg-secondary border border-card-border rounded-xl p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all  tracking-tight text-foreground placeholder:text-black/10"
                            />
                         </div>
                         <button 
@@ -183,7 +183,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                onClick={handleSave}
                disabled={isSaved}
                className={cn(
-                 "w-full p-4.5 rounded-2xl font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
+                 "w-full p-4.5 rounded-2xl font-bold text-[10px]  tracking-tight flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
                  isSaved ? "bg-green-500 text-white" : "bg-black text-white hover:bg-black/90 shadow-black/10"
                )}
              >

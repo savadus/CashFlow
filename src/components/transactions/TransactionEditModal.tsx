@@ -73,8 +73,8 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
               <X className="w-6 h-6 text-black/40" />
             </button>
             <div>
-              <h2 className="text-xl font-black text-black tracking-tight uppercase italic">{transaction?.type} DETAIL</h2>
-              <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.2em]">Transaction ID #{transaction?.id.slice(0, 8)}</p>
+              <h2 className="text-xl font-black text-black tracking-tight  italic">{transaction?.type} DETAIL</h2>
+              <p className="text-[10px] text-black/30 font-black  tracking-tight">Transaction ID #{transaction?.id.slice(0, 8)}</p>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                  "absolute inset-0 opacity-[0.03] transition-opacity group-hover:opacity-[0.05]",
                  transaction?.type === 'INCOME' ? "bg-income" : "bg-expense"
                )} />
-               <p className="text-[10px] font-black text-black/30 uppercase tracking-[0.3em] mb-6 relative z-10">Current Amount</p>
+               <p className="text-[10px] font-black text-black/30  tracking-tight mb-6 relative z-10">Current Amount</p>
                <div className="flex items-center justify-center gap-3 relative z-10">
                   <span className="text-4xl font-black text-black/20 italic">₹</span>
                   <input 
@@ -102,7 +102,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                </div>
                <div className="mt-8 flex justify-center">
                   <div className={cn(
-                    "px-6 py-2 rounded-full font-black text-[10px] uppercase tracking-widest",
+                    "px-6 py-2 rounded-full font-black text-[10px]  tracking-tight",
                     transaction?.type === 'INCOME' ? "bg-income/10 text-income" : "bg-expense/10 text-expense"
                   )}>
                     {transaction?.type === 'INCOME' ? 'Money Received' : 'Money Spent'}
@@ -118,7 +118,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                            <Tag className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                           <p className="text-[10px] font-black text-black/30 uppercase tracking-widest mb-1">Category</p>
+                           <p className="text-[10px] font-black text-black/30  tracking-tight mb-1">Category</p>
                            <input 
                              type="text" 
                              value={category}
@@ -134,7 +134,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                            <FileText className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                           <p className="text-[10px] font-black text-black/30 uppercase tracking-widest mb-1">Notes</p>
+                           <p className="text-[10px] font-black text-black/30  tracking-tight mb-1">Notes</p>
                            <input 
                              type="text" 
                              value={note}
@@ -149,7 +149,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
 
             {/* Info Section */}
             <div className="px-4 py-8 text-center space-y-3">
-               <div className="flex items-center justify-center gap-2 text-black/20 font-black text-[10px] uppercase tracking-[0.2em]">
+               <div className="flex items-center justify-center gap-2 text-black/20 font-black text-[10px]  tracking-tight">
                   <CheckCircle2 className="w-3 h-3" />
                   Secured & Locked
                </div>
@@ -164,13 +164,13 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
         <div className="p-6 bg-white border-t border-black/5 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] space-y-3">
            <button 
              onClick={handleSave}
-             className="w-full bg-ios-blue text-white py-5 rounded-none font-black text-lg shadow-2xl shadow-ios-blue/20 flex items-center justify-center gap-4 active:scale-[0.98] transition-all uppercase tracking-[0.2em] italic"
+             className="w-full bg-ios-blue text-white py-5 rounded-none font-black text-lg shadow-2xl shadow-ios-blue/20 flex items-center justify-center gap-4 active:scale-[0.98] transition-all  tracking-tight italic"
            >
               SAVE UPDATES <ArrowRight className="w-6 h-6" />
            </button>
            <button 
              onClick={handleDelete}
-             className="w-full bg-red-50 text-red-500 py-4 rounded-none font-black text-xs shadow-sm flex items-center justify-center gap-3 active:bg-red-100 transition-all uppercase tracking-widest italic"
+             className="w-full bg-red-50 text-red-500 py-4 rounded-none font-black text-xs shadow-sm flex items-center justify-center gap-3 active:bg-red-100 transition-all  tracking-tight italic"
            >
               <Trash2 className="w-4 h-4" /> DELETE TRANSACTION
            </button>

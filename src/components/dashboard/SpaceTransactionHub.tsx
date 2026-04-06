@@ -59,8 +59,8 @@ export const SpaceTransactionHub = ({
                   <X className="w-5 h-5 text-black/40" />
                 </button>
                 <div className="text-right">
-                   <h2 className="text-[10px] font-black uppercase tracking-[0.4em] italic text-black/30 mb-1 leading-none">Ledger Overview</h2>
-                   <p className="text-2xl font-black uppercase tracking-tighter italic text-black leading-none">{space.name}</p>
+                   <h2 className="text-[10px] font-black  tracking-tight italic text-black/30 mb-1 leading-none">Ledger Overview</h2>
+                   <p className="text-2xl font-black  tracking-tighter italic text-black leading-none">{space.name}</p>
                 </div>
              </div>
 
@@ -70,7 +70,7 @@ export const SpaceTransactionHub = ({
                       <Icon className="w-8 h-8 text-black" />
                    </div>
                    <div>
-                      <p className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em] mb-1">AVAILABLE BALANCE</p>
+                      <p className="text-[10px] font-black text-black/30  tracking-tight mb-1">AVAILABLE BALANCE</p>
                       <h1 className="text-4xl font-black tracking-tighter italic leading-none">
                          {state.privacyMode ? "XXXXXX" : formatCurrency(space.balance, false)}
                       </h1>
@@ -82,8 +82,8 @@ export const SpaceTransactionHub = ({
           {/* Transactions List */}
           <div className="flex-1 overflow-y-auto bg-white px-6 py-10">
              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-[10px] font-black text-black/20 uppercase tracking-[0.5em] italic">Transaction History</h3>
-                <div className="px-4 py-1.5 bg-black/5 rounded-full text-[9px] font-black uppercase tracking-widest text-black/40">
+                <h3 className="text-[10px] font-black text-black/20  tracking-tight italic">Transaction History</h3>
+                <div className="px-4 py-1.5 bg-black/5 rounded-full text-[9px] font-black  tracking-tight text-black/40">
                    {transactions.length} ITEMS
                 </div>
              </div>
@@ -92,7 +92,7 @@ export const SpaceTransactionHub = ({
                 {transactions.length === 0 ? (
                   <div className="py-20 text-center flex flex-col items-center gap-4 opacity-10">
                      <History className="w-16 h-16" />
-                     <p className="text-xs font-black uppercase tracking-[0.4em] italic">No Transactions Yet</p>
+                     <p className="text-xs font-black  tracking-tight italic">No Transactions Yet</p>
                   </div>
                 ) : (
                   transactions.map(t => {
@@ -118,13 +118,13 @@ export const SpaceTransactionHub = ({
 
                          <div className="flex-1 min-w-0 relative z-10">
                             <div className="flex items-center gap-2 mb-1">
-                               <p className="font-black text-black uppercase tracking-tighter italic text-sm leading-none truncate pr-2">{t.note || t.category || 'Transaction'}</p>
-                               <span className="text-[8px] font-black text-black/10 uppercase tracking-widest bg-black/5 px-2 py-0.5 rounded-full shrink-0">
+                               <p className="font-black text-black  tracking-tighter italic text-sm leading-none truncate pr-2">{t.note || t.category || 'Transaction'}</p>
+                               <span className="text-[8px] font-black text-black/10  tracking-tight bg-black/5 px-2 py-0.5 rounded-full shrink-0">
                                   {new Date(t.date).toLocaleDateString(undefined, { day: '2-digit', month: 'short' })}
                                </span>
                             </div>
                             <div className="flex items-center gap-2">
-                               <p className="text-[9px] font-black opacity-30 uppercase tracking-[0.2em] truncate">
+                               <p className="text-[9px] font-black opacity-30  tracking-tight truncate">
                                   {isTransfer 
                                      ? `Transfer to ${state.spaces.find(s => s.id === (t.spaceId === spaceId ? t.toSpaceId : t.spaceId))?.name}`
                                      : t.category}
@@ -139,7 +139,7 @@ export const SpaceTransactionHub = ({
                             )}>
                                {isActualIn ? "+" : "-"}{formatCurrency(t.amount, state.privacyMode)}
                             </p>
-                            <p className="text-[8px] font-black text-black/10 uppercase tracking-[0.3em] font-mono">ID: {t.id.substr(0,4)}</p>
+                            <p className="text-[8px] font-black text-black/10  tracking-tight font-mono">ID: {t.id.substr(0,4)}</p>
                          </div>
                       </div>
                     );
@@ -152,7 +152,7 @@ export const SpaceTransactionHub = ({
           <div className="bg-[#F2F2F7] p-8 border-t border-black/5 flex items-start gap-4 pb-12">
              <Receipt className="w-6 h-6 text-black/20 shrink-0 mt-1" />
              <div>
-                <p className="text-[9px] font-black text-black/30 leading-relaxed uppercase tracking-tighter italic">
+                <p className="text-[9px] font-black text-black/30 leading-relaxed  tracking-tighter italic">
                    This view shows all verified financial entry points specifically for <span className="text-black">{space.name}</span>. Audit trails are immutable for high-fidelity compliance.
                 </p>
              </div>

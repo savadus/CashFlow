@@ -29,10 +29,10 @@ export const Header = ({
              <img src="/cash-flow-logo.png" alt="MVEE" className="w-12 h-12 object-contain" />
           </div>
           <div>
-            <h1 className="text-sm font-black tracking-tight leading-none mb-1 text-white uppercase italic">
+            <h1 className="text-sm font-black tracking-tight leading-none mb-1 text-white  italic">
               {userName ? `${t('HI')}, ${userName}` : 'CashFlow'}
             </h1>
-            <p className="text-[8px] text-white/50 uppercase font-extrabold tracking-[0.3em]">{t('LEDGER')}</p>
+            <p className="text-[8px] text-white/50  font-extrabold tracking-tight">{t('LEDGER')}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -48,7 +48,7 @@ export const Header = ({
                   <User className="w-3 h-3 text-black group-hover:scale-110 transition-transform" />
                )}
             </div>
-            <span className="text-[10px] font-black uppercase tracking-wider hidden sm:block">{t('ACCOUNT')}</span>
+            <span className="text-[10px] font-black  tracking-tight hidden sm:block">{t('ACCOUNT')}</span>
           </button>
         </div>
       </div>

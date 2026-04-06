@@ -170,21 +170,21 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                 <LayoutGrid className="w-6 h-6" />
              </div>
              <div>
-                <h2 className="text-xl font-black uppercase tracking-tighter italic leading-none mb-1">CASHBOOK INSIGHTS</h2>
-                <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.2em]">Full audit of Mvee.in</p>
+                <h2 className="text-xl font-black  tracking-tighter italic leading-none mb-1">CASHBOOK INSIGHTS</h2>
+                <p className="text-[10px] text-black/30 font-black  tracking-tight">Full audit of Mvee.in</p>
              </div>
           </div>
           <div className="flex items-center gap-3">
              <div className="flex bg-black/5 p-1 rounded-2xl border border-black/5">
                 <button 
                   onClick={() => setViewMode('LEDGER')}
-                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all", viewMode === 'LEDGER' ? "bg-white text-black shadow-md" : "text-black/30")}
+                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black  tracking-tight transition-all", viewMode === 'LEDGER' ? "bg-white text-black shadow-md" : "text-black/30")}
                 >
                   <List className="w-4 h-4 inline-block mr-1.5" /> LEDGER
                 </button>
                 <button 
                   onClick={() => setViewMode('MONTHLY')}
-                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all", viewMode === 'MONTHLY' ? "bg-white text-black shadow-md" : "text-black/30")}
+                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black  tracking-tight transition-all", viewMode === 'MONTHLY' ? "bg-white text-black shadow-md" : "text-black/30")}
                 >
                   <Calendar className="w-4 h-4 inline-block mr-1.5" /> MONTHLY
                 </button>
@@ -207,19 +207,19 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                       placeholder="SEARCH TRANSACTION..." 
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-12 pr-6 py-4 bg-black/5 rounded-[20px] font-black text-xs uppercase tracking-widest outline-none border-none placeholder:text-black/10"
+                      className="w-full pl-12 pr-6 py-4 bg-black/5 rounded-[20px] font-black text-xs  tracking-tight outline-none border-none placeholder:text-black/10"
                     />
                   </div>
 
                   {/* Range Filter */}
                   <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-black/40 mb-3 ml-2 italic">Temporal Range</p>
+                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Temporal Range</p>
                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                       {(['all', 'week', 'month'] as const).map(f => (
                          <button 
                            key={f}
                            onClick={() => setDateFilter(f)}
-                           className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all", dateFilter === f ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                           className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", dateFilter === f ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                          >
                            {f} Range
                          </button>
@@ -229,17 +229,17 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
 
                   {/* Institutional Hub Filter */}
                   <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-black/40 mb-3 ml-2 italic">Institutional Hub</p>
+                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Institutional Hub</p>
                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                        <button 
                          onClick={() => setSelectedAccount('all')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all", selectedAccount === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedAccount === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          All Locations
                        </button>
                        <button 
                          onClick={() => setSelectedAccount('IN_HAND')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === 'IN_HAND' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === 'IN_HAND' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          In Hand
                        </button>
@@ -247,7 +247,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                           <button 
                             key={b.id}
                             onClick={() => setSelectedAccount(b.id)}
-                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === b.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === b.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                           >
                             {b.name}
                           </button>
@@ -257,11 +257,11 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
 
                   {/* Fiscal Purpose Filter */}
                   <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-black/40 mb-3 ml-2 italic">Fiscal Purpose</p>
+                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Fiscal Purpose</p>
                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                        <button 
                          onClick={() => setSelectedSpace('all')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all", selectedSpace === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedSpace === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          All Purposes
                        </button>
@@ -269,7 +269,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                           <button 
                             key={s.id}
                             onClick={() => setSelectedSpace(s.id)}
-                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px] uppercase tracking-widest whitespace-nowrap active:scale-95 transition-all text-black", selectedSpace === s.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedSpace === s.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                           >
                             {s.name}
                           </button>
@@ -285,7 +285,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                     <div className="overflow-x-auto">
                       <table className="w-full text-left">
                         <thead>
-                          <tr className="bg-black/5 text-[9px] font-black uppercase tracking-[0.3em] text-black/30 italic">
+                          <tr className="bg-black/5 text-[9px] font-black  tracking-tight text-black/30 italic">
                             <th className="p-6">Date</th>
                             <th className="p-6">Description</th>
                             <th className="p-6 text-right">Debit (-)</th>
@@ -296,10 +296,10 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                         <tbody className="divide-y divide-black/5">
                           {ledgerData.map(t => (
                             <tr key={t.id} className="group hover:bg-gray-50 transition-colors">
-                              <td className="p-6 text-[10px] font-black text-black/30 uppercase italic">{format(new Date(t.date), 'dd MMM')}</td>
+                              <td className="p-6 text-[10px] font-black text-black/30  italic">{format(new Date(t.date), 'dd MMM')}</td>
                               <td className="p-6">
-                                 <p className="font-black text-xs uppercase italic tracking-tight">{t.note || 'Entry'}</p>
-                                 <p className="text-[9px] font-bold text-black/10 uppercase tracking-widest mt-1">{t.category || t.type}</p>
+                                 <p className="font-black text-xs  italic tracking-tight">{t.note || 'Entry'}</p>
+                                 <p className="text-[9px] font-bold text-black/10  tracking-tight mt-1">{t.category || t.type}</p>
                               </td>
                               <td className="p-6 text-right font-black text-xs text-expense italic">
                                 {t.type === 'EXPENSE' ? `-₹${t.amount}` : '-'}
@@ -326,7 +326,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                        <div className="absolute top-0 right-0 w-32 h-32 bg-black/[0.02] rounded-bl-full" />
                        
                        <div className="flex items-center justify-between">
-                          <h3 className="text-2xl font-black italic tracking-tighter uppercase text-black">{m.name}</h3>
+                          <h3 className="text-2xl font-black italic tracking-tighter  text-black">{m.name}</h3>
                           <div className="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center font-black text-[10px] italic">#{m.name.slice(0,3)}</div>
                        </div>
 
@@ -334,14 +334,14 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                           <div>
                              <div className="flex items-center gap-2 mb-2">
                                 <TrendingUp className="w-3.5 h-3.5 text-income" />
-                                <span className="text-[10px] font-black text-black/20 uppercase tracking-widest italic">Income</span>
+                                <span className="text-[10px] font-black text-black/20  tracking-tight italic">Income</span>
                              </div>
                              <p className="text-2xl font-black tracking-tighter text-income italic">₹{m.income}</p>
                           </div>
                           <div>
                              <div className="flex items-center gap-2 mb-2">
                                 <TrendingDown className="w-3.5 h-3.5 text-expense" />
-                                <span className="text-[10px] font-black text-black/20 uppercase tracking-widest italic">Expense</span>
+                                <span className="text-[10px] font-black text-black/20  tracking-tight italic">Expense</span>
                              </div>
                              <p className="text-2xl font-black tracking-tighter text-expense italic">₹{m.expense}</p>
                           </div>
@@ -349,12 +349,12 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
 
                        <div className="pt-8 border-t border-black/5 flex items-center justify-between">
                           <div>
-                             <span className="text-[9px] font-black text-black/30 uppercase tracking-[0.4em] block mb-1">CashFlow Profit/Loss</span>
+                             <span className="text-[9px] font-black text-black/30  tracking-tight block mb-1">CashFlow Profit/Loss</span>
                              <p className={cn("text-3xl font-black tracking-tighter italic", (m.income - m.expense) >= 0 ? "text-ios-blue" : "text-expense")}>
                                 ₹{m.income - m.expense}
                              </p>
                           </div>
-                          <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest", (m.income - m.expense) >= 0 ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
+                          <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black  tracking-tight", (m.income - m.expense) >= 0 ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
                              {(m.income - m.expense) >= 0 ? 'Surplus' : 'Deficit'}
                           </div>
                        </div>
@@ -369,7 +369,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
         <div className="p-6 bg-white border-t border-black/5 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] flex gap-4">
            <button 
              onClick={downloadPDF}
-             className="flex-1 bg-black text-white py-5 rounded-none font-black text-sm shadow-2xl flex items-center justify-center gap-4 active:scale-95 transition-all uppercase tracking-widest italic"
+             className="flex-1 bg-black text-white py-5 rounded-none font-black text-sm shadow-2xl flex items-center justify-center gap-4 active:scale-95 transition-all  tracking-tight italic"
            >
               DOWNLOAD RECORD <Download className="w-5 h-5" />
            </button>

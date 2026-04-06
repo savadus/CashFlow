@@ -65,8 +65,8 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
               <ChevronLeft className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-xl font-black italic tracking-tighter uppercase leading-none">{t('SYSTEM_SETTINGS')}</h1>
-              <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.3em] mt-1 italic">Administrative Control</p>
+              <h1 className="text-xl font-black italic tracking-tighter  leading-none">{t('SYSTEM_SETTINGS')}</h1>
+              <p className="text-[10px] text-white/40 font-black  tracking-tight mt-1 italic">Administrative Control</p>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
          <div className="space-y-8">
             {/* Visual Mode */}
             <section>
-               <h2 className="text-[10px] items-center flex gap-3 font-black uppercase tracking-[0.4em] text-text-dim mb-6">
+               <h2 className="text-[10px] items-center flex gap-3 font-black  tracking-tight text-text-dim mb-6">
                   <Sun className="w-3 h-3" />
                   Visual Mode
                </h2>
@@ -96,7 +96,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                        <div className={cn("w-8 h-8 rounded-xl shadow-inner flex items-center justify-center", v.bg, v.text)}>
                           <v.icon className="w-4 h-4" />
                        </div>
-                       <span className="font-black text-[9px] uppercase tracking-widest leading-none">{v.name}</span>
+                       <span className="font-black text-[9px]  tracking-tight leading-none">{v.name}</span>
                        {state.visualMode === v.id && <Check className="w-4 h-4 mt-1" />}
                     </button>
                   ))}
@@ -106,7 +106,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             {/* Bank Hub Configuration */}
             <section>
                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-[10px] items-center flex gap-3 font-black uppercase tracking-[0.4em] text-text-dim">
+                  <h2 className="text-[10px] items-center flex gap-3 font-black  tracking-tight text-text-dim">
                      <Building2 className="w-3 h-3" />
                      Bank Hub configuration
                   </h2>
@@ -120,7 +120,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                <div className="space-y-4">
                   {banks.map((bank, index) => (
                     <div key={bank.id}>
-                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-text-dim mb-2 ml-4">INSTITUTION {index + 1}</p>
+                       <p className="text-[9px] font-black  tracking-tight text-text-dim mb-2 ml-4">INSTITUTION {index + 1}</p>
                        <div className="relative flex items-center gap-2">
                           <div className="relative flex-1">
                              <Building2 className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim" />
@@ -129,7 +129,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                                 value={bank.name}
                                 onChange={(e) => handleBankChange(bank.id, e.target.value)}
                                 placeholder="BANK NAME..."
-                                className="w-full bg-secondary border border-card-border rounded-[24px] p-5 pl-14 font-bold text-xs outline-none focus:border-foreground transition-all uppercase tracking-widest text-foreground"
+                                className="w-full bg-secondary border border-card-border rounded-[24px] p-5 pl-14 font-bold text-xs outline-none focus:border-foreground transition-all  tracking-tight text-foreground"
                              />
                           </div>
                           <button 
@@ -145,7 +145,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                     onClick={handleSaveBanks}
                     disabled={isSaving}
                     className={cn(
-                      "w-full p-6 mt-4 rounded-[28px] font-black text-[10px] uppercase tracking-[0.4em] italic flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
+                      "w-full p-6 mt-4 rounded-[28px] font-black text-[10px]  tracking-tight italic flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
                       isSaving ? "bg-green-500 text-white" : "bg-black text-white"
                     )}
                   >
@@ -157,7 +157,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
             {/* Language */}
             <section>
-               <h2 className="text-[10px] items-center flex gap-3 font-black uppercase tracking-[0.4em] text-text-dim mb-6">
+               <h2 className="text-[10px] items-center flex gap-3 font-black  tracking-tight text-text-dim mb-6">
                   <Globe className="w-3 h-3" />
                   {t('LANGUAGE')}
                </h2>
@@ -176,7 +176,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                       )}
                     >
                       <div className="text-left">
-                        <p className={cn("font-black text-xs uppercase tracking-widest leading-none mb-1", state.userProfile?.language === lang.id ? "text-white" : "text-foreground")}>{lang.name}</p>
+                        <p className={cn("font-black text-xs  tracking-tight leading-none mb-1", state.userProfile?.language === lang.id ? "text-white" : "text-foreground")}>{lang.name}</p>
                         <p className={cn("text-[10px] font-black opacity-30", state.userProfile?.language === lang.id && "text-white/40")}>{lang.label}</p>
                       </div>
                       {state.userProfile?.language === lang.id && <Check className="w-6 h-6" />}
@@ -186,7 +186,7 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             </section>
 
             <section className="pt-8 border-t border-card-border">
-               <h2 className="text-[10px] items-center flex gap-3 font-black uppercase tracking-[0.4em] text-text-dim mb-6">
+               <h2 className="text-[10px] items-center flex gap-3 font-black  tracking-tight text-text-dim mb-6">
                   <LogOut className="w-3 h-3" />
                   Sovereign Control
                </h2>
@@ -204,8 +204,8 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                          <LogOut className="w-5 h-5" />
                       </div>
                       <div className="text-left">
-                         <p className="font-black text-xs uppercase tracking-widest leading-none mb-1">Terminate Session</p>
-                         <p className="text-[8px] font-bold text-expense/40 uppercase tracking-widest">WIPE LOCAL CACHE AND RELOAD</p>
+                         <p className="font-black text-xs  tracking-tight leading-none mb-1">Terminate Session</p>
+                         <p className="text-[8px] font-bold text-expense/40  tracking-tight">WIPE LOCAL CACHE AND RELOAD</p>
                       </div>
                    </div>
                 </button>
@@ -213,10 +213,10 @@ export const SettingsHub = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
          </div>
 
          <div className="mt-20 py-8 text-center border-t border-black/5">
-            <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.6em] italic mb-2">
+            <p className="text-[10px] font-black text-black/20  tracking-tight italic mb-2">
                CashFlow Secure Gateway
             </p>
-            <p className="text-[8px] font-bold text-black/10 uppercase tracking-[0.2em]">End-to-End Local Encryption Active</p>
+            <p className="text-[8px] font-bold text-black/10  tracking-tight">End-to-End Local Encryption Active</p>
          </div>
       </div>
     </motion.div>
