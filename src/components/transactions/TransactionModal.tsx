@@ -185,11 +185,11 @@ export const TransactionModal = ({
 
           <div className="flex-1 overflow-y-auto">
              {/* Amount Display */}
-             <div className="bg-white p-10 border-b border-black/5 shadow-sm text-center">
-                <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-4 italic">Confirm Amount</p>
-                <div className="flex items-center justify-center gap-4">
-                   <span className="text-4xl font-black text-black/10 italic">₹</span>
-                   <div className="text-7xl font-black italic tracking-tighter truncate leading-none text-black">
+             <div className="bg-white p-6 border-b border-black/5 shadow-sm text-center">
+                <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-3 italic">Confirm Amount</p>
+                <div className="flex items-center justify-center gap-3">
+                   <span className="text-2xl font-black text-black/10 italic">₹</span>
+                   <div className="text-5xl font-black italic tracking-tighter truncate leading-none text-black">
                       {displayValue}
                    </div>
                 </div>
@@ -380,13 +380,13 @@ export const TransactionModal = ({
                    <Equal className="w-6 h-6 stroke-[4]" />
                 </button>
                 <button 
-                  onClick={handleSave}
-                  className={cn(
-                    "col-span-3 h-16 rounded-none font-black text-base uppercase tracking-[0.4em] italic shadow-2xl transition-all active:scale-[0.98]",
-                    parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
-                  )}
-                >
-                  {expression ? 'SOLVE & SAVE' : 'SAVE TRANSACTION'}
+                   onClick={handleSave}
+                   className={cn(
+                     "col-span-3 h-16 rounded-2xl font-black text-[12px] uppercase tracking-[0.3em] italic shadow-2xl transition-all active:scale-[0.98]",
+                     parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
+                   )}
+                 >
+                   {expression ? 'SOLVE & SAVE' : 'SAVE TRANSACTION'}
                 </button>
              </div>
           </div>
