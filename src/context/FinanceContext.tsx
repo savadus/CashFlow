@@ -305,27 +305,31 @@ const financeReducer = (state: State, action: Action): State => {
       };
     }
     case 'SET_INITIAL_DATA': {
-      // Protect active user and profile from being erased during initialization
-      // Only merge cloud profile if it's complete/valid (has a name)
-      const cloudProfile = action.payload.userProfile;
-      const mergedProfile = (cloudProfile && cloudProfile.name) ? cloudProfile : state.userProfile;
+      // Local Identity Sovereignty: Never let an incoming null/empty payload overwrite an active profile
+      const mergedProfile = state.userProfile || (action.payload.userProfile?.name ? action.payload.userProfile : null);
       
       return { 
         ...state, 
         ...action.payload, 
-        user: state.user, // Always preserve auth state
-        userProfile: mergedProfile // Prefer local authority over null/empty cloud profiles
+        user: state.user, // Preserve session
+        userProfile: mergedProfile 
       };
     }
+    case 'SET_PROFILE':
+      console.log('REDUCER: Master Identity Synchronized', action.payload.name);
+      // Synchronous Local Flush for technical finality
+      try {
+         localStorage.setItem('cashflow_data', JSON.stringify({ ...state, userProfile: action.payload }));
+      } catch (e) {
+         console.warn('FLUSH_FAILED:', e);
+      }
+      return { ...state, userProfile: action.payload };
     case 'DELETE_BILL':
       return { ...state, bills: state.bills.filter(b => b.id !== action.payload) };
     case 'SET_VISUAL_MODE':
       return { ...state, visualMode: action.payload };
     case 'SET_THEME':
       return { ...state, theme: action.payload };
-    case 'SET_PROFILE':
-      console.log('REDUCER: Master Profile Synchronized', action.payload.name);
-      return { ...state, userProfile: action.payload };
     default:
       return state;
   }
