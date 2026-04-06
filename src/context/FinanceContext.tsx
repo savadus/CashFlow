@@ -304,6 +304,16 @@ const financeReducer = (state: State, action: Action): State => {
         bills: []
       };
     }
+    case 'SET_INITIAL_DATA': {
+      // Protect active user and profile from being erased during initialization
+      const mergedProfile = action.payload.userProfile || state.userProfile;
+      return { 
+        ...state, 
+        ...action.payload, 
+        user: state.user, // Always preserve auth state
+        userProfile: mergedProfile // Prefer current profile over null payload
+      };
+    }
     case 'DELETE_BILL':
       return { ...state, bills: state.bills.filter(b => b.id !== action.payload) };
     case 'SET_VISUAL_MODE':
@@ -312,8 +322,6 @@ const financeReducer = (state: State, action: Action): State => {
       return { ...state, theme: action.payload };
     case 'SET_PROFILE':
       return { ...state, userProfile: action.payload };
-    case 'SET_INITIAL_DATA':
-      return { ...initialState, ...action.payload, user: state.user };
     default:
       return state;
   }

@@ -81,8 +81,16 @@ export default function Onboarding() {
 
   const handleComplete = () => {
     if (!profile.name) return;
-    console.log('Dispatching profile:', profile);
-    dispatch({ type: 'SET_PROFILE', payload: profile });
+    setLoading(true);
+    console.log('TRANSITION_INIT: Handshaking with FinanceContext...');
+    console.log('TRANSITION_DATA:', profile);
+    
+    // Use a small timeout to let the UI breathe before the context switch
+    setTimeout(() => {
+       dispatch({ type: 'SET_PROFILE', payload: profile });
+       console.log('TRANSITION_SUCCESS: Profile mastered.');
+       setLoading(false);
+    }, 500);
   };
 
   const containerVariants = {
@@ -309,19 +317,18 @@ export default function Onboarding() {
                      ))}
                   </div>
 
-                  <button 
-                    disabled={!profile.name}
-                    onClick={() => {
-                       if (profile.name) {
-                          console.log("PROFILING_COMPLETE: Finalizing Cloud Handshake...");
-                          handleComplete();
-                       }
-                    }}
-                    className="w-full bg-ios-blue text-white h-14 rounded-[24px] font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
-                  >
-                     <span>{profile.language === 'ml' ? 'തുടങ്ങുക' : profile.language === 'hi' ? 'प्रवेश करें' : 'ENTER CASHFLOW'}</span>
-                     <Check className="w-4 h-4 ml-2" />
-                  </button>
+                   <button 
+                     disabled={!profile.name || loading}
+                     onClick={handleComplete}
+                     className="w-full bg-ios-blue text-white h-14 rounded-[24px] font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
+                   >
+                      <span>{loading ? (profile.language === 'ml' ? 'സമന്വയിപ്പിക്കുന്നു...' : profile.language === 'hi' ? 'सिंक हो रहा है...' : 'CONNECTING...') : (profile.language === 'ml' ? 'തുടങ്ങുക' : profile.language === 'hi' ? 'प्रवेश करें' : 'ENTER CASHFLOW')}</span>
+                      {loading ? (
+                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                         <Check className="w-4 h-4 ml-2" />
+                      )}
+                   </button>
                </motion.div>
              )}
           </AnimatePresence>
