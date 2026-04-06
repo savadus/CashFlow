@@ -154,27 +154,25 @@ export const TransactionModal = ({
           transition={{ type: 'spring', damping: 30, stiffness: 300 }}
           className="fixed inset-0 z-[260] bg-[#F2F2F7] flex flex-col pt-[env(safe-area-inset-top,0px)]"
         >
-          {/* Header */}
-          <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-black/5">
-            <div className="flex items-center gap-4">
+          <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-black/5">
+            <div className="flex items-center gap-3">
                <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors">
-                  <ArrowLeft className="w-6 h-6 text-black/40" />
+                  <ArrowLeft className="w-5 h-5 text-black/40" />
                </button>
                <div>
-                  <h2 className={cn("text-xl font-black uppercase tracking-tighter italic leading-none", getThemeText())}>
-                     {type === 'INCOME' ? 'ADD INCOME' : type === 'EXPENSE' ? 'ADD OUT' : 'TRANSFER FUNDS'}
+                  <h2 className={cn("text-lg font-bold uppercase tracking-widest leading-none", getThemeText())}>
+                     {type === 'INCOME' ? 'ADD INCOME' : type === 'EXPENSE' ? 'ADD OUT' : 'TRANSFER'}
                   </h2>
-                  <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.2em] mt-1">Transaction Hub</p>
                </div>
             </div>
-            <div className="flex bg-gray-100 p-1 rounded-2xl border border-black/5">
+            <div className="flex bg-gray-100 p-1 rounded-xl border border-black/5">
                 {(['EXPENSE', 'INCOME', 'TRANSFER'] as TransactionType[]).map(t => (
                   <button 
                     key={t}
                     onClick={() => setType(t)}
                     className={cn(
-                      "px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all",
-                      type === t ? (t === 'INCOME' ? "bg-income text-white shadow-lg" : t === 'EXPENSE' ? "bg-expense text-white shadow-lg" : "bg-ios-blue text-white shadow-lg") : "text-black/30"
+                      "px-3 py-1.5 rounded-lg text-[8px] font-bold uppercase tracking-widest transition-all",
+                      type === t ? (t === 'INCOME' ? "bg-income text-white shadow-md" : t === 'EXPENSE' ? "bg-expense text-white shadow-md" : "bg-ios-blue text-white shadow-md") : "text-black/30"
                     )}
                   >
                     {t === 'EXPENSE' ? 'OUT' : t === 'INCOME' ? 'IN' : 'TRANSFER'}
@@ -184,31 +182,29 @@ export const TransactionModal = ({
           </div>
 
           <div className="flex-1 overflow-y-auto">
-             {/* Amount Display */}
-             <div className="bg-white p-6 border-b border-black/5 shadow-sm text-center">
-                <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-3 italic">Confirm Amount</p>
-                <div className="flex items-center justify-center gap-3">
-                   <span className="text-2xl font-black text-black/10 italic">₹</span>
-                   <div className="text-5xl font-black italic tracking-tighter truncate leading-none text-black">
+             <div className="bg-white p-4 border-b border-black/5 shadow-sm text-center">
+                <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-1">CONFIRM AMOUNT</p>
+                <div className="flex items-center justify-center gap-2">
+                   <span className="text-lg font-bold text-black/10">₹</span>
+                   <div className="text-2xl font-bold tracking-tight truncate leading-none text-black">
                       {displayValue}
                    </div>
                 </div>
              </div>
 
-             <div className="p-6 space-y-6">
-                {/* Liquid Locator Selector */}
-                <div className="bg-white rounded-[40px] p-8 border border-black/5 shadow-sm space-y-8">
+             <div className="p-4 space-y-4">
+                <div className="bg-white rounded-[24px] p-5 border border-black/5 shadow-sm space-y-6">
                     <div>
-                       <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.3em] mb-6 px-2 italic">Select Location (From)</p>
-                       <div className="grid grid-cols-2 gap-4">
+                       <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">SELECT LOCATION (FROM)</p>
+                       <div className="grid grid-cols-2 gap-3">
                           <button 
                             onClick={() => {
                                setMode('IN_HAND');
                                setBankPickerOpen(false);
                             }}
                             className={cn(
-                               "h-16 rounded-[24px] flex items-center justify-center gap-4 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
-                               mode === 'IN_HAND' ? "bg-black text-white border-black shadow-xl shadow-black/10" : "bg-white text-black/40 border-black/5"
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                               mode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
                              <Wallet className="w-4 h-4" />
@@ -220,8 +216,8 @@ export const TransactionModal = ({
                                setBankPickerOpen(!bankPickerOpen);
                             }}
                             className={cn(
-                               "h-16 rounded-[24px] flex items-center justify-center gap-4 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
-                               mode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-xl shadow-ios-blue/10" : "bg-white text-black/40 border-black/5"
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                               mode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
                              <Landmark className="w-4 h-4" />
@@ -236,7 +232,7 @@ export const TransactionModal = ({
                                initial={{ height: 0, opacity: 0 }}
                                animate={{ height: 'auto', opacity: 1 }}
                                exit={{ height: 0, opacity: 0 }}
-                               className="grid grid-cols-3 gap-2 mt-4"
+                               className="grid grid-cols-3 gap-2 mt-3"
                              >
                                 {banks.map(b => (
                                    <button 
@@ -246,7 +242,7 @@ export const TransactionModal = ({
                                         setBankPickerOpen(false);
                                      }}
                                      className={cn(
-                                        "h-12 rounded-xl flex items-center justify-center text-[8px] font-black uppercase tracking-widest transition-all active:scale-95",
+                                        "h-10 rounded-lg flex items-center justify-center text-[8px] font-bold uppercase tracking-widest transition-all active:scale-95",
                                         mode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
                                      )}
                                    >
@@ -260,13 +256,13 @@ export const TransactionModal = ({
 
                     {type === 'TRANSFER' && (
                        <div>
-                          <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.3em] mb-6 px-2 italic">Destination Location (To)</p>
-                          <div className="grid grid-cols-2 gap-4">
+                          <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">DESTINATION (TO)</p>
+                          <div className="grid grid-cols-2 gap-3">
                              <button 
                                onClick={() => setToMode('IN_HAND')}
                                className={cn(
-                                  "h-16 rounded-[24px] flex items-center justify-center gap-4 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
-                                  toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-xl shadow-black/10" : "bg-white text-black/40 border-black/5"
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
                                 <Wallet className="w-4 h-4" />
@@ -275,43 +271,24 @@ export const TransactionModal = ({
                              <button 
                                onClick={() => setToBankPickerOpen(!toBankPickerOpen)}
                                className={cn(
-                                  "h-16 rounded-[24px] flex items-center justify-center gap-4 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
-                                  toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-xl shadow-ios-blue/10" : "bg-white text-black/40 border-black/5"
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
                                 <Landmark className="w-4 h-4" />
                                 {toMode.startsWith('BANK') ? toMode.replace('BANK_', '') : 'IN BANK'}
                              </button>
                           </div>
-                          {toBankPickerOpen && (
-                             <div className="grid grid-cols-3 gap-2 mt-4">
-                                {banks.map(b => (
-                                   <button 
-                                     key={b.id}
-                                     onClick={() => {
-                                        setToMode(b.id as LiquidMode);
-                                        setToBankPickerOpen(false);
-                                     }}
-                                     className={cn(
-                                        "h-12 rounded-xl flex items-center justify-center text-[8px] font-black uppercase tracking-widest transition-all active:scale-95",
-                                        toMode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
-                                     )}
-                                   >
-                                      {b.name.split(' ')[0]}
-                                   </button>
-                                ))}
-                             </div>
-                          )}
                        </div>
                     )}
 
                     <div>
-                       <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.3em] mb-6 px-2 italic">Target Purpose (Space)</p>
-                       <div className="grid grid-cols-2 gap-4">
+                       <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">TARGET PURPOSE (SPACE)</p>
+                       <div className="grid grid-cols-2 gap-3">
                           <select 
                             value={spaceId}
                             onChange={(e) => setSpaceId(e.target.value)}
-                            className="w-full bg-white text-black h-16 rounded-[24px] font-black px-8 shadow-xl shadow-black/5 active:scale-95 transition-all text-[10px] uppercase tracking-[0.2em] italic appearance-none cursor-pointer outline-none border border-black/5"
+                            className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-widest appearance-none cursor-pointer outline-none border border-black/5"
                           >
                              {state.spaces.map(s => (
                                <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
@@ -321,7 +298,7 @@ export const TransactionModal = ({
                              <select 
                                value={toSpaceId}
                                onChange={(e) => setToSpaceId(e.target.value)}
-                               className="w-full bg-white text-black h-16 rounded-[24px] font-black px-8 shadow-xl shadow-black/5 active:scale-95 transition-all text-[10px] uppercase tracking-[0.2em] italic appearance-none cursor-pointer outline-none border border-black/5"
+                               className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-widest appearance-none cursor-pointer outline-none border border-black/5"
                              >
                                 {state.spaces.filter(s => s.id !== spaceId).map(s => (
                                   <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
