@@ -80,17 +80,13 @@ export default function Onboarding() {
   };
 
   const handleComplete = () => {
-    if (!profile.name) return;
+    if (!profile.name || loading) return;
     setLoading(true);
-    console.log('TRANSITION_INIT: Handshaking with FinanceContext...');
-    console.log('TRANSITION_DATA:', profile);
+    console.log('TRANSITION_INIT: High-Velocity Handshake...');
     
-    // Use a small timeout to let the UI breathe before the context switch
-    setTimeout(() => {
-       dispatch({ type: 'SET_PROFILE', payload: profile });
-       console.log('TRANSITION_SUCCESS: Profile mastered.');
-       setLoading(false);
-    }, 500);
+    // Dispatch immediately for institutional responsiveness
+    dispatch({ type: 'SET_PROFILE', payload: profile });
+    console.log('TRANSITION_SUCCESS: Profile mastered.');
   };
 
   const containerVariants = {
@@ -100,21 +96,29 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#f8f9ff] z-[100] flex items-center justify-center p-6 sm:p-12 font-sans overflow-hidden">
-       {/* Background decorative elements */}
-       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-ios-blue/5 blur-[120px] rounded-full" />
-       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 blur-[120px] rounded-full" />
-
-       <div className="w-full max-w-lg relative">
-          {/* Progress Indicator */}
-          <div className="flex gap-2 mb-12 justify-center">
-             {[0, 1, 2, 3].map(s => (
-               <div 
-                 key={s}
-                 className={`h-1 rounded-full transition-all duration-500 ${step >= s ? 'w-8 bg-black' : 'w-2 bg-black/10'}`}
-               />
-             ))}
-          </div>
+     <div 
+        className="fixed inset-0 bg-[#f8f9ff] z-[100] flex items-center justify-center p-6 sm:p-12 font-sans overflow-hidden"
+        onKeyDown={(e) => {
+           if (e.key === 'Enter') {
+              if (step === 2 && profile.name) setStep(3);
+              if (step === 3) handleComplete();
+           }
+        }}
+     >
+        {/* Background decorative elements */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-ios-blue/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 blur-[120px] rounded-full" />
+ 
+        <div className="w-full max-w-lg relative">
+           {/* Progress Indicator */}
+           <div className="flex gap-2 mb-12 justify-center">
+              {[0, 1, 2, 3].map(s => (
+                <div 
+                  key={s}
+                  className={`h-1 rounded-full transition-all duration-500 ${step >= s ? 'w-8 bg-black' : 'w-2 bg-black/10'}`}
+                />
+              ))}
+           </div>
 
           <AnimatePresence mode="wait">
              {step === 0 && (
