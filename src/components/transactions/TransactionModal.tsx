@@ -328,8 +328,8 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
           </div>
 
           {/* Calculator Keyboard */}
-          <div className="bg-white border-t border-black/5 p-4 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]">
-             <div className="grid grid-cols-4 gap-2 mb-4">
+          <div className="bg-white border-t border-black/5 p-3 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]">
+             <div className="grid grid-cols-4 gap-1.5 mb-3">
                 {[
                   { k: '7', c: 'bg-black/5 text-black' },
                   { k: '8', c: 'bg-black/5 text-black' },
@@ -348,23 +348,23 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                   { k: 'DEL', c: 'bg-black/5 text-black' },
                   { k: '+', c: 'bg-ios-blue/10 text-ios-blue' },
                 ].map(item => (
-                  <button key={item.k} onClick={() => handleKeyPress(item.k)} className={cn("h-16 rounded-[10px] flex items-center justify-center text-xl font-bold transition-all active:scale-95 shadow-sm", item.c)}>
-                    {item.k === 'x' ? <X className="w-5 h-5 stroke-[4]" /> : item.k === '-' ? <Minus className="w-6 h-6 stroke-[4]" /> : item.k === 'DEL' ? <Delete className="w-6 h-6" /> : item.k === '+' ? <Plus className="w-6 h-6 stroke-[4]" /> : item.k}
+                  <button key={item.k} onClick={() => handleKeyPress(item.k)} className={cn("h-12 rounded-[10px] flex items-center justify-center text-lg font-bold transition-all active:scale-95 shadow-sm", item.c)}>
+                    {item.k === 'x' ? <X className="w-4 h-4 stroke-[4]" /> : item.k === '-' ? <Minus className="w-5 h-5 stroke-[4]" /> : item.k === 'DEL' ? <Delete className="w-5 h-5" /> : item.k === '+' ? <Plus className="w-5 h-5 stroke-[4]" /> : item.k}
                   </button>
                 ))}
              </div>
-
-             <div className="grid grid-cols-4 gap-2">
+ 
+             <div className="grid grid-cols-4 gap-1.5">
                 <button 
                   onClick={() => handleKeyPress('SUM')}
-                  className="col-span-1 h-16 bg-ios-blue/20 text-ios-blue rounded-[10px] flex items-center justify-center active:scale-95 transition-all text-xl font-black"
+                  className="col-span-1 h-14 bg-ios-blue/20 text-ios-blue rounded-[10px] flex items-center justify-center active:scale-95 transition-all text-lg font-black"
                 >
-                   <Equal className="w-6 h-6 stroke-[4]" />
+                   <Equal className="w-5 h-5 stroke-[4]" />
                 </button>
                 <button 
                    onClick={handleSave}
                    className={cn(
-                     "col-span-3 h-16 rounded-[10px] font-black text-[12px]  tracking-tight italic shadow-2xl transition-all active:scale-[0.98]",
+                     "col-span-3 h-14 rounded-[10px] font-black text-[12px]  tracking-tight italic shadow-2xl transition-all active:scale-[0.98]",
                      parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
                    )}
                  >
