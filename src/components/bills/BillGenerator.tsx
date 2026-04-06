@@ -584,7 +584,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                             </div>
                             <div className="flex justify-between w-44 text-sm border-t border-black pt-2">
                               <span>BALANCE:</span>
-                              <span className={paymentStatus === 'PAID' ? "text-income" : "text-expense"}>{paymentStatus === 'PAID' ? '0.00' : `${total}.00`}</span>
+                              <span className="text-black">{paymentStatus === 'PAID' ? '0.00' : `${total}.00`}</span>
                             </div>
                             <div className="text-center text-[9px] font-black  tracking-tight opacity-30 mt-12 underline underline-offset-[6px]">
                                 {paymentStatus === 'PAID' ? '* Fully Paid *' : '* Thank You *'}
@@ -595,22 +595,22 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
 
                     {style === 'PREMIUM' && (
                        <div className="p-10 text-black bg-white min-h-full flex flex-col relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#36A893]/5 rounded-[10px]-[100%] z-0" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-black/5 rounded-[10px]-[100%] z-0" />
                         
-                        <div className="flex justify-between items-start mb-16 border-t-[10px] border-[#36A893] pt-10 relative z-10">
+                        <div className="flex justify-between items-start mb-16 border-t-[10px] border-black pt-10 relative z-10">
                             <div className="flex items-center gap-4">
-                              <div className="w-16 h-16 bg-[#36A893] rounded-[10px] flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-[#36A893]/30">CF</div>
+                              <div className="w-16 h-16 bg-black rounded-[10px] flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-black/30">CF</div>
                               <div className="space-y-1">
                                   <h1 className="text-3xl font-black italic tracking-tighter leading-none">MVEE.IN</h1>
                                   <div className="flex items-center gap-2">
-                                     <div className="w-2 h-2 bg-[#36A893] rounded-[10px] animate-pulse" />
+                                     <div className="w-2 h-2 bg-black rounded-[10px] animate-pulse" />
                                      <p className="text-[10px] text-black/40 font-black  tracking-tight">+91 9961463124</p>
                                   </div>
                               </div>
                             </div>
                             <div className="text-right">
                                 <h1 className="text-4xl font-black italic tracking-tighter  leading-none mb-1 text-black">INVOICE</h1>
-                                <p className="text-[11px] font-black text-[#36A893]  tracking-tight italic">No. 2026XU92</p>
+                                <p className="text-[11px] font-black text-black  tracking-tight italic">No. 2026XU92</p>
                                 <p className="text-[10px] font-bold text-black/20 italic mt-2  tracking-tight leading-none">Date: 05 April 2026</p>
                             </div>
                         </div>
@@ -632,7 +632,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                             </div>
                             <div className="flex flex-col items-end justify-center">
                                 {paymentStatus === 'UNPAID' ? (
-                                   <div className="absolute top-0 right-0 border-[8px] border-expense/20 text-expense/20 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none group-hover:opacity-60 transition-opacity"
+                                   <div className="absolute top-0 right-0 border-[8px] border-black/20 text-black/20 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none group-hover:opacity-60 transition-opacity"
                                      style={{
                                        maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                                        WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
@@ -641,7 +641,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                       UNPAID
                                    </div>
                                 ) : (
-                                   <div className="absolute top-0 right-0 border-[8px] border-ios-blue/30 text-ios-blue/30 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none"
+                                   <div className="absolute top-0 right-0 border-[8px] border-black/30 text-black/30 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none"
                                      style={{
                                        maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                                        WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
@@ -652,13 +652,13 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                 )}
                                 
                                 <div className="text-right relative z-10">
-                                  <p className="text-[10px] font-black text-[#36A893]  tracking-tight mb-2 italic tracking-tight">Net Payable</p>
+                                  <p className="text-[10px] font-black text-black  tracking-tight mb-2 italic tracking-tight">Net Payable</p>
                                   <h2 className="text-7xl font-black tracking-tighter italic leading-none flex items-start justify-end gap-2">
                                      <span className="text-2xl mt-2">₹</span>{paymentStatus === 'PAID' ? '0' : total}
                                   </h2>
                                   <div className={cn(
                                      "mt-4 inline-block px-5 py-1.5 text-[9px] font-black  tracking-tight italic text-white shadow-xl shadow-black/10",
-                                     paymentStatus === 'PAID' ? "bg-ios-blue" : "bg-black"
+                                     "bg-black"
                                   )}>
                                      {paymentStatus === 'PAID' ? 'Account Settled' : 'Payment Overdue'}
                                   </div>
@@ -697,14 +697,14 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            <div className="flex flex-col items-end gap-1 border-t-[2px] border-black pt-10">
                               <h3 className="text-xl font-black italic text-black/20  tracking-tight leading-none mb-2">Total Bill Value</h3>
                               <h2 className="text-8xl font-black tracking-tighter italic leading-none mb-3 text-black">₹{total}</h2>
-                              <p className="text-[10px] font-black text-black/60  tracking-tight italic leading-none bg-[#36A893]/10 px-4 py-2 rounded-[10px]">
+                              <p className="text-[10px] font-black text-black/60  tracking-tight italic leading-none bg-black/10 px-4 py-2 rounded-[10px]">
                                 Rupees {total} only
                               </p>
                            </div>
 
                            <div className="relative group text-center py-10">
-                              <div className="absolute inset-0 border-[2px] border-black/5 scale-[1.05] -skew-x-[15deg] group-hover:bg-[#36A893]/5 transition-all duration-1000 origin-center" />
-                              <p className="font-black italic  tracking-tight text-[11px] text-[#36A893] relative z-10">
+                              <div className="absolute inset-0 border-[2px] border-black/5 scale-[1.05] -skew-x-[15deg] group-hover:bg-black/5 transition-all duration-1000 origin-center" />
+                              <p className="font-black italic  tracking-tight text-[11px] text-black relative z-10">
                                  ~ OFFICIALLY SECURED DIGITAL RECORD ~
                               </p>
                            </div>
@@ -715,15 +715,15 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                  <p className="text-[10px] font-black text-black/40 max-w-[3200px] leading-relaxed  italic opacity-60">This certificate serves as a valid proof of transaction. All disputes are subject to the terms of service of CashFlow Professional.</p>
                               </div>
                               <div className="w-64 text-center">
-                                 <div className="w-20 h-20 border-[6px] border-[#36A893]/10 rounded-[10px] mx-auto mb-6 flex items-center justify-center relative overflow-hidden group">
-                                    <CheckCircle2 className="w-10 h-10 text-[#36A893]/20" />
-                                    <div className="absolute inset-0 bg-[#36A893]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                                 <div className="w-20 h-20 border-[6px] border-black/10 rounded-[10px] mx-auto mb-6 flex items-center justify-center relative overflow-hidden group">
+                                    <CheckCircle2 className="w-10 h-10 text-black/20" />
+                                    <div className="absolute inset-0 bg-black/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                                  </div>
                                  <div className="h-[2px] bg-black/20 mb-3 w-[70%] mx-auto" />
                                  <p className="text-[9px] font-black  tracking-tight text-black/40 italic">System Verified</p>
                               </div>
                            </div>
-                           <div className="h-6 bg-[#36A893] rounded-[10px] w-full relative overflow-hidden shadow-xl shadow-[#36A893]/20">
+                           <div className="h-6 bg-black rounded-[10px] w-full relative overflow-hidden shadow-xl shadow-black/20">
                               <div className="absolute inset-0 bg-white/30 animate-[pulse_2s_infinite] mix-blend-overlay" />
                            </div>
                         </div>
