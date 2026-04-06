@@ -129,19 +129,19 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
                </div>
                <button 
                  onClick={() => setIsAboutOpen(true)}
-                 className="w-full bg-black text-white p-6 rounded-[10px] border border-black/5 flex items-center justify-between group active:scale-[0.98] transition-all hover:bg-black/90 shadow-2xl shadow-black/10"
+                 className="w-full bg-gray-50/50 p-6 rounded-[10px] border border-black/5 flex items-center justify-between group active:scale-[0.98] transition-all hover:bg-white hover:shadow-xl hover:shadow-black/5"
                >
                   <div className="flex items-center gap-6">
-                     <div className="w-11 h-11 bg-white/10 backdrop-blur-xl border border-white/10 text-white rounded-[10px] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                     <div className="w-11 h-11 bg-black text-white rounded-[10px] flex items-center justify-center shadow-lg shadow-black/10 group-hover:scale-110 transition-transform">
                         <Info className="w-5 h-5" />
                      </div>
                      <div className="text-left">
                         <p className="font-black text-[12px]  tracking-tight leading-none mb-1">About Platform</p>
-                        <p className="text-[9px] font-black text-white/30  tracking-tight italic">Mastered for Excellence</p>
+                        <p className="text-[9px] font-black text-black/30  tracking-tight italic">Mastered for Excellence</p>
                      </div>
                   </div>
-                  <div className="w-8 h-8 rounded-[10px] bg-white/5 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
-                     <ChevronLeft className="w-4 h-4 rotate-180 transition-opacity" />
+                  <div className="w-8 h-8 rounded-[10px] bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                     <ChevronLeft className="w-4 h-4 rotate-180 group-hover:opacity-100 transition-opacity" />
                   </div>
                </button>
             </div>
