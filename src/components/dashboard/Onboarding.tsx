@@ -35,10 +35,10 @@ export default function Onboarding() {
   });
 
   useEffect(() => {
-    if (state.user) {
-      setStep(1); // Skip Auth if already logged in
+    if (state.user && step === 0) {
+      setStep(1); // Move to Language after Auth
     }
-  }, [state.user]);
+  }, [state.user, step]);
 
   const t = (key: TranslationKey): string => {
     return translations[profile.language as Language][key] || translations.en[key];
