@@ -466,11 +466,26 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                <p className="text-sm font-bold  tracking-tight leading-none mb-1">{customerName || 'Walking Customer'}</p>
                                <p className="text-xs font-bold text-black/60 break-words line-clamp-1">{customerPhone || 'Not provided'}</p>
                            </div>
-                           <div className="border border-black p-4 flex flex-col items-center justify-center">
+                           <div className="border border-black p-4 flex flex-col items-center justify-center relative overflow-hidden">
                                <p className="text-[10px] font-black text-black/30 mb-1  tracking-tight">STATUS:</p>
                                <span className="text-xs font-black px-3 py-1 rounded-[10px] text-black">
                                   {paymentStatus}
                                </span>
+                               {paymentStatus === 'PAID' && (
+                                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 select-none">
+                                     <div 
+                                        className="w-16 h-16 border-[2px] border-[#dc2626]/60 text-[#dc2626]/80 rounded-full flex flex-col items-center justify-center rotate-[-15deg] bg-white/5 backdrop-blur-[0.5px]"
+                                        style={{
+                                          filter: 'contrast(1.2) sepia(0.2)',
+                                          maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+                                          WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
+                                        }}
+                                     >
+                                        <div className="absolute inset-1 border-[1px] border-[#dc2626]/40 rounded-full border-dashed" />
+                                        <span className="font-black text-[12px] tracking-tight leading-none border-y-[1px] border-[#dc2626]/60 px-1">PAID</span>
+                                     </div>
+                                  </div>
+                               )}
                            </div>
                         </div>
 
@@ -631,24 +646,23 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                   </div>
                                 </div>
                             </div>
-                            <div className="flex flex-col items-end justify-center">
-                                {paymentStatus === 'UNPAID' ? (
-                                   <div className="absolute top-0 right-0 border-[8px] border-black/20 text-black/20 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none group-hover:opacity-60 transition-opacity"
-                                     style={{
-                                       maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
-                                       WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
-                                     }}
-                                   >
-                                      UNPAID
-                                   </div>
-                                ) : (
-                                   <div className="absolute top-0 right-0 border-[8px] border-black/30 text-black/30 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none"
-                                     style={{
-                                       maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
-                                       WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
-                                     }}
-                                   >
-                                      FULLY PAID
+                            <div className="flex flex-col items-end justify-center relative">
+                                {paymentStatus === 'PAID' && (
+                                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 select-none">
+                                      <div 
+                                         className="w-40 h-40 border-[5px] border-[#dc2626]/60 text-[#dc2626]/80 rounded-full flex flex-col items-center justify-center rotate-[-15deg] ring-8 ring-[#dc2626]/5 bg-white/5 backdrop-blur-[1px] shadow-2xl relative"
+                                         style={{
+                                           boxShadow: 'inset 0 0 30px rgba(220, 38, 38, 0.1)',
+                                           filter: 'contrast(1.2) sepia(0.2)',
+                                           maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+                                           WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
+                                         }}
+                                      >
+                                         <div className="absolute inset-3 border-[3px] border-[#dc2626]/40 rounded-full border-dashed" />
+                                         <span className="font-black text-[14px] tracking-[0.3em] opacity-40 leading-none mb-1">PREMIUM</span>
+                                         <span className="font-black text-4xl tracking-tight leading-none border-y-4 border-[#dc2626]/60 py-2 px-4 shadow-sm">RECEIVED</span>
+                                         <span className="text-[10px] font-black mt-2 italic tracking-tight opacity-40">INSTITUTIONAL HUB</span>
+                                      </div>
                                    </div>
                                 )}
                                 
