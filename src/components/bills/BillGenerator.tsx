@@ -541,19 +541,20 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                         <div className="border-t border-black border-dashed mt-4 mb-6" />
                         <div className="relative">
                            {paymentStatus === 'PAID' && (
-                              <div className="absolute inset-x-0 inset-y-[-20%] flex items-center justify-center pointer-events-none z-10 select-none overflow-hidden">
+                              <div className="absolute inset-x-0 inset-y-[-10%] flex items-center justify-center pointer-events-none z-10 select-none overflow-hidden">
                                  <div 
-                                    className="border-[6px] border-[#2563EB]/70 text-[#2563EB]/80 p-6 rounded-[10px] flex flex-col items-center justify-center rotate-[-12deg] ring-4 ring-[#2563EB]/5 bg-white/10 backdrop-blur-[1px] shadow-2xl scale-125"
+                                    className="w-32 h-32 border-[4px] border-[#dc2626]/60 text-[#dc2626]/80 rounded-full flex flex-col items-center justify-center rotate-[-15deg] ring-4 ring-[#dc2626]/5 bg-white/5 backdrop-blur-[0.5px] shadow-2xl relative"
                                     style={{
-                                      boxShadow: 'inset 0 0 15px rgba(37, 99, 235, 0.1)',
-                                      filter: 'contrast(1.5) saturate(1.4)',
+                                      boxShadow: 'inset 0 0 20px rgba(220, 38, 38, 0.05)',
+                                      filter: 'contrast(1.2) sepia(0.2)',
                                       maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                                       WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
                                     }}
                                  >
-                                    <CheckCircle2 className="w-10 h-10 mb-1 opacity-60" />
-                                    <span className="font-black text-3xl  tracking-tight leading-none">RECEIVED</span>
-                                    <span className="text-[10px] font-black mt-1 italic tracking-tight opacity-40">CashFlow Ledger</span>
+                                    <div className="absolute inset-2 border-[2px] border-[#dc2626]/40 rounded-full border-dashed" />
+                                    <span className="font-black text-[10px] tracking-[0.2em] opacity-40 leading-none mb-1">OFFICIAL</span>
+                                    <span className="font-black text-2xl tracking-tight leading-none border-y-2 border-[#dc2626]/60 py-1 px-2">RECEIVED</span>
+                                    <span className="text-[8px] font-black mt-1 italic tracking-tight opacity-40">AUTO-VERIFIED</span>
                                  </div>
                               </div>
                            )}
