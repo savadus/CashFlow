@@ -34,16 +34,7 @@ const initialState: State = {
     { id: '4', name: 'Others Cash', balance: 0 },
     { id: '5', name: 'Debts', balance: 0, isTrip: true, members: [] } as TripSpace,
   ],
-  userProfile: {
-    name: 'BUSINESS HUB',
-    purpose: 'BUSINESS',
-    language: 'en',
-    banks: [
-      { id: 'BANK_1712345678901', name: 'SBI' },
-      { id: 'BANK_1712345678902', name: 'BARODA' },
-      { id: 'BANK_1712345678903', name: 'SIB' }
-    ]
-  },
+  userProfile: null,
   transactions: [],
   bills: [],
   privacyMode: false,

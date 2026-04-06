@@ -73,7 +73,7 @@ export interface FinanceState {
   transactions: Transaction[];
   bills: Bill[];
   privacyMode: boolean;
-  userProfile?: UserProfile;
+  userProfile: UserProfile | null;
   liquidBalances: Record<string, number>;
   theme?: 'SAGE' | 'OBSIDIAN';
   visualMode?: 'LIGHT' | 'DARK';
