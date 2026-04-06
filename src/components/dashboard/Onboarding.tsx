@@ -81,6 +81,7 @@ export default function Onboarding() {
 
   const handleComplete = () => {
     if (!profile.name) return;
+    console.log('Dispatching profile:', profile);
     dispatch({ type: 'SET_PROFILE', payload: profile });
   };
 
@@ -309,12 +310,14 @@ export default function Onboarding() {
                   </div>
 
                   <button 
+                    disabled={!profile.name}
                     onClick={() => {
                        if (profile.name) {
+                          console.log("PROFILING_COMPLETE: Finalizing Cloud Handshake...");
                           handleComplete();
                        }
                     }}
-                    className="w-full bg-ios-blue text-white h-16 rounded-[32px] font-black text-xs uppercase tracking-[0.3em] italic flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all mt-6 shadow-ios-blue/20"
+                    className="w-full bg-ios-blue text-white h-16 rounded-[32px] font-black text-xs uppercase tracking-[0.3em] italic flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all mt-6 shadow-ios-blue/20 disabled:opacity-20"
                   >
                      <span>{profile.language === 'ml' ? 'തുടങ്ങുക' : profile.language === 'hi' ? 'प्रवेश करें' : 'ENTER CASHFLOW'}</span>
                      <Check className="w-4 h-4 ml-2" />
