@@ -121,11 +121,9 @@ export default function Home() {
       {/* Overlays (Opening in New Windows) */}
       <BillAuditHub 
         isOpen={isAuditOpen}
-        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })}
         onOpenGenerator={() => {
            setSelectedBill(null);
-           // Internal transition to Generator handled by local state or another hub id if needed
-           // For now, generators can be local overlays as they are transient sub-states
            setIsBillsOpen(true);
         }}
         onViewBill={(bill) => {
@@ -156,12 +154,12 @@ export default function Home() {
  
       <TripDetail 
         isOpen={isDebtsOpen}
-        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })}
       />
  
       <CashbookReport 
         isOpen={isCashbookOpen} 
-        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })} 
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })} 
       />
  
       <MoreMenu 
@@ -172,10 +170,10 @@ export default function Home() {
         onOpenLoans={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'LOANS' })}
         onOpenCollection={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'COLLECTION' })}
       />
-
+ 
       <CollectionHub 
         isOpen={isCollectionOpen}
-        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })}
       />
 
       <TransactionEditModal 
