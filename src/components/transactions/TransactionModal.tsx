@@ -152,135 +152,224 @@ export const TransactionModal = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: '100%' }}
           transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-          className="fixed inset-0 z-[260] bg-[#FAF9F6] flex flex-col pt-[env(safe-area-inset-top,0px)]"
+          className="fixed inset-0 z-[260] bg-[#F2F2F7] flex flex-col pt-[env(safe-area-inset-top,0px)]"
         >
-          <div className="flex items-center gap-4 px-6 py-4 bg-white">
-            <button onClick={onClose} className="p-1 hover:bg-black/5 rounded-none transition-colors">
-              <ArrowLeft className={cn("w-6 h-6", getThemeText())} />
-            </button>
-            <h2 className={cn("text-lg font-bold tracking-tight capitalize", getThemeText())}>
-              {type === 'TRANSFER' ? 'Transfer entry' : `${type.toLowerCase()} entry`} of ₹{displayValue}
-            </h2>
-          </div>
-
-          <div className="flex-1 overflow-y-auto px-4 pb-8 space-y-4">
-             {/* Large Amount Card */}
-             <div className="bg-white rounded-none p-6 shadow-sm border border-black/5">
-                <div className="flex items-baseline gap-2">
-                   <span className={cn("text-2xl font-bold", getThemeText())}>₹</span>
-                   <div className={cn("text-4xl font-bold tracking-tight truncate", getThemeText())}>
-                      {displayValue}
-                   </div>
-                </div>
-             </div>
-
-             {/* Payment Mode Selector */}
-             <div className="flex items-center justify-between py-2">
-                <span className="text-[11px] font-bold text-black/40 tracking-tight">Payment mode</span>
-                <div className="flex bg-white p-1 rounded-none border border-black/5 shadow-sm">
-                   {[
-                     { id: 'IN_HAND', label: 'Cash' },
-                     { id: 'BANK_ONLINE', label: 'Online' }
-                   ].map((m) => (
-                     <button
-                       key={m.id}
-                       onClick={() => {
-                          if (m.id === 'IN_HAND') setMode('IN_HAND');
-                          else setMode(banks[0]?.id || 'BANK_DEFAULT');
-                       }}
-                       className={cn(
-                         "px-6 py-2 rounded-none text-[10px] font-bold transition-all",
-                         (m.id === 'IN_HAND' ? mode === 'IN_HAND' : mode !== 'IN_HAND') 
-                           ? cn(getThemeColor(), "text-white shadow-md") 
-                           : "text-black/30"
-                       )}
-                     >
-                       {m.label}
-                     </button>
-                   ))}
-                </div>
-             </div>
-
-             {/* Details Input */}
-             <div className="bg-white rounded-none p-4 shadow-sm border border-black/5 min-h-[100px]">
-                <textarea 
-                  value={note}
-                  onChange={(e) => setNote(e.target.value)}
-                  placeholder="Enter details (Items, bill no., quantity, etc.)"
-                  className="w-full h-full bg-transparent outline-none resize-none text-[11px] font-medium placeholder:text-black/10 text-black leading-relaxed"
-                />
-             </div>
-
-             {/* Date & Attachments Row */}
-             <div className="flex items-center gap-3">
-                <button className="flex-1 bg-white rounded-none p-3 px-4 shadow-sm border border-black/5 flex items-center justify-between">
-                   <div className="flex items-center gap-3">
-                      <div className="p-2 bg-red-50 text-red-500 rounded-none">
-                         <MessageSquare className="w-4 h-4" />
-                      </div>
-                      <span className="text-[10px] font-bold text-black/60">06 Apr 26</span>
-                   </div>
-                   <ChevronRight className="w-4 h-4 text-black/20 rotate-90" />
-                </button>
-                <button className="flex-1 bg-white rounded-none p-3 px-4 shadow-sm border border-black/5 flex items-center justify-center gap-3 group active:scale-95 transition-all">
-                   <div className="p-2 bg-red-50 text-red-500 rounded-none">
-                      <Landmark className="w-4 h-4" />
-                   </div>
-                   <span className="text-[10px] font-bold text-black/60">Attach bills</span>
-                </button>
-             </div>
-          </div>
-
-          {/* Calculator Keyboard Section */}
-          <div className="p-4 pt-0 space-y-3">
-             <button 
-               onClick={handleSave}
-               className={cn(
-                 "w-full py-4.5 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl transition-all active:scale-[0.98]",
-                 parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
-               )}
-             >
-                SAVE
-             </button>
-
-             <div className="grid grid-cols-4 gap-2">
-                {/* Specific Calculator Grid */}
-                {[
-                  { k: 'C', c: 'bg-[#EBF5FF] text-ios-blue' },
-                  { k: 'M+', c: 'bg-[#EBF5FF] text-ios-blue' },
-                  { k: 'M-', c: 'bg-[#EBF5FF] text-ios-blue' },
-                  { k: 'DEL', c: 'bg-[#EBF5FF] text-ios-blue', icon: <Delete className="w-5 h-5" /> },
-                  { k: '7', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '8', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '9', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '/', c: 'bg-[#EBF5FF] text-ios-blue', label: '÷' },
-                  { k: '4', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '5', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '6', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: 'x', c: 'bg-[#EBF5FF] text-ios-blue', label: '×' },
-                  { k: '1', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '2', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '3', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '-', c: 'bg-[#1C4E80] text-white shadow-xl' },
-                  { k: '0', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: '.', c: 'bg-white text-gray-800 shadow-sm border border-gray-100' },
-                  { k: 'SUM', c: 'bg-white text-gray-800 shadow-sm border border-gray-100', label: '=' },
-                  { k: '+', c: 'bg-[#1C4E80] text-white shadow-xl' },
-                ].map(item => (
+          <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-black/5">
+            <div className="flex items-center gap-3">
+               <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors">
+                  <ArrowLeft className="w-5 h-5 text-black/40" />
+               </button>
+               <div>
+                  <h2 className={cn("text-base font-bold tracking-tight leading-none", getThemeText())}>
+                     {type === 'INCOME' ? 'IN entry of ₹' : type === 'EXPENSE' ? 'OUT entry of ₹' : 'Transfer of ₹'} {displayValue}
+                  </h2>
+               </div>
+            </div>
+            <div className="flex bg-gray-100 p-1 rounded-xl border border-black/5">
+                {(['EXPENSE', 'INCOME', 'TRANSFER'] as TransactionType[]).map(t => (
                   <button 
-                    key={item.k} 
-                    onClick={() => {
-                       if (item.k === 'C') handleKeyPress('AC');
-                       else handleKeyPress(item.k);
-                    }} 
+                    key={t}
+                    onClick={() => setType(t)}
                     className={cn(
-                      "h-14 rounded-none flex items-center justify-center text-lg font-bold transition-all active:scale-95", 
-                      item.c
+                      "px-3 py-1.5 rounded-lg text-[8px] font-bold  tracking-tight transition-all",
+                      type === t ? (t === 'INCOME' ? "bg-income text-white shadow-md" : t === 'EXPENSE' ? "bg-expense text-white shadow-md" : "bg-ios-blue text-white shadow-md") : "text-black/30"
                     )}
                   >
-                    {item.icon || item.label || item.k}
+                    {t === 'EXPENSE' ? 'OUT' : t === 'INCOME' ? 'IN' : 'TRANSFER'}
                   </button>
                 ))}
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto">
+             <div className="p-4">
+                <div className="bg-white rounded-2xl p-5 border border-black/5 shadow-sm flex items-center gap-4">
+                   <span className={cn("text-2xl font-bold", getThemeText())}>₹</span>
+                   <div className="flex-1">
+                      <div className="text-xl font-bold text-black tracking-tight">
+                         {displayValue === '0' ? (
+                            <span className="text-black/20 font-medium">Enter amount</span>
+                         ) : (
+                            displayValue
+                         )}
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             <div className="p-4 space-y-4">
+                <div className="bg-white rounded-[24px] p-5 border border-black/5 shadow-sm space-y-6">
+                    <div>
+base                       <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">SELECT LOCATION (FROM)</p>
+                       <div className="grid grid-cols-2 gap-3">
+                          <button 
+                            onClick={() => {
+                               setMode('IN_HAND');
+                               setBankPickerOpen(false);
+                            }}
+                            className={cn(
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                               mode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
+                            )}
+                          >
+                             <Wallet className="w-4 h-4" />
+                             IN HAND
+                          </button>
+                          <button 
+                            onClick={() => {
+                               if (mode === 'IN_HAND') setMode('BANK_SBI');
+                               setBankPickerOpen(!bankPickerOpen);
+                            }}
+                            className={cn(
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                               mode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
+                            )}
+                          >
+                             <Landmark className="w-4 h-4" />
+                             {mode.startsWith('BANK') ? (banks.find(b => b.id === mode)?.name || mode.replace('BANK_', '')) : 'IN BANK'}
+                             <ChevronRight className={cn("w-3 h-3 transition-transform", bankPickerOpen ? "rotate-90" : "")} />
+                          </button>
+                       </div>
+
+                       <AnimatePresence>
+                          {bankPickerOpen && (
+                             <motion.div 
+                               initial={{ height: 0, opacity: 0 }}
+                               animate={{ height: 'auto', opacity: 1 }}
+                               exit={{ height: 0, opacity: 0 }}
+                               className="grid grid-cols-3 gap-2 mt-3"
+                             >
+                                {banks.map(b => (
+                                   <button 
+                                     key={b.id}
+                                     onClick={() => {
+                                        setMode(b.id as LiquidMode);
+                                        setBankPickerOpen(false);
+                                     }}
+                                     className={cn(
+                                        "h-10 rounded-lg flex items-center justify-center text-[8px] font-bold  tracking-tight transition-all active:scale-95",
+                                        mode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
+                                     )}
+                                   >
+                                      {b.name.split(' ')[0]}
+                                   </button>
+                                ))}
+                             </motion.div>
+                          )}
+                       </AnimatePresence>
+                    </div>
+
+                    {type === 'TRANSFER' && (
+                       <div>
+                          <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">DESTINATION (TO)</p>
+                          <div className="grid grid-cols-2 gap-3">
+                             <button 
+                               onClick={() => setToMode('IN_HAND')}
+                               className={cn(
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                                  toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
+                               )}
+                             >
+                                <Wallet className="w-4 h-4" />
+                                IN HAND
+                             </button>
+                             <button 
+                               onClick={() => setToBankPickerOpen(!toBankPickerOpen)}
+                               className={cn(
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                                  toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
+                               )}
+                             >
+                                <Landmark className="w-4 h-4" />
+                                {toMode.startsWith('BANK') ? toMode.replace('BANK_', '') : 'IN BANK'}
+                             </button>
+                          </div>
+                       </div>
+                    )}
+
+                    <div>
+                       <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">TARGET PURPOSE (SPACE)</p>
+                       <div className="grid grid-cols-2 gap-3">
+                          <select 
+                            value={spaceId}
+                            onChange={(e) => setSpaceId(e.target.value)}
+                            className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
+                          >
+                             {state.spaces.map(s => (
+                               <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
+                             ))}
+                          </select>
+                          {type === 'TRANSFER' ? (
+                             <select 
+                               value={toSpaceId}
+                               onChange={(e) => setToSpaceId(e.target.value)}
+                               className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
+                             >
+                                {state.spaces.filter(s => s.id !== spaceId).map(s => (
+                                  <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
+                                ))}
+                             </select>
+                          ) : (
+                             <div className="relative">
+                                <MessageSquare className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
+                                <input 
+                                  type="text" 
+                                  value={note}
+                                  onChange={(e) => setNote(e.target.value)}
+                                  placeholder="NOTE..."
+                                  className="w-full pl-14 pr-6 h-16 bg-black/5 rounded-[24px] font-black text-[10px]  tracking-tight outline-none border-none placeholder:text-black/30"
+                                />
+                             </div>
+                          )}
+                       </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+
+          {/* Calculator Keyboard */}
+          <div className="bg-white border-t border-black/5 p-4 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]">
+             <div className="grid grid-cols-4 gap-2 mb-4">
+                {[
+                  { k: '7', c: 'bg-black/5 text-black' },
+                  { k: '8', c: 'bg-black/5 text-black' },
+                  { k: '9', c: 'bg-black/5 text-black' },
+                  { k: 'AC', c: 'bg-red-50 text-red-500 font-black' },
+                  { k: '4', c: 'bg-black/5 text-black' },
+                  { k: '5', c: 'bg-black/5 text-black' },
+                  { k: '6', c: 'bg-black/5 text-black' },
+                  { k: 'x', c: 'bg-ios-blue/10 text-ios-blue' },
+                  { k: '1', c: 'bg-black/5 text-black' },
+                  { k: '2', c: 'bg-black/5 text-black' },
+                  { k: '3', c: 'bg-black/5 text-black' },
+                  { k: '-', c: 'bg-ios-blue/10 text-ios-blue' },
+                  { k: '.', c: 'bg-black/5 text-black' },
+                  { k: '0', c: 'bg-black/5 text-black' },
+                  { k: 'DEL', c: 'bg-black/5 text-black' },
+                  { k: '+', c: 'bg-ios-blue/10 text-ios-blue' },
+                ].map(item => (
+                  <button key={item.k} onClick={() => handleKeyPress(item.k)} className={cn("h-16 rounded-2xl flex items-center justify-center text-xl font-bold transition-all active:scale-95 shadow-sm", item.c)}>
+                    {item.k === 'x' ? <X className="w-5 h-5 stroke-[4]" /> : item.k === '-' ? <Minus className="w-6 h-6 stroke-[4]" /> : item.k === 'DEL' ? <Delete className="w-6 h-6" /> : item.k === '+' ? <Plus className="w-6 h-6 stroke-[4]" /> : item.k}
+                  </button>
+                ))}
+             </div>
+
+             <div className="grid grid-cols-4 gap-2">
+                <button 
+                  onClick={() => handleKeyPress('SUM')}
+                  className="col-span-1 h-16 bg-ios-blue/20 text-ios-blue rounded-2xl flex items-center justify-center active:scale-95 transition-all text-xl font-black"
+                >
+                   <Equal className="w-6 h-6 stroke-[4]" />
+                </button>
+                <button 
+                   onClick={handleSave}
+                   className={cn(
+                     "col-span-3 h-16 rounded-2xl font-black text-[12px]  tracking-tight italic shadow-2xl transition-all active:scale-[0.98]",
+                     parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
+                   )}
+                 >
+                   {expression ? 'SOLVE & SAVE' : 'SAVE TRANSACTION'}
+                </button>
              </div>
           </div>
         </motion.div>
