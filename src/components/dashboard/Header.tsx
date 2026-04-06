@@ -25,7 +25,7 @@ export const Header = ({
     <header className="z-40 bg-black py-4 lg:py-5 w-full shadow-lg shadow-black/5">
       <div className="flex items-center justify-between px-6">
         <div className="flex items-center gap-4">
-          <div className="w-11 h-11 bg-white/20 backdrop-blur-xl rounded-none flex items-center justify-center border border-white/10 shadow-lg overflow-hidden">
+          <div className="w-11 h-11 bg-white/20 backdrop-blur-xl rounded-[10px] flex items-center justify-center border border-white/10 shadow-lg overflow-hidden">
              <img src="/cash-flow-logo.png" alt="MVEE" className="w-12 h-12 object-contain" />
           </div>
           <div>
@@ -38,10 +38,10 @@ export const Header = ({
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsProfileOpen(true)}
-            className="p-2.5 rounded-none bg-[#D4FF4D] text-black hover:bg-[#C2EB3D] transition-all shadow-xl shadow-[#D4FF4D]/20 flex items-center gap-2 px-4 group"
+            className="p-2.5 rounded-[10px] bg-[#D4FF4D] text-black hover:bg-[#C2EB3D] transition-all shadow-xl shadow-[#D4FF4D]/20 flex items-center gap-2 px-4 group"
             aria-label="Open profile"
           >
-            <div className="w-5 h-5 rounded-none overflow-hidden bg-black/10 flex items-center justify-center">
+            <div className="w-5 h-5 rounded-[10px] overflow-hidden bg-black/10 flex items-center justify-center">
                {profileImage ? (
                   <img src={profileImage} alt="P" className="w-full h-full object-cover" />
                ) : (

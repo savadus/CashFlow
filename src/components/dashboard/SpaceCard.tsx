@@ -24,10 +24,10 @@ export const SpaceCard = ({ space, onClick }: { space: Space, onClick: () => voi
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className="bg-card border border-card-border p-5 rounded-none flex flex-col items-start w-full text-left shadow-sm active:bg-secondary transition-all"
+      className="bg-card border border-card-border p-5 rounded-[10px] flex flex-col items-start w-full text-left shadow-sm active:bg-secondary transition-all"
     >
       <div className={cn(
-        "p-3 rounded-none mb-6 bg-tertiary",
+        "p-3 rounded-[10px] mb-6 bg-tertiary",
         space.name === 'Business Cash' && "text-emerald-500 font-semibold",
         space.name === 'Personal Cash' && "text-blue-600 font-semibold",
         space.name === 'Institution Cash' && "text-orange-600 font-semibold",

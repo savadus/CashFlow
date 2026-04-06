@@ -46,7 +46,7 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
         {/* Header Bar */}
         <div className="bg-white border-b border-black/5 px-6 py-6 flex items-center justify-between sticky top-0 z-10 shadow-sm">
           <div className="flex items-center gap-4">
-            <div className={cn("w-12 h-12 rounded-none flex items-center justify-center", info.bg)}>
+            <div className={cn("w-12 h-12 rounded-[10px] flex items-center justify-center", info.bg)}>
                <info.icon className={cn("w-6 h-6", info.color)} />
             </div>
             <div>
@@ -56,7 +56,7 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
           </div>
           <button 
             onClick={onClose}
-            className="w-12 h-12 bg-black/5 rounded-none flex items-center justify-center active:scale-90 transition-transform"
+            className="w-12 h-12 bg-black/5 rounded-[10px] flex items-center justify-center active:scale-90 transition-transform"
           >
             <X className="w-6 h-6 text-black/40" />
           </button>
@@ -71,7 +71,7 @@ export const FilteredTransactionHub = ({ isOpen, onClose, type, onTransactionSel
                     {formatCurrency(filteredTransactions.reduce((acc, t) => acc + t.amount, 0), state.privacyMode)}
                  </h3>
               </div>
-              <div className="w-12 h-12 rounded-none border-2 border-black/5 flex items-center justify-center opacity-20">
+              <div className="w-12 h-12 rounded-[10px] border-2 border-black/5 flex items-center justify-center opacity-20">
                  <Search className="w-5 h-5" />
               </div>
            </div>

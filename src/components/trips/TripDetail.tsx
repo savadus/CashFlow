@@ -109,10 +109,10 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                  <motion.div 
                    initial={{ scale: 0.9, opacity: 0 }}
                    animate={{ scale: 1, opacity: 1 }}
-                   className="w-full max-w-sm bg-white rounded-none[48px] p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+                   className="w-full max-w-sm bg-white rounded-[10px][48px] p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto"
                    onClick={e => e.stopPropagation()}
                  >
-                    <div className="w-12 h-1.5 bg-black/5 rounded-none mx-auto mb-8 lg:hidden" />
+                    <div className="w-12 h-1.5 bg-black/5 rounded-[10px] mx-auto mb-8 lg:hidden" />
                     <h3 className="text-2xl font-black uppercase tracking-tighter italic text-black mb-2 text-center">SETTLEMENT DETAILS</h3>
                     <p className="text-[10px] text-black/30 font-black uppercase tracking-[0.3em] mb-10 text-center">Where is the money going?</p>
                     
@@ -124,7 +124,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                              <button 
                                onClick={() => setRecoveryMode('IN_HAND')}
                                className={cn(
-                                  "h-16 rounded-none[24px] flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  "h-16 rounded-[10px][24px] flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
                                   recoveryMode === 'IN_HAND' ? "bg-black text-white border-black" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -135,7 +135,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                                   if (recoveryMode === 'IN_HAND') setRecoveryMode('BANK_SBI');
                                }}
                                className={cn(
-                                  "h-16 rounded-none[24px] flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  "h-16 rounded-[10px][24px] flex items-center justify-center gap-3 font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 border",
                                   recoveryMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -149,7 +149,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                                      key={b.id}
                                      onClick={() => setRecoveryMode(b.id as LiquidMode)}
                                      className={cn(
-                                        "h-10 rounded-none flex items-center justify-center text-[8px] font-black uppercase tracking-widest transition-all",
+                                        "h-10 rounded-[10px] flex items-center justify-center text-[8px] font-black uppercase tracking-widest transition-all",
                                         recoveryMode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
                                      )}
                                    >
@@ -168,7 +168,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                                <button 
                                  key={s.id}
                                  onClick={() => handleRecover(recoveryMemberId, s.id)}
-                                 className="bg-gray-50/50 p-6 rounded-none[32px] border border-black/5 active:scale-95 transition-all text-center group hover:bg-black hover:text-white flex flex-col items-center justify-center gap-2"
+                                 className="bg-gray-50/50 p-6 rounded-[10px][32px] border border-black/5 active:scale-95 transition-all text-center group hover:bg-black hover:text-white flex flex-col items-center justify-center gap-2"
                                >
                                   <p className="text-[11px] font-black uppercase tracking-tighter leading-none">{s.name}</p>
                                </button>
@@ -196,7 +196,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
             </div>
             <button 
               onClick={onClose}
-              className="p-3 rounded-none hover:bg-black/5 transition-colors"
+              className="p-3 rounded-[10px] hover:bg-black/5 transition-colors"
             >
               <X className="w-6 h-6 text-black/40" />
             </button>
@@ -205,11 +205,11 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
           <div className="flex-1 overflow-y-auto px-6 py-8 bg-[#F2F2F7]">
             {/* Stats Summary */}
             <div className="grid grid-cols-2 gap-4 mb-10">
-              <div className="p-6 bg-white rounded-none border border-black/5 shadow-sm">
+              <div className="p-6 bg-white rounded-[10px] border border-black/5 shadow-sm">
                 <p className="text-[9px] font-black text-black/20 uppercase tracking-widest mb-2">Recovered</p>
                 <p className="text-2xl font-black text-income tracking-tighter">{formatCurrency(totalPaid, state.privacyMode)}</p>
               </div>
-              <div className="p-6 bg-white rounded-none border border-black/5 shadow-sm">
+              <div className="p-6 bg-white rounded-[10px] border border-black/5 shadow-sm">
                 <p className="text-[9px] font-black text-black/20 uppercase tracking-widest mb-2">To Get</p>
                 <p className="text-2xl font-black text-expense tracking-tighter">{formatCurrency(totalUnpaid, state.privacyMode)}</p>
               </div>
@@ -235,7 +235,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   onSubmit={handleAddMember}
-                  className="mb-8 p-8 bg-white rounded-none[40px] border border-black/5 shadow-sm space-y-6 overflow-hidden"
+                  className="mb-8 p-8 bg-white rounded-[10px][40px] border border-black/5 shadow-sm space-y-6 overflow-hidden"
                 >
                   <div className="space-y-2">
                     <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em] ml-1">Name</label>
@@ -244,7 +244,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                       value={newName}
                       onChange={(e) => setNewName(e.target.value)}
                       placeholder="WHO OWES YOU?"
-                      className="w-full bg-gray-50 border border-black/5 rounded-none[24px] p-4 font-black uppercase text-xs tracking-widest focus:outline-none focus:ring-2 focus:ring-black/5"
+                      className="w-full bg-gray-50 border border-black/5 rounded-[10px][24px] p-4 font-black uppercase text-xs tracking-widest focus:outline-none focus:ring-2 focus:ring-black/5"
                       autoFocus
                       required
                     />
@@ -256,13 +256,13 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                       value={newAmount}
                       onChange={(e) => setNewAmount(e.target.value)}
                       placeholder="₹ 0"
-                      className="w-full bg-gray-50 border border-black/5 rounded-none[24px] p-4 font-black text-lg tracking-tighter focus:outline-none focus:ring-2 focus:ring-black/5"
+                      className="w-full bg-gray-50 border border-black/5 rounded-[10px][24px] p-4 font-black text-lg tracking-tighter focus:outline-none focus:ring-2 focus:ring-black/5"
                       required
                     />
                   </div>
                   <button 
                     type="submit"
-                    className="w-full bg-black text-white py-5 rounded-none[24px] font-black uppercase italic tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                    className="w-full bg-black text-white py-5 rounded-[10px][24px] font-black uppercase italic tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-transform"
                   >
                     <Save className="w-4 h-4" /> SAVE PERSON
                   </button>
@@ -280,12 +280,12 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
                 members.map(member => (
                   <div 
                     key={member.id}
-                    className="flex items-center gap-4 p-6 bg-white border border-black/5 rounded-none[32px] active:scale-[0.98] transition-all group relative overflow-hidden"
+                    className="flex items-center gap-4 p-6 bg-white border border-black/5 rounded-[10px][32px] active:scale-[0.98] transition-all group relative overflow-hidden"
                   >
                     <button 
                       onClick={() => toggleStatus(member.id)}
                       className={cn(
-                        "w-10 h-10 rounded-none[20px] flex items-center justify-center transition-all relative z-10",
+                        "w-10 h-10 rounded-[10px][20px] flex items-center justify-center transition-all relative z-10",
                         member.status === 'PAID' ? "bg-income text-white shadow-lg shadow-income/20" : "bg-gray-100 text-black/20 border border-black/5"
                       )}
                     >
@@ -322,7 +322,7 @@ export const TripDetail = ({ isOpen, onClose }: { isOpen: boolean, onClose: () =
             </div>
 
             {/* Info Box */}
-            <div className="mt-12 p-8 rounded-none[40px] bg-white border border-black/5 flex items-start gap-4">
+            <div className="mt-12 p-8 rounded-[10px][40px] bg-white border border-black/5 flex items-start gap-4">
               <Info className="w-6 h-6 text-ios-blue shrink-0 mt-1" />
               <p className="text-xs font-black text-black/30 leading-relaxed uppercase tracking-tighter">
                 When you mark a person as <span className="text-income font-black underline decoration-income/30">Paid</span>, you can select which account (Business, Personal, etc.) the recovered cash should be added to.

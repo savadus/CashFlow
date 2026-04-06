@@ -41,15 +41,15 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
   return (
     <div className="px-6 mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[10px] font-black text-text-dim  tracking-tight leading-none italic">{t('CASH_POSITION')}</h3>
+        <h3 className="text-xs font-black text-text-dim  tracking-tight leading-none italic">{t('CASH_POSITION')}</h3>
         <div className="flex items-center gap-4">
-          <div className="flex bg-secondary p-1 rounded-none border border-card-border">
+          <div className="flex bg-secondary p-1 rounded-[10px] border border-card-border">
             {(['ALL', 'WEEK', 'MONTH'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
                 className={cn(
-                  "px-4 py-1.5 rounded-none text-[9px] font-black  tracking-tight transition-all",
+                  "px-4 py-1.5 rounded-[10px] text-[9px] font-black  tracking-tight transition-all",
                   filter === f ? "bg-card text-foreground shadow-md" : "text-text-dim"
                 )}
               >
@@ -65,12 +65,12 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
           onClick={onIncomeClick}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-card border border-card-border p-4 rounded-none flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
+          className="bg-card border border-card-border p-4 rounded-[10px] flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
         >
-          <div className="p-2 bg-income/5 rounded-none mb-2 group-hover:bg-income/10 transition-colors">
+          <div className="p-2 bg-income/5 rounded-[10px] mb-2 group-hover:bg-income/10 transition-colors">
             <TrendingUp className="w-4 h-4 text-income" />
           </div>
-          <span className="text-[9px] text-text-dim  font-black tracking-tight mb-1 italic">{t('INCOME')}</span>
+          <span className="text-[10px] text-text-dim font-black tracking-tight mb-1 italic">{t('INCOME')}</span>
           <span className="text-[12px] font-medium italic tracking-tighter text-income">{formatCurrency(income, state.privacyMode)}</span>
         </motion.button>
         
@@ -78,12 +78,12 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
           onClick={onExpenseClick}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-card border border-card-border p-4 rounded-none flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
+          className="bg-card border border-card-border p-4 rounded-[10px] flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
         >
-          <div className="p-2 bg-expense/5 rounded-none mb-2 group-hover:bg-expense/10 transition-colors">
+          <div className="p-2 bg-expense/5 rounded-[10px] mb-2 group-hover:bg-expense/10 transition-colors">
             <TrendingDown className="w-4 h-4 text-expense" />
           </div>
-          <span className="text-[9px] text-text-dim  font-black tracking-tight mb-1 italic">{t('EXPENSE')}</span>
+          <span className="text-[10px] text-text-dim font-black tracking-tight mb-1 italic">{t('EXPENSE')}</span>
           <span className="text-[12px] font-medium italic tracking-tighter text-expense">{formatCurrency(expense, state.privacyMode)}</span>
         </motion.button>
 
@@ -91,12 +91,12 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
           onClick={onNetClick}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-card border border-card-border p-4 rounded-none flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
+          className="bg-card border border-card-border p-4 rounded-[10px] flex flex-col items-center text-center shadow-sm active:bg-secondary transition-colors group"
         >
-          <div className="p-2 bg-ios-blue/5 rounded-none mb-2 group-hover:bg-ios-blue/10 transition-colors">
+          <div className="p-2 bg-ios-blue/5 rounded-[10px] mb-2 group-hover:bg-ios-blue/10 transition-colors">
             <Wallet className="w-4 h-4 text-ios-blue" />
           </div>
-          <span className="text-[9px] text-text-dim  font-black tracking-tight mb-1 italic">Net</span>
+          <span className="text-[10px] text-text-dim font-black tracking-tight mb-1 italic">Net</span>
           <span className="text-[12px] font-medium italic tracking-tighter text-foreground">{formatCurrency(net, state.privacyMode)}</span>
         </motion.button>
       </div>

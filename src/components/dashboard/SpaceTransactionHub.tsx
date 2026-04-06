@@ -49,12 +49,12 @@ export const SpaceTransactionHub = ({
           {/* Industrial Header */}
           <div className="px-6 py-10 pt-16 border-b border-black/5 bg-[#F2F2F7] relative overflow-hidden">
              {/* Background Decoration */}
-             <div className="absolute top-0 right-0 w-64 h-64 bg-ios-blue/5 rounded-none -translate-y-1/2 translate-x-1/2 blur-3xl" />
+             <div className="absolute top-0 right-0 w-64 h-64 bg-ios-blue/5 rounded-[10px] -translate-y-1/2 translate-x-1/2 blur-3xl" />
              
              <div className="flex items-center justify-between relative z-10">
                 <button 
                   onClick={onClose}
-                  className="w-12 h-12 bg-white rounded-none flex items-center justify-center shadow-sm active:scale-90 transition-all border border-black/5"
+                  className="w-12 h-12 bg-white rounded-[10px] flex items-center justify-center shadow-sm active:scale-90 transition-all border border-black/5"
                 >
                   <X className="w-5 h-5 text-black/40" />
                 </button>
@@ -66,7 +66,7 @@ export const SpaceTransactionHub = ({
 
              <div className="mt-12 flex items-end justify-between relative z-10">
                 <div className="flex items-center gap-4">
-                   <div className="w-16 h-16 bg-white rounded-none flex items-center justify-center shadow-xl shadow-black/5 border border-black/5">
+                   <div className="w-16 h-16 bg-white rounded-[10px] flex items-center justify-center shadow-xl shadow-black/5 border border-black/5">
                       <Icon className="w-8 h-8 text-black" />
                    </div>
                    <div>
@@ -83,7 +83,7 @@ export const SpaceTransactionHub = ({
           <div className="flex-1 overflow-y-auto bg-white px-6 py-10">
              <div className="flex items-center justify-between mb-8">
                 <h3 className="text-[10px] font-black text-black/20  tracking-tight italic">Transaction History</h3>
-                <div className="px-4 py-1.5 bg-black/5 rounded-none text-[9px] font-black  tracking-tight text-black/40">
+                <div className="px-4 py-1.5 bg-black/5 rounded-[10px] text-[9px] font-black  tracking-tight text-black/40">
                    {transactions.length} ITEMS
                 </div>
              </div>
@@ -106,11 +106,11 @@ export const SpaceTransactionHub = ({
                     return (
                       <div 
                         key={t.id}
-                        className="flex items-center gap-5 p-6 bg-white rounded-none border border-black/5 active:scale-[0.98] transition-all group relative overflow-hidden"
+                        className="flex items-center gap-5 p-6 bg-white rounded-[10px] border border-black/5 active:scale-[0.98] transition-all group relative overflow-hidden"
                       >
                          {/* Visual Indicator */}
                          <div className={cn(
-                            "w-12 h-12 rounded-none flex items-center justify-center relative z-10",
+                            "w-12 h-12 rounded-[10px] flex items-center justify-center relative z-10",
                             isActualIn ? "bg-income/5 text-income" : "bg-expense/5 text-expense"
                          )}>
                             {isActualIn ? <ArrowDownRight className="w-6 h-6" /> : <ArrowUpRight className="w-6 h-6" />}
@@ -119,7 +119,7 @@ export const SpaceTransactionHub = ({
                          <div className="flex-1 min-w-0 relative z-10">
                             <div className="flex items-center gap-2 mb-1">
                                <p className="font-black text-black  tracking-tighter italic text-sm leading-none truncate pr-2">{t.note || t.category || 'Transaction'}</p>
-                               <span className="text-[8px] font-black text-black/10  tracking-tight bg-black/5 px-2 py-0.5 rounded-none shrink-0">
+                               <span className="text-[8px] font-black text-black/10  tracking-tight bg-black/5 px-2 py-0.5 rounded-[10px] shrink-0">
                                   {new Date(t.date).toLocaleDateString(undefined, { day: '2-digit', month: 'short' })}
                                </span>
                             </div>

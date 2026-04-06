@@ -30,7 +30,7 @@ export const TransactionItem = React.memo(({
       onClick={onClick}
       className="w-full flex items-center gap-4 py-5 px-6 hover:bg-secondary active:scale-[0.98] transition-all text-left outline-none border-none group"
     >
-      <div className="w-14 h-14 rounded-none bg-card shadow-sm border border-card-border flex items-center justify-center shrink-0 group-hover:shadow-md transition-shadow">
+      <div className="w-14 h-14 rounded-[10px] bg-card shadow-sm border border-card-border flex items-center justify-center shrink-0 group-hover:shadow-md transition-shadow">
         <div className="scale-125">
           {getIcon()}
         </div>

@@ -209,7 +209,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
           <div className="flex items-center gap-4">
             <button 
               onClick={viewMode === 'VIEWER' ? () => setViewMode('EDITOR') : onClose}
-              className="p-2 hover:bg-black/5 rounded-none"
+              className="p-2 hover:bg-black/5 rounded-[10px]"
             >
               {viewMode === 'VIEWER' ? <ChevronRight className="w-6 h-6 rotate-180" /> : <X className="w-6 h-6 text-black/40" />}
             </button>
@@ -226,7 +226,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                     <label className="text-[10px] font-black text-black/30  tracking-tight px-1">Import from ledger</label>
                     <select
                       onChange={(e) => handleFetchDebt(e.target.value)}
-                      className="w-full bg-white border border-black/5 rounded-none px-5 py-4 font-bold text-sm outline-none shadow-sm appearance-none"
+                      className="w-full bg-white border border-black/5 rounded-[10px] px-5 py-4 font-bold text-sm outline-none shadow-sm appearance-none"
                       defaultValue=""
                     >
                       <option value="" disabled>Search person...</option>
@@ -248,7 +248,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                               setIsHeadlineCustom(false);
                             }}
                             className={cn(
-                              "px-5 py-3 rounded-none font-black text-[10px] whitespace-nowrap transition-all  tracking-tight",
+                              "px-5 py-3 rounded-[10px] font-black text-[10px] whitespace-nowrap transition-all  tracking-tight",
                               (!isHeadlineCustom && activeHeadlineType === h) ? "bg-black text-white shadow-xl scale-105" : "bg-white text-black/40 border border-black/5"
                             )}
                           >
@@ -258,7 +258,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                        <button 
                           onClick={() => setIsHeadlineCustom(true)}
                           className={cn(
-                            "px-5 py-3 rounded-none font-black text-[10px] whitespace-nowrap transition-all  tracking-tight flex items-center gap-1",
+                            "px-5 py-3 rounded-[10px] font-black text-[10px] whitespace-nowrap transition-all  tracking-tight flex items-center gap-1",
                             isHeadlineCustom ? "bg-ios-pink text-white shadow-xl scale-105" : "bg-white text-black/40 border border-black/5"
                           )}
                        >
@@ -279,7 +279,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                             value={customHeadline}
                             onChange={(e) => setCustomHeadline(e.target.value)}
                             placeholder="Type Custom Headline..."
-                            className="w-full bg-white border border-black/5 rounded-none p-5 font-bold text-sm outline-none shadow-sm text-ios-pink placeholder:text-ios-pink/30 "
+                            className="w-full bg-white border border-black/5 rounded-[10px] p-5 font-bold text-sm outline-none shadow-sm text-ios-pink placeholder:text-ios-pink/30 "
                             autoFocus
                           />
                         </motion.div>
@@ -290,16 +290,16 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                   {/* Payment Status Toggle */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-black/30  tracking-tight px-1">Payment Status</label>
-                    <div className="flex bg-white p-1.5 rounded-none border border-black/5 shadow-sm">
+                    <div className="flex bg-white p-1.5 rounded-[10px] border border-black/5 shadow-sm">
                        <button 
                          onClick={() => setPaymentStatus('UNPAID')}
-                         className={cn("flex-1 py-3 font-black text-xs rounded-none transition-all", paymentStatus === 'UNPAID' ? "bg-expense text-white shadow-lg" : "text-black/30")}
+                         className={cn("flex-1 py-3 font-black text-xs rounded-[10px] transition-all", paymentStatus === 'UNPAID' ? "bg-expense text-white shadow-lg" : "text-black/30")}
                        >
                          UNPAID
                        </button>
                        <button 
                          onClick={() => setPaymentStatus('PAID')}
-                         className={cn("flex-1 py-3 font-black text-xs rounded-none transition-all", paymentStatus === 'PAID' ? "bg-ios-blue text-white shadow-lg" : "text-black/30")}
+                         className={cn("flex-1 py-3 font-black text-xs rounded-[10px] transition-all", paymentStatus === 'PAID' ? "bg-ios-blue text-white shadow-lg" : "text-black/30")}
                        >
                          PAID
                        </button>
@@ -315,14 +315,14 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                         value={customerName}
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="Customer Name"
-                        className="w-full bg-white border border-black/5 rounded-none p-5 font-bold text-sm outline-none shadow-sm"
+                        className="w-full bg-white border border-black/5 rounded-[10px] p-5 font-bold text-sm outline-none shadow-sm"
                       />
                       <input
                         type="text"
                         value={customerPhone}
                         onChange={(e) => setCustomerPhone(e.target.value)}
                         placeholder="Phone Number (Optional)"
-                        className="w-full bg-white border border-black/5 rounded-none p-5 font-bold text-sm outline-none shadow-sm"
+                        className="w-full bg-white border border-black/5 rounded-[10px] p-5 font-bold text-sm outline-none shadow-sm"
                       />
                     </div>
                   </div>
@@ -337,7 +337,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                     </div>
                     <div className="space-y-3">
                       {items.map((item) => (
-                        <div key={item.id} className="p-5 bg-white rounded-none border border-black/5 shadow-sm space-y-4 relative group">
+                        <div key={item.id} className="p-5 bg-white rounded-[10px] border border-black/5 shadow-sm space-y-4 relative group">
                             <button 
                               onClick={() => removeItem(item.id)}
                               className="absolute right-4 top-4 p-2 text-expense/20 hover:text-expense"
@@ -404,13 +404,13 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                         alert('Bill saved successfully to archives!');
                         onClose();
                     }}
-                    className="flex-1 bg-black text-white py-5 rounded-none font-black text-xs shadow-2xl active:scale-[0.98] transition-all  tracking-tight italic"
+                    className="flex-1 bg-black text-white py-5 rounded-[10px] font-black text-xs shadow-2xl active:scale-[0.98] transition-all  tracking-tight italic"
                   >
                     SAVE & CLOSE
                   </button>
                   <button 
                     onClick={() => setViewMode('VIEWER')}
-                    className="flex-1 bg-ios-blue text-white py-5 rounded-none font-black text-xs shadow-2xl shadow-ios-blue/30 active:scale-[0.98] transition-all  tracking-tight"
+                    className="flex-1 bg-ios-blue text-white py-5 rounded-[10px] font-black text-xs shadow-2xl shadow-ios-blue/30 active:scale-[0.98] transition-all  tracking-tight"
                   >
                     VIEW BILL
                   </button>
@@ -425,7 +425,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                       key={s}
                       onClick={() => setStyle(s)} 
                       className={cn(
-                        "px-6 py-2 rounded-none text-[10px] font-black  tracking-tight transition-all", 
+                        "px-6 py-2 rounded-[10px] text-[10px] font-black  tracking-tight transition-all", 
                         style === s ? "bg-black text-white shadow-lg" : "bg-white text-black/30 border border-black/5"
                       )}
                     >
@@ -468,7 +468,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            </div>
                            <div className="border border-black p-4 flex flex-col items-center justify-center">
                                <p className="text-[10px] font-black text-black/30 mb-1  tracking-tight">STATUS:</p>
-                               <span className={cn("text-xs font-black px-3 py-1 rounded-none", paymentStatus === 'PAID' ? "text-income" : "text-expense")}>
+                               <span className={cn("text-xs font-black px-3 py-1 rounded-[10px]", paymentStatus === 'PAID' ? "text-income" : "text-expense")}>
                                   {paymentStatus}
                                </span>
                            </div>
@@ -543,7 +543,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            {paymentStatus === 'PAID' && (
                               <div className="absolute inset-x-0 inset-y-[-20%] flex items-center justify-center pointer-events-none z-10 select-none overflow-hidden">
                                  <div 
-                                    className="border-[6px] border-[#2563EB]/70 text-[#2563EB]/80 p-6 rounded-none flex flex-col items-center justify-center rotate-[-12deg] ring-4 ring-[#2563EB]/5 bg-white/10 backdrop-blur-[1px] shadow-2xl scale-125"
+                                    className="border-[6px] border-[#2563EB]/70 text-[#2563EB]/80 p-6 rounded-[10px] flex flex-col items-center justify-center rotate-[-12deg] ring-4 ring-[#2563EB]/5 bg-white/10 backdrop-blur-[1px] shadow-2xl scale-125"
                                     style={{
                                       boxShadow: 'inset 0 0 15px rgba(37, 99, 235, 0.1)',
                                       filter: 'contrast(1.5) saturate(1.4)',
@@ -595,15 +595,15 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
 
                     {style === 'PREMIUM' && (
                        <div className="p-10 text-black bg-white min-h-full flex flex-col relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#36A893]/5 rounded-none-[100%] z-0" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#36A893]/5 rounded-[10px]-[100%] z-0" />
                         
                         <div className="flex justify-between items-start mb-16 border-t-[10px] border-[#36A893] pt-10 relative z-10">
                             <div className="flex items-center gap-4">
-                              <div className="w-16 h-16 bg-[#36A893] rounded-none flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-[#36A893]/30">CF</div>
+                              <div className="w-16 h-16 bg-[#36A893] rounded-[10px] flex items-center justify-center text-white font-black text-3xl shadow-2xl shadow-[#36A893]/30">CF</div>
                               <div className="space-y-1">
                                   <h1 className="text-3xl font-black italic tracking-tighter leading-none">MVEE.IN</h1>
                                   <div className="flex items-center gap-2">
-                                     <div className="w-2 h-2 bg-[#36A893] rounded-none animate-pulse" />
+                                     <div className="w-2 h-2 bg-[#36A893] rounded-[10px] animate-pulse" />
                                      <p className="text-[10px] text-black/40 font-black  tracking-tight">+91 9961463124</p>
                                   </div>
                               </div>
@@ -632,7 +632,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                             </div>
                             <div className="flex flex-col items-end justify-center">
                                 {paymentStatus === 'UNPAID' ? (
-                                   <div className="absolute top-0 right-0 border-[8px] border-expense/20 text-expense/20 px-10 py-6 rounded-none text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none group-hover:opacity-60 transition-opacity"
+                                   <div className="absolute top-0 right-0 border-[8px] border-expense/20 text-expense/20 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none group-hover:opacity-60 transition-opacity"
                                      style={{
                                        maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                                        WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
@@ -641,7 +641,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                       UNPAID
                                    </div>
                                 ) : (
-                                   <div className="absolute top-0 right-0 border-[8px] border-ios-blue/30 text-ios-blue/30 px-10 py-6 rounded-none text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none"
+                                   <div className="absolute top-0 right-0 border-[8px] border-ios-blue/30 text-ios-blue/30 px-10 py-6 rounded-[10px] text-5xl font-black  -rotate-[15deg] tracking-tight select-none pointer-events-none"
                                      style={{
                                        maskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                                        WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'0 0 200 200\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
@@ -670,10 +670,10 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            <table className="w-full">
                              <thead>
                                 <tr className="bg-gray-900 text-white text-[10px] font-black  tracking-tight border-none shadow-xl">
-                                  <th className="p-5 text-left rounded-none-2xl">#</th>
+                                  <th className="p-5 text-left rounded-[10px]-2xl">#</th>
                                   <th className="p-5 text-left">Description</th>
                                   <th className="p-5 text-center">Qty</th>
-                                  <th className="p-5 text-right rounded-none-2xl">Subtotal</th>
+                                  <th className="p-5 text-right rounded-[10px]-2xl">Subtotal</th>
                                 </tr>
                              </thead>
                              <tbody className="divide-y divide-black/5 pt-4">
@@ -697,7 +697,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            <div className="flex flex-col items-end gap-1 border-t-[2px] border-black pt-10">
                               <h3 className="text-xl font-black italic text-black/20  tracking-tight leading-none mb-2">Total Bill Value</h3>
                               <h2 className="text-8xl font-black tracking-tighter italic leading-none mb-3 text-black">₹{total}</h2>
-                              <p className="text-[10px] font-black text-black/60  tracking-tight italic leading-none bg-[#36A893]/10 px-4 py-2 rounded-none">
+                              <p className="text-[10px] font-black text-black/60  tracking-tight italic leading-none bg-[#36A893]/10 px-4 py-2 rounded-[10px]">
                                 Rupees {total} only
                               </p>
                            </div>
@@ -709,13 +709,13 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                               </p>
                            </div>
 
-                           <div className="flex justify-between items-end bg-[#FBFBFB] p-10 rounded-none border border-black/5 shadow-inner">
+                           <div className="flex justify-between items-end bg-[#FBFBFB] p-10 rounded-[10px] border border-black/5 shadow-inner">
                               <div>
                                  <p className="text-[10px] font-black text-black/30 italic  tracking-tight mb-4">Note to client:</p>
                                  <p className="text-[10px] font-black text-black/40 max-w-[3200px] leading-relaxed  italic opacity-60">This certificate serves as a valid proof of transaction. All disputes are subject to the terms of service of CashFlow Professional.</p>
                               </div>
                               <div className="w-64 text-center">
-                                 <div className="w-20 h-20 border-[6px] border-[#36A893]/10 rounded-none mx-auto mb-6 flex items-center justify-center relative overflow-hidden group">
+                                 <div className="w-20 h-20 border-[6px] border-[#36A893]/10 rounded-[10px] mx-auto mb-6 flex items-center justify-center relative overflow-hidden group">
                                     <CheckCircle2 className="w-10 h-10 text-[#36A893]/20" />
                                     <div className="absolute inset-0 bg-[#36A893]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                                  </div>
@@ -723,7 +723,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                  <p className="text-[9px] font-black  tracking-tight text-black/40 italic">System Verified</p>
                               </div>
                            </div>
-                           <div className="h-6 bg-[#36A893] rounded-none w-full relative overflow-hidden shadow-xl shadow-[#36A893]/20">
+                           <div className="h-6 bg-[#36A893] rounded-[10px] w-full relative overflow-hidden shadow-xl shadow-[#36A893]/20">
                               <div className="absolute inset-0 bg-white/30 animate-[pulse_2s_infinite] mix-blend-overlay" />
                            </div>
                         </div>
@@ -738,14 +738,14 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                      <button 
                        disabled={isCapturing || isSharing}
                        onClick={() => handleDownload('JPG')}
-                       className="w-16 h-16 bg-gray-50 border border-black/5 rounded-none flex flex-col items-center justify-center text-black active:scale-90 transition-all font-black group disabled:opacity-50"
+                       className="w-16 h-16 bg-gray-50 border border-black/5 rounded-[10px] flex flex-col items-center justify-center text-black active:scale-90 transition-all font-black group disabled:opacity-50"
                      >
                         <ImageIcon className={cn("w-6 h-6 text-black/30 group-hover:text-black", isCapturing && "animate-pulse")} />
                         <span className="text-[8px]  tracking-tight mt-1">{isCapturing ? 'Saving' : 'Image'}</span>
                      </button>
                      <button 
                        onClick={() => handleDownload('PDF')}
-                       className="w-16 h-16 bg-gray-50 border border-black/5 rounded-none flex flex-col items-center justify-center text-black active:scale-90 transition-all font-black group"
+                       className="w-16 h-16 bg-gray-50 border border-black/5 rounded-[10px] flex flex-col items-center justify-center text-black active:scale-90 transition-all font-black group"
                      >
                         <FileText className="w-6 h-6 text-black/30 group-hover:text-black" />
                         <span className="text-[8px]  tracking-tight mt-1">PDF</span>
@@ -754,7 +754,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                   <button 
                     disabled={isSharing || isCapturing}
                     onClick={handleWhatsAppShare}
-                    className="flex-1 h-16 bg-[#25D366] text-white rounded-none font-black flex items-center justify-center gap-4 shadow-2xl shadow-[#25D366]/20 active:scale-95 transition-all text-[13px]  tracking-tight italic disabled:opacity-50"
+                    className="flex-1 h-16 bg-[#25D366] text-white rounded-[10px] font-black flex items-center justify-center gap-4 shadow-2xl shadow-[#25D366]/20 active:scale-95 transition-all text-[13px]  tracking-tight italic disabled:opacity-50"
                   >
                     {isSharing ? (
                        <span className="animate-pulse">PREPARING ATTACHMENT...</span>

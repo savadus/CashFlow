@@ -70,8 +70,8 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-hidden flex flex-col max-w-full lg:max-w-7xl mx-auto w-full bg-[#FAF9F6] relative text-black">
-      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[30%] bg-ios-blue/10 blur-[120px] rounded-none pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-20%] w-[50%] h-[40%] bg-purple-500/10 blur-[100px] rounded-none pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[30%] bg-ios-blue/10 blur-[120px] rounded-[10px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[-20%] w-[50%] h-[40%] bg-purple-500/10 blur-[100px] rounded-[10px] pointer-events-none" />
       
       <Header 
         onAddClick={() => openAddModal('EXPENSE')} 
@@ -93,7 +93,7 @@ export default function Home() {
               />
               <CashPositionCards onDebtsClick={() => setIsDebtsOpen(true)} />
               <div className="px-6 flex items-center justify-between mb-4 mt-8 lg:mt-4">
-                <h3 className="text-[10px] font-bold text-black/60  tracking-tight leading-none">{t('ACCOUNTS')}</h3>
+                <h3 className="text-xs font-bold text-black/60 tracking-tight leading-none">{t('ACCOUNTS')}</h3>
                 {selectedSpaceId && (
                   <button 
                     onClick={() => setSelectedSpaceId(null)}
@@ -105,7 +105,7 @@ export default function Home() {
               </div>
               <SpaceGrid onSpaceSelect={handleSpaceSelect} />
             </div>
-            <div className="lg:col-span-5 lg:glass lg:rounded-none lg:max-h-[85vh] lg:overflow-y-auto lg:mt-4 lg:mb-8 border border-black/5 shadow-sm">
+            <div className="lg:col-span-5 lg:glass lg:rounded-[10px] lg:max-h-[85vh] lg:overflow-y-auto lg:mt-4 lg:mb-8 border border-black/5 shadow-sm">
               <TransactionList 
                 transactions={filteredTransactions} 
                 onTransactionSelect={(t) => setEditingTransaction(t)}
@@ -190,25 +190,25 @@ export default function Home() {
           <div className="max-w-2xl mx-auto flex items-center gap-2">
             <button
               onClick={() => openAddModal('EXPENSE')}
-              className="flex-1 bg-expense text-white py-4 rounded-none font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-expense text-white py-4 rounded-[10px] font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
             >
-              <div className="p-1 bg-white/20 rounded-none shrink-0">
+              <div className="p-1 bg-white/20 rounded-[10px] shrink-0">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
               <span>{t('OUT')}</span>
             </button>
             <button
               onClick={() => openAddModal('INCOME')}
-              className="flex-1 bg-income text-white py-4 rounded-none font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-income text-white py-4 rounded-[10px] font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
             >
-              <div className="p-1 bg-white/20 rounded-none shrink-0">
+              <div className="p-1 bg-white/20 rounded-[10px] shrink-0">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
               <span>{t('IN')}</span>
             </button>
             <button
               onClick={() => openAddModal('TRANSFER')}
-              className="w-14 h-14 bg-ios-blue text-white rounded-none font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-ios-blue/20 shrink-0"
+              className="w-14 h-14 bg-ios-blue text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-ios-blue/20 shrink-0"
             >
               <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -216,7 +216,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setIsMoreOpen(true)}
-              className="w-14 h-14 bg-black text-white rounded-none font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
+              className="w-14 h-14 bg-black text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
             >
               <LayoutGrid className="w-6 h-6" />
             </button>

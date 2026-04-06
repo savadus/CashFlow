@@ -165,7 +165,7 @@ export const TransactionModal = ({
                   </h2>
                </div>
             </div>
-            <div className="flex bg-gray-100 p-1 rounded-xl border border-black/5">
+            <div className="flex bg-gray-100 p-1 rounded-[10px] border border-black/5">
                 {(['EXPENSE', 'INCOME', 'TRANSFER'] as TransactionType[]).map(t => (
                   <button 
                     key={t}
@@ -183,7 +183,7 @@ export const TransactionModal = ({
 
           <div className="flex-1 overflow-y-auto">
              <div className="p-4">
-                <div className="bg-white rounded-2xl p-5 border border-black/5 shadow-sm flex items-center gap-4">
+                <div className="bg-white rounded-[10px] p-5 border border-black/5 shadow-sm flex items-center gap-4">
                    <span className={cn("text-2xl font-bold", getThemeText())}>₹</span>
                    <div className="flex-1">
                       <div className="text-xl font-bold text-black tracking-tight">
@@ -198,7 +198,7 @@ export const TransactionModal = ({
              </div>
 
              <div className="p-4 space-y-4">
-                <div className="bg-white rounded-[24px] p-5 border border-black/5 shadow-sm space-y-6">
+                <div className="bg-white rounded-[10px] p-5 border border-black/5 shadow-sm space-y-6">
                     <div>
 base                       <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">SELECT LOCATION (FROM)</p>
                        <div className="grid grid-cols-2 gap-3">
@@ -208,7 +208,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                                setBankPickerOpen(false);
                             }}
                             className={cn(
-                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                               "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                mode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
@@ -221,7 +221,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                                setBankPickerOpen(!bankPickerOpen);
                             }}
                             className={cn(
-                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                               "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                mode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
@@ -266,7 +266,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                              <button 
                                onClick={() => setToMode('IN_HAND')}
                                className={cn(
-                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                                  "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                   toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -276,7 +276,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                              <button 
                                onClick={() => setToBankPickerOpen(!toBankPickerOpen)}
                                className={cn(
-                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
+                                  "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                   toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -293,7 +293,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                           <select 
                             value={spaceId}
                             onChange={(e) => setSpaceId(e.target.value)}
-                            className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
+                            className="w-full bg-white text-black h-14 rounded-[10px] font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
                           >
                              {state.spaces.map(s => (
                                <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
@@ -303,7 +303,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                              <select 
                                value={toSpaceId}
                                onChange={(e) => setToSpaceId(e.target.value)}
-                               className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
+                               className="w-full bg-white text-black h-14 rounded-[10px] font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px]  tracking-tight appearance-none cursor-pointer outline-none border border-black/5"
                              >
                                 {state.spaces.filter(s => s.id !== spaceId).map(s => (
                                   <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
@@ -317,7 +317,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                                   value={note}
                                   onChange={(e) => setNote(e.target.value)}
                                   placeholder="NOTE..."
-                                  className="w-full pl-14 pr-6 h-16 bg-black/5 rounded-[24px] font-black text-[10px]  tracking-tight outline-none border-none placeholder:text-black/30"
+                                  className="w-full pl-14 pr-6 h-16 bg-black/5 rounded-[10px] font-black text-[10px]  tracking-tight outline-none border-none placeholder:text-black/30"
                                 />
                              </div>
                           )}
@@ -348,7 +348,7 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                   { k: 'DEL', c: 'bg-black/5 text-black' },
                   { k: '+', c: 'bg-ios-blue/10 text-ios-blue' },
                 ].map(item => (
-                  <button key={item.k} onClick={() => handleKeyPress(item.k)} className={cn("h-16 rounded-2xl flex items-center justify-center text-xl font-bold transition-all active:scale-95 shadow-sm", item.c)}>
+                  <button key={item.k} onClick={() => handleKeyPress(item.k)} className={cn("h-16 rounded-[10px] flex items-center justify-center text-xl font-bold transition-all active:scale-95 shadow-sm", item.c)}>
                     {item.k === 'x' ? <X className="w-5 h-5 stroke-[4]" /> : item.k === '-' ? <Minus className="w-6 h-6 stroke-[4]" /> : item.k === 'DEL' ? <Delete className="w-6 h-6" /> : item.k === '+' ? <Plus className="w-6 h-6 stroke-[4]" /> : item.k}
                   </button>
                 ))}
@@ -357,14 +357,14 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
              <div className="grid grid-cols-4 gap-2">
                 <button 
                   onClick={() => handleKeyPress('SUM')}
-                  className="col-span-1 h-16 bg-ios-blue/20 text-ios-blue rounded-2xl flex items-center justify-center active:scale-95 transition-all text-xl font-black"
+                  className="col-span-1 h-16 bg-ios-blue/20 text-ios-blue rounded-[10px] flex items-center justify-center active:scale-95 transition-all text-xl font-black"
                 >
                    <Equal className="w-6 h-6 stroke-[4]" />
                 </button>
                 <button 
                    onClick={handleSave}
                    className={cn(
-                     "col-span-3 h-16 rounded-2xl font-black text-[12px]  tracking-tight italic shadow-2xl transition-all active:scale-[0.98]",
+                     "col-span-3 h-16 rounded-[10px] font-black text-[12px]  tracking-tight italic shadow-2xl transition-all active:scale-[0.98]",
                      parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
                    )}
                  >

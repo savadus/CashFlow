@@ -125,8 +125,8 @@ export default function Onboarding() {
         }}
      >
         {/* Background decorative elements */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-ios-blue/5 blur-[120px] rounded-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 blur-[120px] rounded-none" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-ios-blue/5 blur-[120px] rounded-[10px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 blur-[120px] rounded-[10px]" />
  
         <div className="w-full max-w-lg relative">
            {/* Progress Indicator */}
@@ -134,7 +134,7 @@ export default function Onboarding() {
               {[0, 1, 2, 3].map(s => (
                 <div 
                   key={s}
-                  className={`h-1 rounded-none transition-all duration-500 ${step >= s ? 'w-8 bg-black' : 'w-2 bg-black/10'}`}
+                  className={`h-1 rounded-[10px] transition-all duration-500 ${step >= s ? 'w-8 bg-black' : 'w-2 bg-black/10'}`}
                 />
               ))}
            </div>
@@ -165,13 +165,13 @@ export default function Onboarding() {
                                 value={otp}
                                 onChange={(e) => setOtp(e.target.value)}
                                 placeholder="ENTER 6-DIGIT OTP"
-                                className="w-full bg-white border-2 border-black/5 rounded-none p-6 pl-16 font-black tracking-tight  text-sm outline-none focus:border-ios-blue"
+                                className="w-full bg-white border-2 border-black/5 rounded-[10px] p-6 pl-16 font-black tracking-tight  text-sm outline-none focus:border-ios-blue"
                               />
                            </div>
                            <button 
                              onClick={handleVerifyOTP}
                              disabled={loading}
-                             className="w-full bg-black text-white p-5 rounded-none font-bold  text-[10px] tracking-tight flex items-center justify-center gap-3 shadow-xl"
+                             className="w-full bg-black text-white p-5 rounded-[10px] font-bold  text-[10px] tracking-tight flex items-center justify-center gap-3 shadow-xl"
                            >
                               {loading ? 'VERIFYING...' : 'VERIFY & CONNECT'}
                               <ShieldCheck className="w-4 h-4" />
@@ -192,13 +192,13 @@ export default function Onboarding() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Gmail address"
-                                className="w-full bg-white border-2 border-black/5 rounded-none p-6 pl-16 font-bold tracking-tight text-sm outline-none focus:border-ios-blue"
+                                className="w-full bg-white border-2 border-black/5 rounded-[10px] p-6 pl-16 font-bold tracking-tight text-sm outline-none focus:border-ios-blue"
                               />
                            </div>
                            <button 
                              onClick={handleSendOTP}
                              disabled={loading || !email}
-                             className="w-full bg-black text-white p-5 rounded-none font-bold text-[10px] tracking-tight flex items-center justify-center gap-3 disabled:opacity-20 shadow-xl"
+                             className="w-full bg-black text-white p-5 rounded-[10px] font-bold text-[10px] tracking-tight flex items-center justify-center gap-3 disabled:opacity-20 shadow-xl"
                            >
                               {loading ? 'Sending...' : 'Send secure OTP'}
                               <ArrowRight className="w-4 h-4" />
@@ -210,7 +210,7 @@ export default function Onboarding() {
                            </div>
                            <button 
                              onClick={() => setStep(1)}
-                             className="w-full bg-white border border-black/10 text-black/40 p-5 rounded-none font-bold text-[9px] tracking-tight flex items-center justify-center gap-2 hover:bg-black/5 transition-all shadow-sm"
+                             className="w-full bg-white border border-black/10 text-black/40 p-5 rounded-[10px] font-bold text-[9px] tracking-tight flex items-center justify-center gap-2 hover:bg-black/5 transition-all shadow-sm"
                            >
                               <User className="w-4 h-4" /> Guest Hub (No Sync)
                            </button>
@@ -254,7 +254,7 @@ export default function Onboarding() {
                            setProfile(p => ({ ...p, language: lang.id }));
                            setStep(2);
                          }}
-                         className={`p-4 rounded-none border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.language === lang.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
+                         className={`p-4 rounded-[10px] border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.language === lang.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
                        >
                           <div className="text-left">
                              <p className="text-[11px] font-bold tracking-tight leading-none mb-1">{lang.name}</p>
@@ -290,7 +290,7 @@ export default function Onboarding() {
                        value={profile.name}
                        onChange={(e) => setProfile(p => ({ ...p, name: e.target.value }))}
                        placeholder={profile.language === 'ml' ? 'പേര് നൽകുക...' : profile.language === 'hi' ? 'नाम दर्ज करें...' : 'Enter name...'}
-                       className="w-full bg-white border border-black/10 focus:border-black rounded-none p-5 pl-14 font-bold text-base text-black tracking-normal outline-none transition-all shadow-sm placeholder:text-black/20"
+                       className="w-full bg-white border border-black/10 focus:border-black rounded-[10px] p-5 pl-14 font-bold text-base text-black tracking-normal outline-none transition-all shadow-sm placeholder:text-black/20"
                        autoFocus
                        spellCheck={false}
                        onKeyDown={(e) => e.key === 'Enter' && profile.name && setStep(3)}
@@ -300,7 +300,7 @@ export default function Onboarding() {
                   <button 
                     disabled={!profile.name}
                     onClick={() => setStep(3)}
-                    className="w-full bg-black text-white p-5 rounded-none font-bold text-[10px] tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all disabled:opacity-20"
+                    className="w-full bg-black text-white p-5 rounded-[10px] font-bold text-[10px] tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all disabled:opacity-20"
                   >
                      <span>{profile.language === 'ml' ? 'അടുത്ത ഘട്ടം' : profile.language === 'hi' ? 'अगला कदम' : 'Next step'}</span>
                      <ArrowRight className="w-4 h-4 ml-2" />
@@ -327,10 +327,10 @@ export default function Onboarding() {
                        <button
                          key={p.id}
                          onClick={() => setProfile(prev => ({ ...prev, purpose: p.id as any }))}
-                         className={`p-4 rounded-none border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.purpose === p.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
+                         className={`p-4 rounded-[10px] border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.purpose === p.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
                        >
                           <div className="flex items-center gap-6">
-                             <div className={`w-10 h-10 rounded-none flex items-center justify-center transition-all ${profile.purpose === p.id ? 'bg-white/10' : 'bg-black/5 group-hover:bg-black group-hover:text-white'}`}>
+                             <div className={`w-10 h-10 rounded-[10px] flex items-center justify-center transition-all ${profile.purpose === p.id ? 'bg-white/10' : 'bg-black/5 group-hover:bg-black group-hover:text-white'}`}>
                                 {p.icon}
                              </div>
                              <p className="text-[8px] text-white/50 font-bold tracking-tight">{t('LEDGER')}</p>
@@ -343,11 +343,11 @@ export default function Onboarding() {
                    <button 
                      disabled={!profile.name || loading}
                      onClick={handleComplete}
-                     className="w-full bg-ios-blue text-white h-14 rounded-none font-bold text-[10px]  tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
+                     className="w-full bg-ios-blue text-white h-14 rounded-[10px] font-bold text-[10px]  tracking-tight flex items-center justify-center gap-4 shadow-xl active:scale-95 transition-all mt-6 shadow-ios-blue/10 disabled:opacity-20"
                    >
                       <span>{loading ? (profile.language === 'ml' ? 'സമന്വയിപ്പിക്കുന്നു...' : profile.language === 'hi' ? 'सिंक हो रहा है...' : 'CONNECTING...') : (profile.language === 'ml' ? 'തുടങ്ങുക' : profile.language === 'hi' ? 'प्रवेश करें' : 'ENTER CASHFLOW')}</span>
                       {loading ? (
-                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-none animate-spin" />
+                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-[10px] animate-spin" />
                       ) : (
                          <Check className="w-4 h-4 ml-2" />
                       )}
