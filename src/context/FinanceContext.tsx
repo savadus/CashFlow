@@ -51,7 +51,8 @@ const initialState: State = {
     'BANK_1712345678902': 0,
     'BANK_1712345678903': 0
   },
-  activeHub: 'NONE'
+  activeHub: 'NONE',
+  isLocked: true,
 };
 
 const adjustLiquidBalance = (balances: Record<string, number>, mode: string, amount: number, isAdd: boolean) => {
