@@ -28,16 +28,16 @@ export const SpaceCard = ({ space, onClick }: { space: Space, onClick: () => voi
     >
       <div className={cn(
         "p-3 rounded-2xl mb-6 bg-tertiary",
-        space.name === 'Business Cash' && "text-emerald-500 font-bold",
-        space.name === 'Personal Cash' && "text-blue-600 font-bold",
-        space.name === 'Institution Cash' && "text-orange-600 font-bold",
-        space.name === 'Others Cash' && "text-purple-600 font-bold",
-        space.name === 'Debts' && "text-amber-600 font-bold"
+        space.name === 'Business Cash' && "text-emerald-500 font-semibold",
+        space.name === 'Personal Cash' && "text-blue-600 font-semibold",
+        space.name === 'Institution Cash' && "text-orange-600 font-semibold",
+        space.name === 'Others Cash' && "text-purple-600 font-semibold",
+        space.name === 'Debts' && "text-amber-600 font-semibold"
       )}>
         <Icon className="w-6 h-6" />
       </div>
-      <span className="text-text-dim text-[11px] font-black uppercase tracking-widest mb-1">{space.name}</span>
-      <span className="text-xl font-black italic tracking-tighter text-foreground">
+      <span className="text-text-dim text-[11px] font-semibold uppercase tracking-widest mb-1">{space.name}</span>
+      <span className="text-xl font-medium italic tracking-tighter text-foreground">
         {state.privacyMode ? "XXXXXX" : formatCurrency(space.balance, false)}
       </span>
     </motion.button>

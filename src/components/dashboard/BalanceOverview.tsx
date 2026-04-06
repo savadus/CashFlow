@@ -25,7 +25,7 @@ export const BalanceOverview = React.memo(({ onNetClick }: { onNetClick: () => v
     >
       <div className="flex flex-col">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-text-dim text-[10px] font-black uppercase tracking-[0.3em] italic">{t('NET_BALANCE')}</span>
+          <span className="text-text-dim text-[10px] font-medium uppercase tracking-[0.3em] italic">{t('NET_BALANCE')}</span>
           <button
             onClick={() => dispatch({ type: 'TOGGLE_PRIVACY' })}
             className="p-1 px-2.5 bg-secondary rounded-lg hover:bg-tertiary transition-colors border border-card-border"
@@ -40,7 +40,7 @@ export const BalanceOverview = React.memo(({ onNetClick }: { onNetClick: () => v
           className="text-left w-fit active:opacity-60 transition-opacity"
         >
           <h2 className={cn(
-             "text-4xl md:text-5xl lg:text-5xl font-black italic tracking-tighter leading-none",
+             "text-4xl md:text-5xl lg:text-5xl font-medium italic tracking-tighter leading-none",
              totalBalance > 0 ? "text-income" : totalBalance < 0 ? "text-expense" : "text-foreground"
           )}>
             {state.privacyMode ? "XXXXXX" : formatCurrency(totalBalance, false)}

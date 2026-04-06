@@ -71,7 +71,7 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
             <TrendingUp className="w-4 h-4 text-income" />
           </div>
           <span className="text-[9px] text-text-dim uppercase font-black tracking-widest mb-1 italic">{t('INCOME')}</span>
-          <span className="text-[12px] font-black italic tracking-tighter text-income">{formatCurrency(income, state.privacyMode)}</span>
+          <span className="text-[12px] font-medium italic tracking-tighter text-income">{formatCurrency(income, state.privacyMode)}</span>
         </motion.button>
         
         <motion.button 
@@ -84,7 +84,7 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
             <TrendingDown className="w-4 h-4 text-expense" />
           </div>
           <span className="text-[9px] text-text-dim uppercase font-black tracking-widest mb-1 italic">{t('EXPENSE')}</span>
-          <span className="text-[12px] font-black italic tracking-tighter text-expense">{formatCurrency(expense, state.privacyMode)}</span>
+          <span className="text-[12px] font-medium italic tracking-tighter text-expense">{formatCurrency(expense, state.privacyMode)}</span>
         </motion.button>
 
         <motion.button 
@@ -97,7 +97,7 @@ export const Insights = React.memo(({ onIncomeClick, onExpenseClick, onNetClick 
             <Wallet className="w-4 h-4 text-ios-blue" />
           </div>
           <span className="text-[9px] text-text-dim uppercase font-black tracking-widest mb-1 italic">Net</span>
-          <span className="text-[12px] font-black italic tracking-tighter text-foreground">{formatCurrency(net, state.privacyMode)}</span>
+          <span className="text-[12px] font-medium italic tracking-tighter text-foreground">{formatCurrency(net, state.privacyMode)}</span>
         </motion.button>
       </div>
     </div>
