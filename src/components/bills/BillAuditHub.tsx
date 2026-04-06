@@ -44,7 +44,7 @@ export const BillAuditHub = ({
         >
           {/* Header */}
           <div className="bg-white border-b border-black/5 px-6 py-6 flex items-center">
-             <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors mr-4">
+             <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-none transition-colors mr-4">
                 <ArrowLeft className="w-6 h-6 text-black/40" />
              </button>
              <div>
@@ -56,11 +56,11 @@ export const BillAuditHub = ({
           <div className="flex-1 overflow-y-auto">
              {/* Stats Cards */}
              <div className="p-6 grid grid-cols-2 gap-4">
-                <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm">
+                <div className="bg-white p-6 rounded-none border border-black/5 shadow-sm">
                    <p className="text-[9px] font-black text-black/20  tracking-tight mb-2">Total Billed</p>
                    <p className="text-2xl font-black tracking-tighter text-black">₹{totalBilled}</p>
                 </div>
-                <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm">
+                <div className="bg-white p-6 rounded-none border border-black/5 shadow-sm">
                    <p className="text-[9px] font-black text-black/20  tracking-tight mb-2">Total Pending</p>
                    <p className="text-2xl font-black tracking-tighter text-expense">₹{totalPending}</p>
                 </div>
@@ -75,15 +75,15 @@ export const BillAuditHub = ({
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="SEARCH CUSTOMER..."
-                      className="w-full pl-12 pr-6 py-4 bg-white rounded-2xl font-bold text-xs  tracking-tight outline-none border border-black/5"
+                      className="w-full pl-12 pr-6 py-4 bg-white rounded-none font-bold text-xs  tracking-tight outline-none border border-black/5"
                    />
                 </div>
-                <div className="flex bg-white p-1 rounded-2xl border border-black/5 shadow-sm">
+                <div className="flex bg-white p-1 rounded-none border border-black/5 shadow-sm">
                    {(['ALL', 'PAID', 'UNPAID'] as const).map(f => (
                      <button 
                        key={f}
                        onClick={() => setFilter(f)}
-                       className={cn("flex-1 py-2 rounded-xl text-[9px] font-black  tracking-tighter transition-all", filter === f ? "bg-black text-white" : "text-black/30")}
+                       className={cn("flex-1 py-2 rounded-none text-[9px] font-black  tracking-tighter transition-all", filter === f ? "bg-black text-white" : "text-black/30")}
                      >
                        {f}
                      </button>
@@ -94,7 +94,7 @@ export const BillAuditHub = ({
              {/* Bills List */}
              <div className="px-6 space-y-4 pb-24">
                 {filteredBills.length === 0 ? (
-                  <div className="bg-white rounded-[40px] p-20 border-2 border-dashed border-black/5 flex flex-col items-center justify-center text-center opacity-40">
+                  <div className="bg-white rounded-none p-20 border-2 border-dashed border-black/5 flex flex-col items-center justify-center text-center opacity-40">
                      <History className="w-16 h-16 mb-4 stroke-[1]" />
                      <p className="font-black text-xs  tracking-tight italic">No Archived Bills Found</p>
                   </div>
@@ -105,9 +105,9 @@ export const BillAuditHub = ({
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       onClick={() => onViewBill(bill)}
-                      className="bg-white rounded-[32px] p-6 border border-black/5 shadow-sm group active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden"
+                      className="bg-white rounded-none p-6 border border-black/5 shadow-sm group active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden"
                     >
-                       <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-[100%] z-0 translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform" />
+                       <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-none-[100%] z-0 translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform" />
                        <div className="relative z-10">
                           <div className="flex justify-between items-start mb-4">
                              <div>
@@ -116,17 +116,17 @@ export const BillAuditHub = ({
                                 </p>
                                 <h3 className="text-xl font-black  tracking-tighter italic text-black">{bill.customerName}</h3>
                              </div>
-                             <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black  tracking-tight", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
+                             <div className={cn("px-4 py-1.5 rounded-none text-[9px] font-black  tracking-tight", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
                                 {bill.status}
                              </div>
                           </div>
 
                           <div className="flex items-center justify-between border-t border-black/5 pt-4 mt-2">
                              <div className="flex gap-2">
-                                <div className="p-2 bg-gray-50 rounded-xl text-black/20 group-hover:text-ios-blue transition-colors">
+                                <div className="p-2 bg-gray-50 rounded-none text-black/20 group-hover:text-ios-blue transition-colors">
                                    <FileText className="w-4 h-4" />
                                 </div>
-                                <div className="p-2 bg-gray-50 rounded-xl text-black/20 group-hover:text-ios-blue transition-colors">
+                                <div className="p-2 bg-gray-50 rounded-none text-black/20 group-hover:text-ios-blue transition-colors">
                                    <Share2 className="w-4 h-4" />
                                 </div>
                              </div>
@@ -156,9 +156,9 @@ export const BillAuditHub = ({
           <div className="bg-white p-6 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] border-t border-black/5 shadow-[0_-15px_30px_rgba(0,0,0,0.03)] z-50">
              <button 
                onClick={onOpenGenerator}
-               className="w-full bg-black text-white h-16 rounded-[24px] font-black flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all text-sm  tracking-tight italic"
+               className="w-full bg-black text-white h-16 rounded-none font-black flex items-center justify-center gap-4 shadow-2xl active:scale-95 transition-all text-sm  tracking-tight italic"
              >
-                <div className="p-1.5 bg-white/20 rounded-lg">
+                <div className="p-1.5 bg-white/20 rounded-none">
                    <Receipt className="w-5 h-5" />
                 </div>
                 CREATE NEW BILL

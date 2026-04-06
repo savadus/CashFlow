@@ -67,12 +67,12 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
     >
       {/* Header */}
       <div className="bg-black px-6 py-8 pb-10 relative overflow-hidden shrink-0">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-none -mr-20 -mt-20 blur-3xl" />
         <div className="flex items-center justify-between text-white relative z-10">
           <div className="flex items-center gap-4">
             <button 
               onClick={onClose}
-              className="p-2.5 bg-white/10 backdrop-blur-xl rounded-2xl hover:bg-white/20 transition-all border border-white/10"
+              className="p-2.5 bg-white/10 backdrop-blur-xl rounded-none hover:bg-white/20 transition-all border border-white/10"
             >
               <ChevronLeft className="w-5 h-5 text-white" />
             </button>
@@ -84,13 +84,13 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 py-8 -mt-6 bg-background rounded-t-[32px] shadow-2xl relative z-10 scroll-smooth pb-32">
+      <div className="flex-1 overflow-y-auto px-6 py-8 -mt-6 bg-background rounded-none-[32px] shadow-2xl relative z-10 scroll-smooth pb-32">
         <div className="max-w-md mx-auto space-y-8">
           
           {/* Profile Image Section */}
           <section className="flex flex-col items-center">
              <div className="relative group">
-                <div className="w-24 h-24 rounded-[32px] bg-secondary border-2 border-card-border overflow-hidden shadow-xl">
+                <div className="w-24 h-24 rounded-none bg-secondary border-2 border-card-border overflow-hidden shadow-xl">
                    {userImage ? (
                      <img src={userImage} alt="Profile" className="w-full h-full object-cover" />
                    ) : (
@@ -99,7 +99,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                      </div>
                    )}
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-black text-white rounded-xl flex items-center justify-center shadow-xl border-2 border-background">
+                <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-black text-white rounded-none flex items-center justify-center shadow-xl border-2 border-background">
                    <Camera className="w-3.5 h-3.5" />
                 </div>
              </div>
@@ -110,7 +110,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                   value={userImage}
                   onChange={(e) => setUserImage(e.target.value)}
                   placeholder="https://example.com/photo.jpg"
-                  className="w-full bg-secondary border border-card-border rounded-2xl p-4 font-bold text-[10px] outline-none focus:border-foreground transition-all text-foreground"
+                  className="w-full bg-secondary border border-card-border rounded-none p-4 font-bold text-[10px] outline-none focus:border-foreground transition-all text-foreground"
                 />
              </div>
           </section>
@@ -127,7 +127,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value.toUpperCase())}
-                  className="w-full bg-black text-white rounded-2xl p-4.5 font-bold text-xs tracking-tight outline-none shadow-xl "
+                  className="w-full bg-black text-white rounded-none p-4.5 font-bold text-xs tracking-tight outline-none shadow-xl "
                 />
              </div>
           </section>
@@ -141,7 +141,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                 </h2>
                 <button 
                   onClick={handleAddBank}
-                  className="p-1.5 bg-secondary rounded-lg hover:bg-tertiary transition-all border border-card-border text-foreground"
+                  className="p-1.5 bg-secondary rounded-none hover:bg-tertiary transition-all border border-card-border text-foreground"
                 >
                    <CheckCircle2 className="w-3.5 h-3.5 rotate-45" />
                 </button>
@@ -162,12 +162,12 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                               value={bank.name}
                               onChange={(e) => handleBankChange(bank.id, e.target.value)}
                               placeholder={`NAME FOR ${bank.id}`}
-                              className="w-full bg-secondary border border-card-border rounded-xl p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all  tracking-tight text-foreground placeholder:text-black/10"
+                              className="w-full bg-secondary border border-card-border rounded-none p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all  tracking-tight text-foreground placeholder:text-black/10"
                            />
                         </div>
                         <button 
                           onClick={() => handleRemoveBank(bank.id)}
-                          className="p-3 bg-expense/5 text-expense rounded-xl hover:bg-expense/10 transition-all border border-expense/10"
+                          className="p-3 bg-expense/5 text-expense rounded-none hover:bg-expense/10 transition-all border border-expense/10"
                         >
                            <X className="w-3.5 h-3.5" />
                         </button>
@@ -183,7 +183,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                onClick={handleSave}
                disabled={isSaved}
                className={cn(
-                 "w-full p-4.5 rounded-2xl font-bold text-[10px]  tracking-tight flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
+                 "w-full p-4.5 rounded-none font-bold text-[10px]  tracking-tight flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
                  isSaved ? "bg-green-500 text-white" : "bg-black text-white hover:bg-black/90 shadow-black/10"
                )}
              >

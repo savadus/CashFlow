@@ -46,10 +46,10 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
       >
         {/* Blue Header */}
         <div className="bg-black px-6 py-12 pb-16 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-none -mr-20 -mt-20 blur-3xl" />
           <div className="flex items-center justify-between text-white relative z-10">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/10 shadow-lg">
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-xl rounded-none flex items-center justify-center border border-white/10 shadow-lg">
                  <LayoutGrid className="w-6 h-6" />
               </div>
               <div>
@@ -59,7 +59,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
             </div>
             <button 
               onClick={onClose}
-              className="p-3 bg-white/10 backdrop-blur-xl rounded-full hover:bg-white/20 transition-all border border-white/10"
+              className="p-3 bg-white/10 backdrop-blur-xl rounded-none hover:bg-white/20 transition-all border border-white/10"
             >
               <X className="w-6 h-6" />
             </button>
@@ -67,7 +67,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto px-6 py-12 -mt-10 bg-white rounded-t-[48px] shadow-2xl relative z-10 scroll-smooth pb-32">
+        <div className="flex-1 overflow-y-auto px-6 py-12 -mt-10 bg-white rounded-none-[48px] shadow-2xl relative z-10 scroll-smooth pb-32">
            <div className="mb-12">
               <div className="flex items-center justify-between mb-8 px-2">
                  <h2 className="text-[10px] font-black  tracking-tight text-black/60">{t('BUSINESS_SUITE')}</h2>
@@ -84,9 +84,9 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
                          alert(`${item.label} feature is coming soon!`);
                        }
                      }}
-                     className="bg-gray-50/50 rounded-[28px] p-4 flex flex-col items-center justify-center gap-3 border border-black/5 active:scale-95 transition-all aspect-square group hover:bg-white hover:shadow-xl hover:shadow-black/[0.02]"
+                     className="bg-gray-50/50 rounded-none p-4 flex flex-col items-center justify-center gap-3 border border-black/5 active:scale-95 transition-all aspect-square group hover:bg-white hover:shadow-xl hover:shadow-black/[0.02]"
                    >
-                      <div className={cn("p-3 rounded-2xl transition-transform group-hover:scale-110", item.color)}>
+                      <div className={cn("p-3 rounded-none transition-transform group-hover:scale-110", item.color)}>
                          <item.icon className="w-5 h-5" />
                       </div>
                       <span className="text-[8px] font-black  text-black/80 tracking-tight leading-none group-hover:text-black transition-colors">{item.label}</span>
@@ -102,10 +102,10 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
               </div>
               <button 
                 onClick={() => setIsSettingsOpen(true)}
-                className="w-full bg-gray-50/50 p-6 rounded-[32px] border border-black/5 flex items-center justify-between group active:scale-[0.98] transition-all hover:bg-white hover:shadow-xl hover:shadow-black/5"
+                className="w-full bg-gray-50/50 p-6 rounded-none border border-black/5 flex items-center justify-between group active:scale-[0.98] transition-all hover:bg-white hover:shadow-xl hover:shadow-black/5"
               >
                  <div className="flex items-center gap-6">
-                    <div className="w-11 h-11 bg-black text-white rounded-[18px] flex items-center justify-center shadow-lg shadow-black/10 group-hover:scale-110 transition-transform">
+                    <div className="w-11 h-11 bg-black text-white rounded-none flex items-center justify-center shadow-lg shadow-black/10 group-hover:scale-110 transition-transform">
                        <Settings className="w-5 h-5" />
                     </div>
                     <div className="text-left">
@@ -113,7 +113,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
                        <p className="text-[9px] font-black text-black/30  tracking-tight italic">Administrative Hub</p>
                     </div>
                  </div>
-                 <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                 <div className="w-8 h-8 rounded-none bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
                     <Check className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <ChevronLeft className="w-4 h-4 rotate-180 group-hover:opacity-0 transition-opacity" />
                  </div>
@@ -125,8 +125,8 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
               <div className="flex items-center justify-between mb-8 px-2">
                  <h2 className="text-[10px] font-black  tracking-tight text-black/60">{t('ABOUT_PLATFORM')}</h2>
               </div>
-              <div className="bg-black text-white p-8 rounded-[36px] relative overflow-hidden shadow-2xl">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 blur-2xl" />
+              <div className="bg-black text-white p-8 rounded-none relative overflow-hidden shadow-2xl">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-none -mr-10 -mt-10 blur-2xl" />
           <div className="flex flex-col items-center mb-6">
              <img src="/cash-flow-logo.png" alt="MVEE" className="w-10 h-10 object-contain" />
              <h3 className="text-2xl font-black italic tracking-tighter text-white  underline-offset-8 decoration-white/20">CashFlow</h3>

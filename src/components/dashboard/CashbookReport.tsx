@@ -166,7 +166,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
         {/* Header */}
         <div className="p-6 border-b border-black/5 flex items-center justify-between bg-white sticky top-0 z-10">
           <div className="flex items-center gap-4">
-             <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center text-white">
+             <div className="w-12 h-12 bg-black rounded-none flex items-center justify-center text-white">
                 <LayoutGrid className="w-6 h-6" />
              </div>
              <div>
@@ -175,21 +175,21 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
              </div>
           </div>
           <div className="flex items-center gap-3">
-             <div className="flex bg-black/5 p-1 rounded-2xl border border-black/5">
+             <div className="flex bg-black/5 p-1 rounded-none border border-black/5">
                 <button 
                   onClick={() => setViewMode('LEDGER')}
-                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black  tracking-tight transition-all", viewMode === 'LEDGER' ? "bg-white text-black shadow-md" : "text-black/30")}
+                  className={cn("px-4 py-2 rounded-none text-[10px] font-black  tracking-tight transition-all", viewMode === 'LEDGER' ? "bg-white text-black shadow-md" : "text-black/30")}
                 >
                   <List className="w-4 h-4 inline-block mr-1.5" /> LEDGER
                 </button>
                 <button 
                   onClick={() => setViewMode('MONTHLY')}
-                  className={cn("px-4 py-2 rounded-xl text-[10px] font-black  tracking-tight transition-all", viewMode === 'MONTHLY' ? "bg-white text-black shadow-md" : "text-black/30")}
+                  className={cn("px-4 py-2 rounded-none text-[10px] font-black  tracking-tight transition-all", viewMode === 'MONTHLY' ? "bg-white text-black shadow-md" : "text-black/30")}
                 >
                   <Calendar className="w-4 h-4 inline-block mr-1.5" /> MONTHLY
                 </button>
              </div>
-             <button onClick={onClose} className="p-3 bg-black/5 rounded-full">
+             <button onClick={onClose} className="p-3 bg-black/5 rounded-none">
                 <X className="w-6 h-6 text-black/40" />
              </button>
           </div>
@@ -207,7 +207,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                       placeholder="SEARCH TRANSACTION..." 
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-12 pr-6 py-4 bg-black/5 rounded-[20px] font-black text-xs  tracking-tight outline-none border-none placeholder:text-black/10"
+                      className="w-full pl-12 pr-6 py-4 bg-black/5 rounded-none font-black text-xs  tracking-tight outline-none border-none placeholder:text-black/10"
                     />
                   </div>
 
@@ -219,7 +219,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                          <button 
                            key={f}
                            onClick={() => setDateFilter(f)}
-                           className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", dateFilter === f ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                           className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", dateFilter === f ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                          >
                            {f} Range
                          </button>
@@ -233,13 +233,13 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                        <button 
                          onClick={() => setSelectedAccount('all')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedAccount === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedAccount === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          All Locations
                        </button>
                        <button 
                          onClick={() => setSelectedAccount('IN_HAND')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === 'IN_HAND' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === 'IN_HAND' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          In Hand
                        </button>
@@ -247,7 +247,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                           <button 
                             key={b.id}
                             onClick={() => setSelectedAccount(b.id)}
-                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === b.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                            className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === b.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                           >
                             {b.name}
                           </button>
@@ -261,7 +261,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                        <button 
                          onClick={() => setSelectedSpace('all')}
-                         className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedSpace === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                         className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedSpace === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                        >
                          All Purposes
                        </button>
@@ -269,7 +269,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                           <button 
                             key={s.id}
                             onClick={() => setSelectedSpace(s.id)}
-                            className={cn("px-6 py-2.5 rounded-full font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedSpace === s.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
+                            className={cn("px-6 py-2.5 rounded-none font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedSpace === s.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
                           >
                             {s.name}
                           </button>
@@ -281,7 +281,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
 
                {/* Grid-style Ledger Table */}
                <div className="p-6">
-                  <div className="bg-white rounded-[32px] overflow-hidden border border-black/5 shadow-sm">
+                  <div className="bg-white rounded-none overflow-hidden border border-black/5 shadow-sm">
                     <div className="overflow-x-auto">
                       <table className="w-full text-left">
                         <thead>
@@ -322,12 +322,12 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
             <div className="p-6 space-y-6">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {monthlyData.map(m => (
-                    <div key={m.name} className="bg-white rounded-[40px] p-8 border border-black/5 shadow-sm space-y-8 relative overflow-hidden group">
-                       <div className="absolute top-0 right-0 w-32 h-32 bg-black/[0.02] rounded-bl-full" />
+                    <div key={m.name} className="bg-white rounded-none p-8 border border-black/5 shadow-sm space-y-8 relative overflow-hidden group">
+                       <div className="absolute top-0 right-0 w-32 h-32 bg-black/[0.02] rounded-none-full" />
                        
                        <div className="flex items-center justify-between">
                           <h3 className="text-2xl font-black italic tracking-tighter  text-black">{m.name}</h3>
-                          <div className="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center font-black text-[10px] italic">#{m.name.slice(0,3)}</div>
+                          <div className="w-10 h-10 bg-black text-white rounded-none flex items-center justify-center font-black text-[10px] italic">#{m.name.slice(0,3)}</div>
                        </div>
 
                        <div className="grid grid-cols-2 gap-8 relative z-10">
@@ -354,7 +354,7 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                                 ₹{m.income - m.expense}
                              </p>
                           </div>
-                          <div className={cn("px-4 py-1.5 rounded-full text-[9px] font-black  tracking-tight", (m.income - m.expense) >= 0 ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
+                          <div className={cn("px-4 py-1.5 rounded-none text-[9px] font-black  tracking-tight", (m.income - m.expense) >= 0 ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
                              {(m.income - m.expense) >= 0 ? 'Surplus' : 'Deficit'}
                           </div>
                        </div>

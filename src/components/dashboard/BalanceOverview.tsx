@@ -28,7 +28,7 @@ export const BalanceOverview = React.memo(({ onNetClick }: { onNetClick: () => v
           <span className="text-text-dim text-[10px] font-medium  tracking-tight italic">{t('NET_BALANCE')}</span>
           <button
             onClick={() => dispatch({ type: 'TOGGLE_PRIVACY' })}
-            className="p-1 px-2.5 bg-secondary rounded-lg hover:bg-tertiary transition-colors border border-card-border"
+            className="p-1 px-2.5 bg-secondary rounded-none hover:bg-tertiary transition-colors border border-card-border"
           >
             {state.privacyMode ? <Eye className="w-3.5 h-3.5 text-foreground" /> : <EyeOff className="w-3.5 h-3.5 text-text-dim" />}
           </button>

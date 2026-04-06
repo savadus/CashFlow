@@ -21,7 +21,7 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
   return (
     <div className="px-6 mb-12">
       <div className="flex items-center gap-3 mb-8">
-        <div className="w-1.5 h-6 bg-foreground rounded-full" />
+        <div className="w-1.5 h-6 bg-foreground rounded-none" />
         <h3 className="text-[11px] font-black  tracking-tight text-text-dim italic">Where is Cash?</h3>
       </div>
       
@@ -29,9 +29,9 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
         {/* Hand Card */}
         <motion.div 
           whileHover={{ y: -5 }}
-          className="bg-card border border-card-border p-4 rounded-[32px] shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
+          className="bg-card border border-card-border p-4 rounded-none shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
         >
-          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-none bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Wallet className="w-6 h-6 text-emerald-500" />
           </div>
           <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">Hand</p>
@@ -44,9 +44,9 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
         <motion.button 
           onClick={() => setIsBanksModalOpen(true)}
           whileHover={{ y: -5 }}
-          className="bg-card border border-card-border p-4 rounded-[32px] shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
+          className="bg-card border border-card-border p-4 rounded-none shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
         >
-          <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-none bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Building className="w-6 h-6 text-blue-500" />
           </div>
           <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">In Banks</p>
@@ -59,9 +59,9 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
         <motion.button 
           onClick={onDebtsClick}
           whileHover={{ y: -5 }}
-          className="bg-card border border-card-border p-4 rounded-[32px] shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
+          className="bg-card border border-card-border p-4 rounded-none shadow-sm flex flex-col items-center text-center group active:scale-95 transition-all"
         >
-          <div className="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-none bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <PieChart className="w-6 h-6 text-rose-500" />
           </div>
           <p className="text-[9px] font-black  tracking-tight text-text-dim mb-1 italic">Debts</p>
@@ -86,11 +86,11 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                animate={{ opacity: 1, scale: 1, y: 0 }}
                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-               className="fixed left-6 right-6 top-1/2 -translate-y-1/2 bg-background border border-card-border rounded-[40px] z-[401] overflow-hidden shadow-2xl"
+               className="fixed left-6 right-6 top-1/2 -translate-y-1/2 bg-background border border-card-border rounded-none z-[401] overflow-hidden shadow-2xl"
             >
                <div className="p-8 border-b border-card-border flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                     <div className="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center">
+                     <div className="w-12 h-12 bg-blue-500 text-white rounded-none flex items-center justify-center">
                         <Building className="w-6 h-6" />
                      </div>
                      <div>
@@ -98,16 +98,16 @@ export const CashPositionCards = ({ onDebtsClick }: { onDebtsClick?: () => void 
                         <p className="text-[10px] text-text-dim font-black  tracking-tight italic">Sector-wise Liquidity Audit</p>
                      </div>
                   </div>
-                  <button onClick={() => setIsBanksModalOpen(false)} className="p-3 bg-secondary rounded-full hover:bg-tertiary transition-colors">
+                  <button onClick={() => setIsBanksModalOpen(false)} className="p-3 bg-secondary rounded-none hover:bg-tertiary transition-colors">
                      <X className="w-6 h-6 text-text-dim" />
                   </button>
                </div>
                <div className="p-4 max-h-[60vh] overflow-y-auto">
                   <div className="grid grid-cols-1 gap-3">
                      {banks.map(bank => (
-                        <div key={bank.id} className="bg-secondary p-8 rounded-[32px] border border-card-border flex items-center justify-between group hover:bg-tertiary transition-all">
+                        <div key={bank.id} className="bg-secondary p-8 rounded-none border border-card-border flex items-center justify-between group hover:bg-tertiary transition-all">
                            <div className="flex items-center gap-6">
-                              <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <div className="w-12 h-12 bg-blue-500/10 rounded-none flex items-center justify-center group-hover:scale-110 transition-transform">
                                  <Building2 className="w-6 h-6 text-blue-500" />
                               </div>
                               <p className="font-black text-sm  tracking-tight italic text-foreground">{bank.name}</p>

@@ -68,7 +68,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
           <div className="flex items-center gap-4">
             <button 
               onClick={onClose}
-              className="p-2 hover:bg-black/5 rounded-full transition-colors"
+              className="p-2 hover:bg-black/5 rounded-none transition-colors"
             >
               <X className="w-6 h-6 text-black/40" />
             </button>
@@ -82,7 +82,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
         <div className="flex-1 overflow-y-auto bg-[#F2F2F7]">
           <div className="p-6 space-y-8">
             {/* Amount Visualizer */}
-            <div className="bg-white rounded-[32px] p-10 border border-black/5 shadow-sm text-center relative overflow-hidden group">
+            <div className="bg-white rounded-none p-10 border border-black/5 shadow-sm text-center relative overflow-hidden group">
                <div className={cn(
                  "absolute inset-0 opacity-[0.03] transition-opacity group-hover:opacity-[0.05]",
                  transaction?.type === 'INCOME' ? "bg-income" : "bg-expense"
@@ -102,7 +102,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                </div>
                <div className="mt-8 flex justify-center">
                   <div className={cn(
-                    "px-6 py-2 rounded-full font-black text-[10px]  tracking-tight",
+                    "px-6 py-2 rounded-none font-black text-[10px]  tracking-tight",
                     transaction?.type === 'INCOME' ? "bg-income/10 text-income" : "bg-expense/10 text-expense"
                   )}>
                     {transaction?.type === 'INCOME' ? 'Money Received' : 'Money Spent'}
@@ -111,10 +111,10 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
             </div>
 
             {/* Smart Details Card */}
-            <div className="bg-white rounded-[32px] overflow-hidden border border-black/5 shadow-sm">
+            <div className="bg-white rounded-none overflow-hidden border border-black/5 shadow-sm">
                 <div className="p-6 space-y-6">
                     <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 bg-ios-blue/5 rounded-2xl flex items-center justify-center text-ios-blue">
+                        <div className="w-12 h-12 bg-ios-blue/5 rounded-none flex items-center justify-center text-ios-blue">
                            <Tag className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
@@ -130,7 +130,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
                     </div>
                     <div className="h-px bg-black/5" />
                     <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 bg-purple-500/5 rounded-2xl flex items-center justify-center text-purple-500">
+                        <div className="w-12 h-12 bg-purple-500/5 rounded-none flex items-center justify-center text-purple-500">
                            <FileText className="w-6 h-6" />
                         </div>
                         <div className="flex-1">

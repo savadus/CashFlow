@@ -155,7 +155,7 @@ export const TransactionModal = ({
           className="fixed inset-0 z-[260] bg-[#F2F2F7] flex flex-col pt-[env(safe-area-inset-top,0px)]"
         >
           <div className="flex items-center gap-4 px-6 py-4 bg-white">
-            <button onClick={onClose} className="p-1 hover:bg-black/5 rounded-full transition-colors">
+            <button onClick={onClose} className="p-1 hover:bg-black/5 rounded-none transition-colors">
               <ArrowLeft className={cn("w-6 h-6", getThemeText())} />
             </button>
             <h2 className={cn("text-lg font-bold tracking-tight capitalize", getThemeText())}>
@@ -165,7 +165,7 @@ export const TransactionModal = ({
 
           <div className="flex-1 overflow-y-auto px-4 pb-8 space-y-4">
              {/* Large Amount Card */}
-             <div className="bg-white rounded-xl p-6 shadow-sm border border-black/5">
+             <div className="bg-white rounded-none p-6 shadow-sm border border-black/5">
                 <div className="flex items-baseline gap-2">
                    <span className={cn("text-2xl font-bold", getThemeText())}>₹</span>
                    <div className={cn("text-4xl font-bold tracking-tight truncate", getThemeText())}>
@@ -177,7 +177,7 @@ export const TransactionModal = ({
              {/* Payment Mode Selector */}
              <div className="flex items-center justify-between py-2">
                 <span className="text-[11px] font-bold text-black/40 tracking-tight">Payment mode</span>
-                <div className="flex bg-white p-1 rounded-full border border-black/5 shadow-sm">
+                <div className="flex bg-white p-1 rounded-none border border-black/5 shadow-sm">
                    {[
                      { id: 'IN_HAND', label: 'Cash' },
                      { id: 'BANK_ONLINE', label: 'Online' }
@@ -189,7 +189,7 @@ export const TransactionModal = ({
                           else setMode(banks[0]?.id || 'BANK_DEFAULT');
                        }}
                        className={cn(
-                         "px-6 py-2 rounded-full text-[10px] font-bold transition-all",
+                         "px-6 py-2 rounded-none text-[10px] font-bold transition-all",
                          (m.id === 'IN_HAND' ? mode === 'IN_HAND' : mode !== 'IN_HAND') 
                            ? cn(getThemeColor(), "text-white shadow-md") 
                            : "text-black/30"
@@ -202,7 +202,7 @@ export const TransactionModal = ({
              </div>
 
              {/* Details Input */}
-             <div className="bg-white rounded-xl p-4 shadow-sm border border-black/5 min-h-[100px]">
+             <div className="bg-white rounded-none p-4 shadow-sm border border-black/5 min-h-[100px]">
                 <textarea 
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
@@ -213,17 +213,17 @@ export const TransactionModal = ({
 
              {/* Date & Attachments Row */}
              <div className="flex items-center gap-3">
-                <button className="flex-1 bg-white rounded-xl p-3 px-4 shadow-sm border border-black/5 flex items-center justify-between">
+                <button className="flex-1 bg-white rounded-none p-3 px-4 shadow-sm border border-black/5 flex items-center justify-between">
                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-red-50 text-red-500 rounded-lg">
+                      <div className="p-2 bg-red-50 text-red-500 rounded-none">
                          <MessageSquare className="w-4 h-4" />
                       </div>
                       <span className="text-[10px] font-bold text-black/60">06 Apr 26</span>
                    </div>
                    <ChevronRight className="w-4 h-4 text-black/20 rotate-90" />
                 </button>
-                <button className="flex-1 bg-white rounded-xl p-3 px-4 shadow-sm border border-black/5 flex items-center justify-center gap-3 group active:scale-95 transition-all">
-                   <div className="p-2 bg-red-50 text-red-500 rounded-lg">
+                <button className="flex-1 bg-white rounded-none p-3 px-4 shadow-sm border border-black/5 flex items-center justify-center gap-3 group active:scale-95 transition-all">
+                   <div className="p-2 bg-red-50 text-red-500 rounded-none">
                       <Landmark className="w-4 h-4" />
                    </div>
                    <span className="text-[10px] font-bold text-black/60">Attach bills</span>
@@ -236,7 +236,7 @@ export const TransactionModal = ({
              <button 
                onClick={handleSave}
                className={cn(
-                 "w-full py-4.5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-xl transition-all active:scale-[0.98]",
+                 "w-full py-4.5 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl transition-all active:scale-[0.98]",
                  parseFloat(displayValue) > 0 || expression !== '' ? cn(getThemeColor(), "text-white") : "bg-black/5 text-black/10"
                )}
              >
@@ -274,7 +274,7 @@ export const TransactionModal = ({
                        else handleKeyPress(item.k);
                     }} 
                     className={cn(
-                      "h-14 rounded-xl flex items-center justify-center text-lg font-bold transition-all active:scale-95", 
+                      "h-14 rounded-none flex items-center justify-center text-lg font-bold transition-all active:scale-95", 
                       item.c
                     )}
                   >
