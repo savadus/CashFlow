@@ -25,7 +25,7 @@ export const BalanceOverview = React.memo(({ onNetClick }: { onNetClick: () => v
     >
       <div className="flex flex-col">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-text-dim text-[10px] font-medium  tracking-tight italic">{t('NET_BALANCE')}</span>
+          <span className="text-xs text-text-dim font-medium tracking-tight italic">{t('NET_BALANCE')}</span>
           <button
             onClick={() => dispatch({ type: 'TOGGLE_PRIVACY' })}
             className="p-1 px-2.5 bg-secondary rounded-none hover:bg-tertiary transition-colors border border-card-border"
