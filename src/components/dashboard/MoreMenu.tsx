@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { useFinance } from '@/context/FinanceContext';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SettingsHub } from './SettingsHub';
+import { AboutHub } from './AboutHub';
 
 interface MoreMenuProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
   const { state, dispatch } = useFinance();
   const { t } = useTranslation();
   const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
+  const [isAboutOpen, setIsAboutOpen] = React.useState(false);
   const userName = state.userProfile?.name || 'BUSINESS HUB';
   const userPurpose = t(state.userProfile?.purpose as any || 'BUSINESS');
 
@@ -120,31 +122,29 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
               </button>
            </div>
 
-           {/* About Section */}
-           <div className="mb-12">
-              <div className="flex items-center justify-between mb-8 px-2">
-                 <h2 className="text-[10px] font-black  tracking-tight text-black/60">{t('ABOUT_PLATFORM')}</h2>
-              </div>
-              <div className="bg-black text-white p-8 rounded-[10px] relative overflow-hidden shadow-2xl">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-[10px] -mr-10 -mt-10 blur-2xl" />
-          <div className="flex flex-col items-center mb-6">
-             <img src="/cash-flow-logo.png" alt="MVEE" className="w-10 h-10 object-contain" />
-             <h3 className="text-2xl font-black italic tracking-tighter text-white  underline-offset-8 decoration-white/20">CashFlow</h3>
-             <p className="text-[9px] text-black/30 font-black  tracking-tight mt-1">{t('BUSINESS_SUITE')}</p>
-          </div>
-                 <p className="text-[10px] font-bold leading-relaxed text-white/60 tracking-tight mb-6  italic">
-                    {state.userProfile?.language === 'ml' 
-                      ? 'സാമ്പത്തിക ഇടപാടുകൾ കൃത്യമായി രേഖപ്പെടുത്തുന്നതിനുള്ള മികച്ച പ്ലാറ്റ്‌ഫോം. ബിസിനസ് വേഗതയും സുതാര്യതയും ഉറപ്പാക്കുന്ന രീതിയിലാണ് ഇതിന്റെ രൂപകല്പന.'
-                      : state.userProfile?.language === 'hi'
-                        ? 'वित्तीय लेनदेन को सटीक रूप से रिकॉर्ड करने के लिए सबसे अच्छा मंच। व्यवसाय की गति और पारदर्शिता सुनिश्चित करने के लिए डिज़ाइन किया गया।'
-                        : 'The absolute standard in business cash management. An industrial-grade fiscal ecosystem engineered for speed, transparency, and high-fidelity auditing.'}
-                 </p>
-                 <div className="flex items-center gap-3 py-4 border-t border-white/5">
-                    <Heart className="w-3 h-3 text-ios-blue animate-pulse" />
-                    <span className="text-[8px] font-black  tracking-tight text-white/40 italic">Mastered for Excellence</span>
-                 </div>
-              </div>
-           </div>
+            {/* About Section Trigger */}
+            <div className="mb-12">
+               <div className="flex items-center justify-between mb-8 px-2">
+                  <h2 className="text-[10px] font-black  tracking-tight text-black/60 italic">{t('ABOUT_PLATFORM')}</h2>
+               </div>
+               <button 
+                 onClick={() => setIsAboutOpen(true)}
+                 className="w-full bg-black text-white p-6 rounded-[10px] border border-black/5 flex items-center justify-between group active:scale-[0.98] transition-all hover:bg-black/90 shadow-2xl shadow-black/10"
+               >
+                  <div className="flex items-center gap-6">
+                     <div className="w-11 h-11 bg-white/10 backdrop-blur-xl border border-white/10 text-white rounded-[10px] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <Info className="w-5 h-5" />
+                     </div>
+                     <div className="text-left">
+                        <p className="font-black text-[12px]  tracking-tight leading-none mb-1">About Platform</p>
+                        <p className="text-[9px] font-black text-white/30  tracking-tight italic">Mastered for Excellence</p>
+                     </div>
+                  </div>
+                  <div className="w-8 h-8 rounded-[10px] bg-white/5 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                     <ChevronLeft className="w-4 h-4 rotate-180 transition-opacity" />
+                  </div>
+               </button>
+            </div>
            
            <div className="py-8 text-center">
               <p className="text-[9px] font-black text-black/40  tracking-tight italic mb-2">
@@ -156,6 +156,9 @@ export const MoreMenu = ({ isOpen, onClose, onOpenBills, onOpenCashbook, onOpenL
         <AnimatePresence>
            {isSettingsOpen && (
              <SettingsHub isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+           )}
+           {isAboutOpen && (
+             <AboutHub isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
            )}
         </AnimatePresence>
       </motion.div>
