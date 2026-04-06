@@ -211,69 +211,51 @@ export const CashbookReport = ({ isOpen, onClose }: CashbookReportProps) => {
                     />
                   </div>
 
-                  {/* Range Filter */}
-                  <div>
-                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Temporal Range</p>
-                    <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
-                      {(['all', 'week', 'month'] as const).map(f => (
-                         <button 
-                           key={f}
-                           onClick={() => setDateFilter(f)}
-                           className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", dateFilter === f ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                         >
-                           {f} Range
-                         </button>
-                      ))}
+                  {/* Unified Dropdown Filter Row */}
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-black/5">
+                    {/* Range Select */}
+                    <div className="flex-1 min-w-[100px]">
+                      <p className="text-[8px] font-black text-black/20 tracking-widest mb-1.5 ml-1 italic">RANGE</p>
+                      <select 
+                        value={dateFilter}
+                        onChange={(e) => setDateFilter(e.target.value as any)}
+                        className="w-full bg-black/5 border border-black/10 rounded-[10px] px-3 py-3 font-black text-[10px] outline-none italic tracking-tight appearance-none text-center"
+                      >
+                        <option value="all">All-Time Range</option>
+                        <option value="week">Past Week Range</option>
+                        <option value="month">Past Month Range</option>
+                      </select>
                     </div>
-                  </div>
 
-                  {/* Institutional Hub Filter */}
-                  <div>
-                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Institutional Hub</p>
-                    <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
-                       <button 
-                         onClick={() => setSelectedAccount('all')}
-                         className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedAccount === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                       >
-                         All Locations
-                       </button>
-                       <button 
-                         onClick={() => setSelectedAccount('IN_HAND')}
-                         className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === 'IN_HAND' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                       >
-                         In Hand
-                       </button>
-                       {banks.map(b => (
-                          <button 
-                            key={b.id}
-                            onClick={() => setSelectedAccount(b.id)}
-                            className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedAccount === b.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                          >
-                            {b.name}
-                          </button>
-                       ))}
+                    {/* Location Select (Bank/Hand) */}
+                    <div className="flex-1 min-w-[100px]">
+                      <p className="text-[8px] font-black text-black/20 tracking-widest mb-1.5 ml-1 italic">LOCATION</p>
+                      <select 
+                        value={selectedAccount}
+                        onChange={(e) => setSelectedAccount(e.target.value)}
+                        className="w-full bg-black/5 border border-black/10 rounded-[10px] px-3 py-3 font-black text-[10px] outline-none italic tracking-tight appearance-none text-center"
+                      >
+                        <option value="all">All Locations</option>
+                        <option value="IN_HAND">In Hand</option>
+                        {banks.map(b => (
+                          <option key={b.id} value={b.id}>{b.name.toUpperCase()}</option>
+                        ))}
+                      </select>
                     </div>
-                  </div>
 
-                  {/* Fiscal Purpose Filter */}
-                  <div>
-                    <p className="text-[9px] font-black  tracking-tight text-black/40 mb-3 ml-2 italic">Fiscal Purpose</p>
-                    <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
-                       <button 
-                         onClick={() => setSelectedSpace('all')}
-                         className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all", selectedSpace === 'all' ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                       >
-                         All Purposes
-                       </button>
-                       {state.spaces.map(s => (
-                          <button 
-                            key={s.id}
-                            onClick={() => setSelectedSpace(s.id)}
-                            className={cn("px-6 py-2.5 rounded-[10px] font-black text-[9px]  tracking-tight whitespace-nowrap active:scale-95 transition-all text-black", selectedSpace === s.id ? "bg-black text-white shadow-lg" : "bg-black/5 text-black/40")}
-                          >
-                            {s.name}
-                          </button>
-                       ))}
+                    {/* Purpose Select (Space) */}
+                    <div className="flex-1 min-w-[100px]">
+                      <p className="text-[8px] font-black text-black/20 tracking-widest mb-1.5 ml-1 italic">PURPOSE</p>
+                      <select 
+                        value={selectedSpace}
+                        onChange={(e) => setSelectedSpace(e.target.value)}
+                        className="w-full bg-black/5 border border-black/10 rounded-[10px] px-3 py-3 font-black text-[10px] outline-none italic tracking-tight appearance-none text-center"
+                      >
+                        <option value="all">All Purposes</option>
+                        {state.spaces.map(s => (
+                          <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
