@@ -321,6 +321,7 @@ const financeReducer = (state: State, action: Action): State => {
     case 'SET_THEME':
       return { ...state, theme: action.payload };
     case 'SET_PROFILE':
+      console.log('REDUCER: Master Profile Synchronized', action.payload.name);
       return { ...state, userProfile: action.payload };
     default:
       return state;
