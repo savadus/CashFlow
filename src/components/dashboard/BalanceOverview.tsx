@@ -40,7 +40,7 @@ export const BalanceOverview = React.memo(({ onNetClick }: { onNetClick: () => v
           className="text-left w-fit active:opacity-60 transition-opacity"
         >
           <h2 className={cn(
-             "text-6xl md:text-7xl lg:text-8xl font-black italic tracking-tighter leading-none",
+             "text-4xl md:text-5xl lg:text-5xl font-black italic tracking-tighter leading-none",
              totalBalance > 0 ? "text-income" : totalBalance < 0 ? "text-expense" : "text-foreground"
           )}>
             {state.privacyMode ? "XXXXXX" : formatCurrency(totalBalance, false)}
