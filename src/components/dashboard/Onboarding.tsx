@@ -80,13 +80,32 @@ export default function Onboarding() {
   };
 
   const handleComplete = () => {
-    if (!profile.name || loading) return;
-    setLoading(true);
-    console.log('TRANSITION_INIT: High-Velocity Handshake...');
+    if (!profile.name) return;
     
-    // Dispatch immediately for institutional responsiveness
-    dispatch({ type: 'SET_PROFILE', payload: profile });
-    console.log('TRANSITION_SUCCESS: Profile mastered.');
+    // If already loading, this is a retry-click. Force dispatch immediately.
+    if (loading) {
+       dispatch({ type: 'SET_PROFILE', payload: profile });
+       return;
+    }
+
+    try {
+      setLoading(true);
+      console.log('TRANSITION_INIT: High-Velocity Handshake...');
+      
+      // Buffered dispatch to avoid React state competition/batching
+      setTimeout(() => {
+         dispatch({ type: 'SET_PROFILE', payload: profile });
+         console.log('TRANSITION_DATA_COMMITTED');
+      }, 100);
+
+      // Safety release: If component doesn't unmount, allow retry after delay
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    } catch (err) {
+      console.error('TRANSITION_FAILED:', err);
+      setLoading(false);
+    }
   };
 
   const containerVariants = {

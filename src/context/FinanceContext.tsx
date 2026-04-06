@@ -306,12 +306,15 @@ const financeReducer = (state: State, action: Action): State => {
     }
     case 'SET_INITIAL_DATA': {
       // Protect active user and profile from being erased during initialization
-      const mergedProfile = action.payload.userProfile || state.userProfile;
+      // Only merge cloud profile if it's complete/valid (has a name)
+      const cloudProfile = action.payload.userProfile;
+      const mergedProfile = (cloudProfile && cloudProfile.name) ? cloudProfile : state.userProfile;
+      
       return { 
         ...state, 
         ...action.payload, 
         user: state.user, // Always preserve auth state
-        userProfile: mergedProfile // Prefer current profile over null payload
+        userProfile: mergedProfile // Prefer local authority over null/empty cloud profiles
       };
     }
     case 'DELETE_BILL':
