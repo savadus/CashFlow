@@ -188,39 +188,39 @@ export default function Home() {
 
       {/* Auto-Hide Footer Navigation (Square Sharp Icons) */}
       {!isAnyOverlayOpen && (
-        <div className="fixed bottom-0 left-0 right-0 p-3 pb-[calc(env(safe-area-inset-bottom,0px)+0.75rem)] bg-white/80 backdrop-blur-xl border-t border-black/5 z-[180] shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
+        <div className="fixed bottom-0 left-0 right-0 p-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] bg-white/80 backdrop-blur-xl border-t border-black/5 z-[180] shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
           <div className="max-w-2xl mx-auto flex items-center gap-2">
             <button
               onClick={() => openAddModal('EXPENSE')}
-              className="flex-1 bg-expense text-white py-4 rounded-[10px] font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-expense text-white h-11 rounded-[10px] font-black text-xs  tracking-tight active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
             >
-              <div className="p-1 bg-white/20 rounded-[10px] shrink-0">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <div className="p-0.5 bg-white/20 rounded-[10px] shrink-0">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
               <span>{t('OUT')}</span>
             </button>
             <button
               onClick={() => openAddModal('INCOME')}
-              className="flex-1 bg-income text-white py-4 rounded-[10px] font-black text-sm  tracking-tight active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-income text-white h-11 rounded-[10px] font-black text-xs  tracking-tight active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
             >
-              <div className="p-1 bg-white/20 rounded-[10px] shrink-0">
-                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <div className="p-0.5 bg-white/20 rounded-[10px] shrink-0">
+                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
               <span>{t('IN')}</span>
             </button>
             <button
               onClick={() => openAddModal('TRANSFER')}
-              className="w-14 h-14 bg-ios-blue text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-ios-blue/20 shrink-0"
+              className="w-11 h-11 bg-ios-blue text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-ios-blue/20 shrink-0"
             >
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
               </svg>
             </button>
             <button
                onClick={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })}
-               className="w-14 h-14 bg-black text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
+               className="w-11 h-11 bg-black text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
              >
-               <LayoutGrid className="w-6 h-6" />
+               <LayoutGrid className="w-5 h-5" />
              </button>
           </div>
         </div>
