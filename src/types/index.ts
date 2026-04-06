@@ -77,4 +77,5 @@ export interface FinanceState {
   liquidBalances: Record<string, number>;
   theme?: 'SAGE' | 'OBSIDIAN';
   visualMode?: 'LIGHT' | 'DARK';
+  activeHub?: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'NONE';
 }

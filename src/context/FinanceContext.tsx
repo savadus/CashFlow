@@ -23,7 +23,8 @@ type Action =
   | { type: 'DELETE_BILL'; payload: string }
   | { type: 'SET_PROFILE'; payload: UserProfile }
   | { type: 'SET_THEME'; payload: 'SAGE' | 'OBSIDIAN' }
-  | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' };
+  | { type: 'SET_VISUAL_MODE'; payload: 'LIGHT' | 'DARK' }
+  | { type: 'SET_ACTIVE_HUB'; payload: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'NONE' };
 
 const initialState: State = {
   user: null,
@@ -45,7 +46,8 @@ const initialState: State = {
     'BANK_1712345678901': 0,
     'BANK_1712345678902': 0,
     'BANK_1712345678903': 0
-  }
+  },
+  activeHub: 'NONE'
 };
 
 const adjustLiquidBalance = (balances: Record<string, number>, mode: string, amount: number, isAdd: boolean) => {
@@ -326,6 +328,8 @@ const financeReducer = (state: State, action: Action): State => {
       return { ...state, visualMode: action.payload };
     case 'SET_THEME':
       return { ...state, theme: action.payload };
+    case 'SET_ACTIVE_HUB':
+      return { ...state, activeHub: action.payload };
     default:
       return state;
   }

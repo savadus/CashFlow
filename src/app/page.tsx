@@ -25,15 +25,15 @@ import Onboarding from '@/components/dashboard/Onboarding';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Home() {
-  const { state } = useFinance();
+  const { state, dispatch } = useFinance();
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<TransactionType>('EXPENSE');
-  const [isDebtsOpen, setIsDebtsOpen] = useState(false);
-  const [isCashbookOpen, setIsCashbookOpen] = useState(false);
   const [isBillsOpen, setIsBillsOpen] = useState(false);
-  const [isMoreOpen, setIsMoreOpen] = useState(false);
-  const [isAuditOpen, setIsAuditOpen] = useState(false);
+  const isMoreOpen = state.activeHub === 'MORE';
+  const isAuditOpen = state.activeHub === 'BILLS';
+  const isCashbookOpen = state.activeHub === 'CASHBOOK';
+  const isDebtsOpen = state.activeHub === 'LOANS';
   const [selectedBill, setSelectedBill] = useState<Bill | null>(null);
   const [filterHubType, setFilterHubType] = useState<'INCOME' | 'EXPENSE' | 'ALL' | null>(null);
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
@@ -48,7 +48,7 @@ export default function Home() {
   const handleSpaceSelect = (id: string) => {
     const space = state.spaces.find(s => s.id === id);
     if (space?.name === 'Debts') {
-      setIsDebtsOpen(true);
+      dispatch({ type: 'SET_ACTIVE_HUB', payload: 'LOANS' });
     } else {
       setActiveSpaceId(id);
     }
@@ -75,8 +75,8 @@ export default function Home() {
       
       <Header 
         onAddClick={() => openAddModal('EXPENSE')} 
-        onOpenCashbook={() => setIsCashbookOpen(true)}
-        onOpenBills={() => setIsAuditOpen(true)}
+        onOpenCashbook={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'CASHBOOK' })}
+        onOpenBills={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'BILLS' })}
       />
       
       <div className="flex-1 overflow-y-auto pb-48 lg:pb-8 scroll-smooth">
@@ -91,7 +91,7 @@ export default function Home() {
                 onExpenseClick={() => setFilterHubType('EXPENSE')}
                 onNetClick={() => setFilterHubType('ALL')}
               />
-              <CashPositionCards onDebtsClick={() => setIsDebtsOpen(true)} />
+              <CashPositionCards onDebtsClick={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'LOANS' })} />
               <div className="px-6 flex items-center justify-between mb-4 mt-8 lg:mt-4">
                 <h3 className="text-xs font-bold text-black/60 tracking-tight leading-none">{t('ACCOUNTS')}</h3>
                 {selectedSpaceId && (
@@ -119,9 +119,11 @@ export default function Home() {
       {/* Overlays (Opening in New Windows) */}
       <BillAuditHub 
         isOpen={isAuditOpen}
-        onClose={() => setIsAuditOpen(false)}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
         onOpenGenerator={() => {
            setSelectedBill(null);
+           // Internal transition to Generator handled by local state or another hub id if needed
+           // For now, generators can be local overlays as they are transient sub-states
            setIsBillsOpen(true);
         }}
         onViewBill={(bill) => {
@@ -129,12 +131,12 @@ export default function Home() {
            setIsBillsOpen(true);
         }}
       />
-
+ 
       <SpaceTransactionHub 
         spaceId={activeSpaceId}
         onClose={() => setActiveSpaceId(null)}
       />
-
+ 
       <BillGenerator 
         isOpen={isBillsOpen} 
         onClose={() => {
@@ -149,23 +151,23 @@ export default function Home() {
         onClose={() => setIsModalOpen(false)} 
         initialType={modalType}
       />
-
+ 
       <TripDetail 
         isOpen={isDebtsOpen}
-        onClose={() => setIsDebtsOpen(false)}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
       />
-
+ 
       <CashbookReport 
         isOpen={isCashbookOpen} 
-        onClose={() => setIsCashbookOpen(false)} 
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })} 
       />
-
+ 
       <MoreMenu 
         isOpen={isMoreOpen}
-        onClose={() => setIsMoreOpen(false)}
-        onOpenBills={() => setIsAuditOpen(true)}
-        onOpenCashbook={() => setIsCashbookOpen(true)}
-        onOpenLoans={() => {}}
+        onClose={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'NONE' })}
+        onOpenBills={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'BILLS' })}
+        onOpenCashbook={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'CASHBOOK' })}
+        onOpenLoans={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'LOANS' })}
       />
 
       <TransactionEditModal 
@@ -215,11 +217,11 @@ export default function Home() {
               </svg>
             </button>
             <button
-              onClick={() => setIsMoreOpen(true)}
-              className="w-14 h-14 bg-black text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
-            >
-              <LayoutGrid className="w-6 h-6" />
-            </button>
+               onClick={() => dispatch({ type: 'SET_ACTIVE_HUB', payload: 'MORE' })}
+               className="w-14 h-14 bg-black text-white rounded-[10px] font-black flex items-center justify-center active:scale-95 transition-all shadow-lg shadow-black/10 shrink-0"
+             >
+               <LayoutGrid className="w-6 h-6" />
+             </button>
           </div>
         </div>
       )}
