@@ -61,7 +61,7 @@ export const TransactionEditModal = ({ transaction, isOpen, onClose }: Transacti
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="fixed inset-0 z-[220] bg-white flex flex-col pt-[env(safe-area-inset-top,0px)]"
+        className="fixed inset-0 z-[400] bg-white flex flex-col pt-[env(safe-area-inset-top,0px)]"
       >
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-black/5">
