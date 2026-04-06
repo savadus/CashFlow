@@ -72,7 +72,7 @@ export default function Onboarding() {
     const { error } = await supabase.auth.verifyOtp({
        email,
        token: otp,
-       type: 'magiclink'
+       type: 'email'
     });
     setLoading(false);
     if (error) setError(error.message);
