@@ -447,16 +447,16 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                     {style === 'BASIC' && (
                       <div className="p-8 text-[11px] text-black bg-white min-h-full">
                         <div className="text-center mb-6">
-                            <h2 className="text-sm font-black tracking-[0.3em] text-ios-pink brightness-75 uppercase">{currentHeadline}</h2>
+                            <h2 className="text-sm font-black tracking-[0.3em] text-black uppercase">{currentHeadline}</h2>
                         </div>
                         <div className="flex justify-between items-start mb-10 border-t border-black/10 pt-6">
                             <div>
                                 <h1 className="text-xl font-black italic tracking-tighter">MVEE.IN</h1>
-                                <p className="text-black/50 font-bold">+91 9961463124</p>
+                                <p className="text-black font-bold">+91 9961463124</p>
                             </div>
                             <div className="text-right">
                                 <p className="text-[10px] font-black tracking-widest">Original • #Sale Bill no.1</p>
-                                <p className="text-[10px] font-bold mt-1 text-black/40 italic">Date: 05 Apr 2026</p>
+                                <p className="text-[10px] font-bold mt-1 text-black italic">Date: 05 Apr 2026</p>
                             </div>
                         </div>
                         
@@ -500,9 +500,9 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                   <td colSpan={5} className="border-r border-black p-2 text-right font-bold italic text-black/30">Subtotal</td>
                                   <td className="p-2 text-right font-bold opacity-50">{total}.00</td>
                                 </tr>
-                                <tr className="bg-[#F9D6EB] font-black text-xs h-12">
-                                  <td colSpan={5} className="border-r border-black p-3 text-right uppercase italic tracking-widest text-[#9013FE]">TOTAL BILL AMOUNT</td>
-                                  <td className="p-3 text-right tracking-tighter text-[#9013FE]">₹{total}.00</td>
+                                <tr className="bg-black/5 font-black text-xs h-12">
+                                  <td colSpan={5} className="border-r border-black p-3 text-right uppercase italic tracking-widest text-black">TOTAL BILL AMOUNT</td>
+                                  <td className="p-3 text-right tracking-tighter text-black">₹{total}.00</td>
                                 </tr>
                                 <tr className="border-t border-black">
                                   <td colSpan={5} className="border-r border-black p-2 text-right font-black uppercase text-[9px] tracking-[0.25em] text-black/50">Settlement Balance</td>
@@ -532,8 +532,8 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                             <p className="font-bold text-[10px]">PH: {customerPhone || '9744375069'}</p>
                         </div>
                         <div className="border-t border-black border-dashed mb-4" />
-                        <div className="text-center space-y-1 text-[10px] font-bold uppercase tracking-widest text-black/60">
-                            <p className="font-black text-black underline underline-offset-4 decoration-ios-pink mb-1">{currentHeadline}</p>
+                        <div className="text-center space-y-1 text-[10px] font-bold uppercase tracking-widest text-black">
+                            <p className="font-black text-black underline underline-offset-4 decoration-black mb-1">{currentHeadline}</p>
                             <p>Cash Sale Receipt</p>
                             <p>Inv #739</p>
                             <p>05-04-2026</p>
@@ -558,7 +558,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                               </div>
                            )}
                            <div className="space-y-4 relative z-0">
-                               <div className="flex justify-between font-black text-[9px] uppercase tracking-widest opacity-40">
+                               <div className="flex justify-between font-black text-[9px] uppercase tracking-widest text-black">
                                  <span className="w-1/2">Description</span>
                                  <span className="w-1/4 text-center">Qty</span>
                                  <span className="w-1/4 text-right">Sum</span>
@@ -579,7 +579,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                         <div className="border-b border-black border-dashed mb-6" />
                         <div className="flex flex-col items-end gap-3 font-black uppercase text-[10px]">
                             <div className="flex justify-between w-44">
-                              <span className="opacity-40">RECEIVED:</span>
+                              <span className="text-black">RECEIVED:</span>
                               <span>₹{paymentStatus === 'PAID' ? total : '0'}.00</span>
                             </div>
                             <div className="flex justify-between w-44 text-sm border-t border-black pt-2">
@@ -616,7 +616,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                         </div>
 
                         <div className="text-center mb-10 py-4 border-b border-black/5">
-                            <h2 className="text-2xl font-black tracking-[0.2em] italic text-[#36A893] uppercase">{currentHeadline}</h2>
+                            <h2 className="text-2xl font-black tracking-[0.2em] italic text-black uppercase">{currentHeadline}</h2>
                         </div>
 
                         <div className="grid grid-cols-2 gap-16 mb-20 relative z-10">
