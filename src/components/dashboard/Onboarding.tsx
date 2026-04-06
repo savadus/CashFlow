@@ -250,16 +250,17 @@ export default function Onboarding() {
                   </div>
 
                   <div className="relative group">
-                     <div className="absolute left-8 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black group-focus-within:scale-110 transition-all">
+                     <div className="absolute left-8 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black group-focus-within:scale-110 transition-all pointer-events-none">
                         <User className="w-5 h-5" />
                      </div>
                      <input 
                        type="text" 
                        value={profile.name}
-                       onChange={(e) => setProfile(p => ({ ...p, name: e.target.value.toUpperCase() }))}
+                       onChange={(e) => setProfile(p => ({ ...p, name: e.target.value }))}
                        placeholder={profile.language === 'ml' ? 'പേര് നൽകുക...' : profile.language === 'hi' ? 'नाम दर्ज करें...' : 'ENTER NAME...'}
-                       className="w-full bg-white border-2 border-black/5 focus:border-black rounded-[36px] p-8 pl-16 font-black uppercase text-sm tracking-[0.2em] outline-none transition-all shadow-sm placeholder:text-black/5"
+                       className="w-full bg-white border-2 border-black/10 focus:border-black rounded-[36px] p-8 pl-16 font-black text-lg text-black tracking-[0.1em] outline-none transition-all shadow-sm placeholder:text-black/20"
                        autoFocus
+                       spellCheck={false}
                        onKeyDown={(e) => e.key === 'Enter' && profile.name && setStep(3)}
                      />
                   </div>
