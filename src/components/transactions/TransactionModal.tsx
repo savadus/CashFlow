@@ -200,7 +200,7 @@ export const TransactionModal = ({
              <div className="p-4 space-y-4">
                 <div className="bg-white rounded-[10px] p-5 border border-black/5 shadow-sm space-y-6">
                     <div>
-base                       <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">SELECT LOCATION (FROM)</p>
+                       <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">SELECT LOCATION (FROM)</p>
                        <div className="grid grid-cols-2 gap-3">
                           <button 
                             onClick={() => {
@@ -264,7 +264,10 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                           <p className="text-[8px] font-bold text-black/50  tracking-tight mb-4 px-2">DESTINATION (TO)</p>
                           <div className="grid grid-cols-2 gap-3">
                              <button 
-                               onClick={() => setToMode('IN_HAND')}
+                               onClick={() => {
+                                  setToMode('IN_HAND');
+                                  setToBankPickerOpen(false);
+                               }}
                                className={cn(
                                   "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                   toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
@@ -274,16 +277,47 @@ base                       <p className="text-[8px] font-bold text-black/50  tra
                                 IN HAND
                              </button>
                              <button 
-                               onClick={() => setToBankPickerOpen(!toBankPickerOpen)}
+                               onClick={() => {
+                                  if (toMode === 'IN_HAND') setToMode(banks[0]?.id || 'BANK_DEFAULT');
+                                  setToBankPickerOpen(!toBankPickerOpen);
+                               }}
                                className={cn(
                                   "h-14 rounded-[10px] flex items-center justify-center gap-3 font-bold text-[9px]  tracking-tight transition-all active:scale-95 border",
                                   toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
                                 <Landmark className="w-4 h-4" />
-                                {toMode.startsWith('BANK') ? toMode.replace('BANK_', '') : 'IN BANK'}
+                                {toMode.startsWith('BANK') ? (banks.find(b => b.id === toMode)?.name || toMode.replace('BANK_', '')) : 'IN BANK'}
+                                <ChevronRight className={cn("w-3 h-3 transition-transform", toBankPickerOpen ? "rotate-90" : "")} />
                              </button>
                           </div>
+
+                          <AnimatePresence>
+                             {toBankPickerOpen && (
+                                <motion.div 
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  className="grid grid-cols-3 gap-2 mt-3"
+                                >
+                                   {banks.map(b => (
+                                      <button 
+                                        key={b.id}
+                                        onClick={() => {
+                                           setToMode(b.id as LiquidMode);
+                                           setToBankPickerOpen(false);
+                                        }}
+                                        className={cn(
+                                           "h-10 rounded-lg flex items-center justify-center text-[8px] font-bold  tracking-tight transition-all active:scale-95",
+                                           toMode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
+                                        )}
+                                      >
+                                         {b.name.split(' ')[0]}
+                                      </button>
+                                   ))}
+                                </motion.div>
+                             )}
+                          </AnimatePresence>
                        </div>
                     )}
 
