@@ -105,34 +105,34 @@ export const BillAuditHub = ({
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       onClick={() => onViewBill(bill)}
-                      className="bg-white rounded-[10px] p-6 border border-black/5 shadow-sm group active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden"
+                      className="bg-white rounded-[10px] p-4 border border-black/5 shadow-sm group active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden"
                     >
                        <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-[10px]-[100%] z-0 translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform" />
                        <div className="relative z-10">
-                          <div className="flex justify-between items-start mb-4">
+                          <div className="flex justify-between items-start mb-3">
                              <div>
-                                <p className="text-[10px] font-black text-black/20  tracking-tight mb-1 italic">
+                                <p className="text-[8px] font-black text-black/20  tracking-tight mb-0.5 italic">
                                    {format(new Date(bill.date), 'dd MMM yyyy • HH:mm')}
                                 </p>
-                                <h3 className="text-xl font-black  tracking-tighter italic text-black">{bill.customerName}</h3>
+                                <h3 className="text-lg font-black  tracking-tighter italic text-black">{bill.customerName}</h3>
                              </div>
-                             <div className={cn("px-4 py-1.5 rounded-[10px] text-[9px] font-black  tracking-tight", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
+                             <div className={cn("px-3 py-1 rounded-[10px] text-[8px] font-black  tracking-tight", bill.status === 'PAID' ? "bg-income/10 text-income" : "bg-expense/10 text-expense")}>
                                 {bill.status}
                              </div>
                           </div>
 
-                          <div className="flex items-center justify-between border-t border-black/5 pt-4 mt-2">
+                          <div className="flex items-center justify-between border-t border-black/5 pt-3 mt-1">
                              <div className="flex gap-2">
-                                <div className="p-2 bg-gray-50 rounded-[10px] text-black/20 group-hover:text-ios-blue transition-colors">
-                                   <FileText className="w-4 h-4" />
+                                <div className="p-1.5 bg-gray-50 rounded-[10px] text-black/20 group-hover:text-ios-blue transition-colors">
+                                   <FileText className="w-3.5 h-3.5" />
                                 </div>
-                                <div className="p-2 bg-gray-50 rounded-[10px] text-black/20 group-hover:text-ios-blue transition-colors">
-                                   <Share2 className="w-4 h-4" />
+                                <div className="p-1.5 bg-gray-50 rounded-[10px] text-black/20 group-hover:text-ios-blue transition-colors">
+                                   <Share2 className="w-3.5 h-3.5" />
                                 </div>
                              </div>
                              <div className="text-right">
-                                <p className="text-[9px] font-black text-black/20  tracking-tight leading-none mb-1">Final Total</p>
-                                <p className="text-2xl font-black tracking-tighter text-black leading-none">₹{bill.total}</p>
+                                <p className="text-[8px] font-black text-black/20  tracking-tight leading-none mb-0.5">Final Total</p>
+                                <p className="text-xl font-black tracking-tighter text-black leading-none">₹{bill.total}</p>
                              </div>
                           </div>
 
@@ -141,9 +141,9 @@ export const BillAuditHub = ({
                               e.stopPropagation();
                               dispatch({ type: 'DELETE_BILL', payload: bill.id });
                             }}
-                            className="absolute -bottom-1 -right-1 p-4 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute -bottom-1 -right-1 p-3 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                           >
-                             <Trash2 className="w-4 h-4" />
+                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
                        </div>
                     </motion.div>
