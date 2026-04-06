@@ -468,7 +468,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                            </div>
                            <div className="border border-black p-4 flex flex-col items-center justify-center">
                                <p className="text-[10px] font-black text-black/30 mb-1  tracking-tight">STATUS:</p>
-                               <span className={cn("text-xs font-black px-3 py-1 rounded-[10px]", paymentStatus === 'PAID' ? "text-income" : "text-expense")}>
+                               <span className="text-xs font-black px-3 py-1 rounded-[10px] text-black">
                                   {paymentStatus}
                                </span>
                            </div>
@@ -506,7 +506,7 @@ export const BillGenerator = ({ isOpen, onClose, initialBill }: { isOpen: boolea
                                 </tr>
                                 <tr className="border-t border-black">
                                   <td colSpan={5} className="border-r border-black p-2 text-right font-black  text-[9px] tracking-tight text-black/50">Settlement Balance</td>
-                                  <td className={cn("p-2 text-right font-black tracking-tighter text-xs", paymentStatus === 'PAID' ? "text-income" : "text-expense")}>
+                                  <td className="p-2 text-right font-black tracking-tighter text-xs text-black">
                                      ₹{paymentStatus === 'PAID' ? '0' : total}.00
                                   </td>
                                 </tr>

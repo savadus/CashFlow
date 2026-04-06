@@ -11,7 +11,7 @@
   --secondary: #F2F2F7;
   --tertiary: #E5E5EA;
   --text-secondary: #000000;
-  --primary-sage: #6b8341;
+  --primary-sage: #000000;
   --primary-obsidian: #000000;
   --current-primary: var(--primary-sage);
 }
@@ -41,7 +41,8 @@
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
   --color-text-dim: var(--text-secondary);
-  --color-black: var(--current-primary);
+  --color-black: #000000;
+  --color-brand: var(--current-primary);
 }
 
 * {
