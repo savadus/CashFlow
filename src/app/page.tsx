@@ -190,7 +190,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto flex items-center gap-2">
             <button
               onClick={() => openAddModal('EXPENSE')}
-              className="flex-1 bg-expense text-white py-4 rounded-none font-black text-sm uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-expense text-white py-4 rounded-none font-black text-sm uppercase tracking-wider active:scale-95 transition-all shadow-lg shadow-expense/20 flex items-center justify-center gap-2"
             >
               <div className="p-1 bg-white/20 rounded-none shrink-0">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -199,7 +199,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => openAddModal('INCOME')}
-              className="flex-1 bg-income text-white py-4 rounded-none font-black text-sm uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
+              className="flex-1 bg-income text-white py-4 rounded-none font-black text-sm uppercase tracking-wider active:scale-95 transition-all shadow-lg shadow-income/20 flex items-center justify-center gap-2"
             >
               <div className="p-1 bg-white/20 rounded-none shrink-0">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>

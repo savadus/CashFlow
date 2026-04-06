@@ -48,7 +48,7 @@ export const Header = ({
                   <User className="w-3 h-3 text-black group-hover:scale-110 transition-transform" />
                )}
             </div>
-            <span className="text-[10px] font-black uppercase tracking-widest hidden sm:block">{t('ACCOUNT')}</span>
+            <span className="text-[10px] font-black uppercase tracking-wider hidden sm:block">{t('ACCOUNT')}</span>
           </button>
         </div>
       </div>

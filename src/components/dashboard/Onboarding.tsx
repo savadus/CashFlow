@@ -152,7 +152,7 @@ export default function Onboarding() {
                    <div className="flex flex-col items-center">
                       <img src="/cash-flow-logo.png" className="w-16 h-16 mb-4" alt="Logo" />
                       <h1 className="text-xl font-bold text-black uppercase tracking-tight">Institutional Access</h1>
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-black/30">Secure Cloud Handshake</p>
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-black/30">Secure Cloud Handshake</p>
                    </div>
 
                    <div className="space-y-4">
@@ -178,7 +178,7 @@ export default function Onboarding() {
                            </button>
                            <button 
                              onClick={() => setIsOtpSent(false)}
-                             className="text-[9px] font-bold text-black/30 uppercase tracking-widest"
+                             className="text-[9px] font-bold text-black/30 uppercase tracking-wider"
                            >
                               Change Email
                            </button>
@@ -218,7 +218,7 @@ export default function Onboarding() {
                       )}
                       
                       {error && (
-                        <p className="text-[10px] font-bold text-expense uppercase tracking-widest animate-shake">{error}</p>
+                        <p className="text-[10px] font-bold text-expense uppercase tracking-wider animate-shake">{error}</p>
                       )}
                    </div>
                    <p className="text-[9px] font-black text-black/20 uppercase tracking-[0.3em] leading-relaxed max-w-[280px] mx-auto">
@@ -243,7 +243,7 @@ export default function Onboarding() {
                       className="w-16 h-16 object-contain mb-4 drop-shadow-xl"
                     />
                     <h1 className="text-2xl font-bold tracking-tight text-black mb-2 uppercase">CashFlow</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-black/30">Select your language</p>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/30">Select your language</p>
                   </div>
 
                   <div className="grid gap-4">
@@ -257,7 +257,7 @@ export default function Onboarding() {
                          className={`p-4 rounded-[24px] border-2 transition-all flex items-center justify-between group active:scale-95 ${profile.language === lang.id ? 'border-black bg-black text-white shadow-2xl' : 'border-black/5 bg-white text-black hover:border-black/20'}`}
                        >
                           <div className="text-left">
-                             <p className="text-[11px] font-black tracking-widest leading-none mb-1">{lang.name}</p>
+                             <p className="text-[11px] font-black tracking-wider leading-none mb-1">{lang.name}</p>
                              <p className={`text-[10px] uppercase font-bold opacity-40 group-hover:opacity-60 ${profile.language === lang.id ? 'text-white/60' : ''}`}>{lang.native}</p>
                           </div>
                           {profile.language === lang.id && <Check className="w-5 h-5" />}
@@ -278,7 +278,7 @@ export default function Onboarding() {
                >
                   <div>
                     <h1 className="text-2xl font-bold tracking-tight text-black mb-4 uppercase">{profile.language === 'ml' ? 'ആരാണ് നിങ്ങൾ?' : profile.language === 'hi' ? 'आप कौन हैं?' : 'WHO ARE YOU?'}</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-black/20">{profile.language === 'ml' ? 'തുടരുന്നതിന് പേര് നൽകുക' : profile.language === 'hi' ? 'जारी रखने के लिए अपना नाम टाइप करें' : 'Type your name to continue'}</p>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/20">{profile.language === 'ml' ? 'തുടരുന്നതിന് പേര് നൽകുക' : profile.language === 'hi' ? 'जारी रखने के लिए अपना नाम टाइप करें' : 'Type your name to continue'}</p>
                   </div>
 
                   <div className="relative group">
@@ -319,7 +319,7 @@ export default function Onboarding() {
                >
                   <div>
                     <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-black mb-4 leading-tight uppercase">{profile.language === 'ml' ? 'ഉദ്ദേശ്യം തിരഞ്ഞെടുക്കുക' : profile.language === 'hi' ? 'अपना उद्देश्य चुनें' : 'CHOOSE YOUR PURPOSE'}</h1>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-black/20">{profile.language === 'ml' ? 'നിങ്ങളുടെ അനുഭവം മികച്ചതാക്കുന്നു' : profile.language === 'hi' ? 'आपके अनुभव को अनुकूलित करना' : 'Tailoring your experience'}</p>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-black/20">{profile.language === 'ml' ? 'നിങ്ങളുടെ അനുഭവം മികച്ചതാക്കുന്നു' : profile.language === 'hi' ? 'आपके अनुभव को अनुकूलित करना' : 'Tailoring your experience'}</p>
                   </div>
 
                   <div className="grid gap-4">
@@ -333,7 +333,7 @@ export default function Onboarding() {
                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${profile.purpose === p.id ? 'bg-white/10' : 'bg-black/5 group-hover:bg-black group-hover:text-white'}`}>
                                 {p.icon}
                              </div>
-                             <p className="text-[11px] font-black tracking-widest">{p.name}</p>
+                             <p className="text-[11px] font-black tracking-wider">{p.name}</p>
                           </div>
                           {profile.purpose === p.id && <Check className="w-5 h-5 shadow-ios" />}
                        </button>

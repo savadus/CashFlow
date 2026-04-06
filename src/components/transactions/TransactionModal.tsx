@@ -160,7 +160,7 @@ export const TransactionModal = ({
                   <ArrowLeft className="w-5 h-5 text-black/40" />
                </button>
                <div>
-                  <h2 className={cn("text-lg font-bold uppercase tracking-widest leading-none", getThemeText())}>
+                  <h2 className={cn("text-lg font-bold uppercase tracking-wider leading-none", getThemeText())}>
                      {type === 'INCOME' ? 'ADD INCOME' : type === 'EXPENSE' ? 'ADD OUT' : 'TRANSFER'}
                   </h2>
                </div>
@@ -171,7 +171,7 @@ export const TransactionModal = ({
                     key={t}
                     onClick={() => setType(t)}
                     className={cn(
-                      "px-3 py-1.5 rounded-lg text-[8px] font-bold uppercase tracking-widest transition-all",
+                      "px-3 py-1.5 rounded-lg text-[8px] font-bold uppercase tracking-wider transition-all",
                       type === t ? (t === 'INCOME' ? "bg-income text-white shadow-md" : t === 'EXPENSE' ? "bg-expense text-white shadow-md" : "bg-ios-blue text-white shadow-md") : "text-black/30"
                     )}
                   >
@@ -183,9 +183,9 @@ export const TransactionModal = ({
 
           <div className="flex-1 overflow-y-auto">
              <div className="bg-white p-4 border-b border-black/5 shadow-sm text-center">
-                <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-1">CONFIRM AMOUNT</p>
+                <p className="text-[8px] font-bold text-black/50 uppercase tracking-wider mb-1">CONFIRM AMOUNT</p>
                 <div className="flex items-center justify-center gap-2">
-                   <span className="text-lg font-bold text-black/10">₹</span>
+                   <span className="text-lg font-bold text-black/40">₹</span>
                    <div className="text-2xl font-bold tracking-tight truncate leading-none text-black">
                       {displayValue}
                    </div>
@@ -195,7 +195,7 @@ export const TransactionModal = ({
              <div className="p-4 space-y-4">
                 <div className="bg-white rounded-[24px] p-5 border border-black/5 shadow-sm space-y-6">
                     <div>
-                       <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">SELECT LOCATION (FROM)</p>
+base                       <p className="text-[8px] font-bold text-black/50 uppercase tracking-wider mb-4 px-2">SELECT LOCATION (FROM)</p>
                        <div className="grid grid-cols-2 gap-3">
                           <button 
                             onClick={() => {
@@ -203,7 +203,7 @@ export const TransactionModal = ({
                                setBankPickerOpen(false);
                             }}
                             className={cn(
-                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-wider transition-all active:scale-95 border",
                                mode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
@@ -216,7 +216,7 @@ export const TransactionModal = ({
                                setBankPickerOpen(!bankPickerOpen);
                             }}
                             className={cn(
-                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                               "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-wider transition-all active:scale-95 border",
                                mode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                             )}
                           >
@@ -242,7 +242,7 @@ export const TransactionModal = ({
                                         setBankPickerOpen(false);
                                      }}
                                      className={cn(
-                                        "h-10 rounded-lg flex items-center justify-center text-[8px] font-bold uppercase tracking-widest transition-all active:scale-95",
+                                        "h-10 rounded-lg flex items-center justify-center text-[8px] font-bold uppercase tracking-wider transition-all active:scale-95",
                                         mode === b.id ? "bg-black text-white" : "bg-gray-50 text-black/30 border border-black/5"
                                      )}
                                    >
@@ -256,12 +256,12 @@ export const TransactionModal = ({
 
                     {type === 'TRANSFER' && (
                        <div>
-                          <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">DESTINATION (TO)</p>
+                          <p className="text-[8px] font-bold text-black/50 uppercase tracking-wider mb-4 px-2">DESTINATION (TO)</p>
                           <div className="grid grid-cols-2 gap-3">
                              <button 
                                onClick={() => setToMode('IN_HAND')}
                                className={cn(
-                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-wider transition-all active:scale-95 border",
                                   toMode === 'IN_HAND' ? "bg-black text-white border-black shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -271,7 +271,7 @@ export const TransactionModal = ({
                              <button 
                                onClick={() => setToBankPickerOpen(!toBankPickerOpen)}
                                className={cn(
-                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-widest transition-all active:scale-95 border",
+                                  "h-14 rounded-xl flex items-center justify-center gap-3 font-bold text-[9px] uppercase tracking-wider transition-all active:scale-95 border",
                                   toMode.startsWith('BANK') ? "bg-ios-blue text-white border-ios-blue shadow-lg" : "bg-white text-black/40 border-black/5"
                                )}
                              >
@@ -283,12 +283,12 @@ export const TransactionModal = ({
                     )}
 
                     <div>
-                       <p className="text-[8px] font-bold text-black/20 uppercase tracking-widest mb-4 px-2">TARGET PURPOSE (SPACE)</p>
+                       <p className="text-[8px] font-bold text-black/50 uppercase tracking-wider mb-4 px-2">TARGET PURPOSE (SPACE)</p>
                        <div className="grid grid-cols-2 gap-3">
                           <select 
                             value={spaceId}
                             onChange={(e) => setSpaceId(e.target.value)}
-                            className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-widest appearance-none cursor-pointer outline-none border border-black/5"
+                            className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-wider appearance-none cursor-pointer outline-none border border-black/5"
                           >
                              {state.spaces.map(s => (
                                <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
@@ -298,7 +298,7 @@ export const TransactionModal = ({
                              <select 
                                value={toSpaceId}
                                onChange={(e) => setToSpaceId(e.target.value)}
-                               className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-widest appearance-none cursor-pointer outline-none border border-black/5"
+                               className="w-full bg-white text-black h-14 rounded-xl font-bold px-4 shadow-sm active:scale-95 transition-all text-[9px] uppercase tracking-wider appearance-none cursor-pointer outline-none border border-black/5"
                              >
                                 {state.spaces.filter(s => s.id !== spaceId).map(s => (
                                   <option key={s.id} value={s.id}>{s.name.toUpperCase()}</option>
@@ -306,13 +306,13 @@ export const TransactionModal = ({
                              </select>
                           ) : (
                              <div className="relative">
-                                <MessageSquare className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                                <MessageSquare className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
                                 <input 
                                   type="text" 
                                   value={note}
                                   onChange={(e) => setNote(e.target.value)}
                                   placeholder="NOTE..."
-                                  className="w-full pl-14 pr-6 h-16 bg-black/5 rounded-[24px] font-black text-[10px] uppercase tracking-widest outline-none border-none placeholder:text-black/10"
+                                  className="w-full pl-14 pr-6 h-16 bg-black/5 rounded-[24px] font-black text-[10px] uppercase tracking-wider outline-none border-none placeholder:text-black/30"
                                 />
                              </div>
                           )}

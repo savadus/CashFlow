@@ -162,7 +162,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                               value={bank.name}
                               onChange={(e) => handleBankChange(bank.id, e.target.value)}
                               placeholder={`NAME FOR ${bank.id}`}
-                              className="w-full bg-secondary border border-card-border rounded-xl p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all uppercase tracking-widest text-foreground placeholder:text-black/10"
+                              className="w-full bg-secondary border border-card-border rounded-xl p-3.5 pl-11 font-bold text-[10px] outline-none focus:border-foreground transition-all uppercase tracking-wider text-foreground placeholder:text-black/10"
                            />
                         </div>
                         <button 
@@ -183,7 +183,7 @@ export const ProfileModal = ({ isOpen, onClose }: ProfileModalProps) => {
                onClick={handleSave}
                disabled={isSaved}
                className={cn(
-                 "w-full p-4.5 rounded-2xl font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
+                 "w-full p-4.5 rounded-2xl font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95",
                  isSaved ? "bg-green-500 text-white" : "bg-black text-white hover:bg-black/90 shadow-black/10"
                )}
              >
