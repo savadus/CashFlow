@@ -61,7 +61,14 @@ const financeReducer = (state: State, action: Action): State => {
       return { ...state, user: action.payload };
     }
     case 'SET_INITIAL_DATA': {
-      return { ...state, ...action.payload };
+      // Identity Sovereignty: Never let an incoming null payload overwrite an active profile
+      const mergedProfile = state.userProfile || (action.payload.userProfile?.name ? action.payload.userProfile : null);
+      return { 
+        ...state, 
+        ...action.payload, 
+        user: state.user, // Always preserve auth state
+        userProfile: mergedProfile 
+      };
     }
     case 'ADD_TRIP_MEMBER': {
       const { spaceId, member } = action.payload;
@@ -302,17 +309,6 @@ const financeReducer = (state: State, action: Action): State => {
         }),
         transactions: [],
         bills: []
-      };
-    }
-    case 'SET_INITIAL_DATA': {
-      // Local Identity Sovereignty: Never let an incoming null/empty payload overwrite an active profile
-      const mergedProfile = state.userProfile || (action.payload.userProfile?.name ? action.payload.userProfile : null);
-      
-      return { 
-        ...state, 
-        ...action.payload, 
-        user: state.user, // Preserve session
-        userProfile: mergedProfile 
       };
     }
     case 'SET_PROFILE':
