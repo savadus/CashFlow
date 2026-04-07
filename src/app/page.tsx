@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/dashboard/Header';
 import { BalanceOverview } from '@/components/dashboard/BalanceOverview';
@@ -43,6 +43,23 @@ export default function Home() {
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [selectedSpaceId, setSelectedSpaceId] = useState<string | null>(null);
   const [activeSpaceId, setActiveSpaceId] = useState<string | null>(null);
+  const [lastLockedAt, setLastLockedAt] = useState<number>(Date.now());
+
+  // Residency Lock Listener
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        const now = Date.now();
+        // Only re-lock if more than 3 minutes have passed since last lock OR if explicitly minimized
+        // The user said "must need to unlock", so I'll lock it immediately for maximum security
+        dispatch({ type: 'LOCK_APP' });
+        setLastLockedAt(now);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [dispatch]);
 
   const openAddModal = (type: TransactionType) => {
     setModalType(type);

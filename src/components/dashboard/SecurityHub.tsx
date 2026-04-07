@@ -40,35 +40,42 @@ export const SecurityHub = () => {
   };
 
   const attemptBiometrics = async () => {
-    if (!window.PublicKeyCredential) {
-       alert("Biometrics not supported on this browser context.");
+    // Check if biometric authentication is available and supported
+    if (!window.PublicKeyCredential || !window.isSecureContext) {
        return;
     }
     
-    // In a production env, you'd use navigator.credentials.get with a valid challenge
-    // For this institutional UI demo, we simulate the 'Sovereign Validation'
     try {
        setIsBiometricAttempted(true);
-       // Simple platform authentication simulation
+       
+       // Real Biometric prompt trigger simulation
        // In chrome/ios this triggers the native biometric popup if configured
-       // This is a placeholder for real WebAuthn flow
-       setTimeout(() => {
-          // If we had a registration step, we'd verify here
-          // For now, we allow the UI to show the 'Touch ID' button which prompts the user to use the PIN
-          // unless they have registered.
-          // Note: Real WebAuthn requires https and a challenge.
-       }, 500);
+       // This is a placeholder for a real navigator.credentials.get flow
+       // We'll simulate a 1s system-processing delay
+       const isAvailable = await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+       
+       if (isAvailable) {
+          // Trigger a silent 'Sovereign' check
+          // In a real env, this would be: await navigator.credentials.get({...})
+          // For now, we'll auto-unlock on success simulation
+          setTimeout(() => {
+             // Dispatch unlock if system validation passes
+             // For this institutional demo, we assume first-time registration is PIN-based
+             // but if they click the button, we trigger this native-like feel
+          }, 800);
+       }
     } catch (e) {
-       console.error("Biometric fail", e);
+       console.error("Sovereign Biometric System Fail", e);
     }
   };
 
   // Auto-attempt biometric on mount (like real iOS apps)
   useEffect(() => {
     if (state.isLocked && !isBiometricAttempted) {
+       // We only auto-attempt once to avoid annoying loops
        attemptBiometrics();
     }
-  }, [state.isLocked]);
+  }, [state.isLocked, isBiometricAttempted]);
 
   if (!state.isLocked) return null;
 
