@@ -53,6 +53,7 @@ const initialState: State = {
   },
   activeHub: 'NONE',
   isLocked: true,
+  isHydrated: false,
 };
 
 const adjustLiquidBalance = (balances: Record<string, number>, mode: string, amount: number, isAdd: boolean) => {
@@ -70,11 +71,13 @@ const financeReducer = (state: State, action: Action): State => {
     case 'SET_INITIAL_DATA': {
       // Identity Sovereignty: Never let an incoming null payload overwrite an active profile
       const mergedProfile = state.userProfile || (action.payload.userProfile?.name ? action.payload.userProfile : null);
+      console.log("HYDRATION_GATE: Session Initialized", action.payload.spaces?.length || 0, "spaces identified");
       return { 
         ...state, 
         ...action.payload, 
         user: state.user, // Always preserve auth state
-        userProfile: mergedProfile 
+        userProfile: mergedProfile,
+        isHydrated: true
       };
     }
     case 'ADD_TRIP_MEMBER': {
@@ -435,6 +438,16 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
       } catch (err) {
         console.warn("CLOUDHUB SYNC: Guest Mode Active", err);
       }
+      // Priority 3: Fallback for New Users / Ghost Session
+      if (!savedData && !state.user) {
+         console.log("HYDRATION_GATE: New Session Mastered");
+         dispatch({ type: 'SET_INITIAL_DATA', payload: initialState });
+      } else if (state.user) {
+         // Even if cloud is empty, we must hydrate to allow new saves
+         setTimeout(() => {
+            dispatch({ type: 'SET_INITIAL_DATA', payload: initialState });
+         }, 3000);
+      }
     };
     
     initData();
@@ -442,7 +455,9 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
 
   // 2. Local Persistence (Immediate for Offline Resilience)
   useEffect(() => {
-    localStorage.setItem('cashflow_data', JSON.stringify(state));
+    if (state.isHydrated) {
+       localStorage.setItem('cashflow_data', JSON.stringify(state));
+    }
   }, [state]);
 
   // 3. Theme/Visual Mode (Immediate UI Locking)
@@ -482,7 +497,9 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
   }, 2000), []);
 
   useEffect(() => {
-    syncToCloud(state);
+    if (state.isHydrated) {
+       syncToCloud(state);
+    }
   }, [state, syncToCloud]);
 
   return (

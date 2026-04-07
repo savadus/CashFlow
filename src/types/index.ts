@@ -79,4 +79,5 @@ export interface FinanceState {
   visualMode?: 'LIGHT' | 'DARK';
   activeHub?: 'MORE' | 'SETTINGS' | 'ABOUT' | 'LOANS' | 'CASHBOOK' | 'BILLS' | 'COLLECTION' | 'NONE';
   isLocked: boolean;
+  isHydrated: boolean;
 }
