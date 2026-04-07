@@ -438,15 +438,17 @@ export const FinanceProvider = ({ children }: { children: ReactNode }) => {
       } catch (err) {
         console.warn("CLOUDHUB SYNC: Guest Mode Active", err);
       }
-      // Priority 3: Fallback for New Users / Ghost Session
-      if (!savedData && !state.user) {
+      // Priority 3: Fallback for New Users / Ghost Session (Only if still un-hydrated)
+      if (!state.isHydrated && !savedData && !state.user) {
          console.log("HYDRATION_GATE: New Session Mastered");
          dispatch({ type: 'SET_INITIAL_DATA', payload: initialState });
-      } else if (state.user) {
-         // Even if cloud is empty, we must hydrate to allow new saves
+      } else if (state.user && !state.isHydrated) {
+         // Even if cloud failed, we must start the session eventually
          setTimeout(() => {
-            dispatch({ type: 'SET_INITIAL_DATA', payload: initialState });
-         }, 3000);
+            if (!state.isHydrated) {
+               dispatch({ type: 'SET_INITIAL_DATA', payload: initialState });
+            }
+         }, 5000);
       }
     };
     
